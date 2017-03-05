@@ -9,6 +9,16 @@
 #include <stdio.h>
 #include "movie.h"
 
+Movie::Movie(){
+    std::cout << "Movie Consturctor called"<< std::endl;
+    title = "";
+    director = "";
+    year = 0000;
+    stock = 10;
+}
+Movie::~Movie(){
+    
+}
 
 int Movie::getYear() const{
     return this->year;
@@ -34,4 +44,33 @@ int Movie::getStock() const{
 }
 void Movie::setStock(int stock){
     this->stock = stock;
+}
+
+
+
+
+//------------------------- operator==,!= ------------------------------------
+bool Movie::operator==(const Movie& rhs) const {
+    return getTitle() == rhs.getTitle();
+}
+
+bool Movie::operator!=(const Movie& rhs) const {
+    return getTitle() != rhs.getTitle();
+}
+
+//------------------------ operator<,>,<=,>= ---------------------------------
+bool Movie::operator<(const Movie& rhs) const {
+    return getTitle() < rhs.getTitle();
+}
+
+bool Movie::operator>(const Movie& rhs) const {
+    return getTitle() > rhs.getTitle();
+}
+
+bool Movie::operator<=(const Movie& rhs) const {
+    return getTitle() <= rhs.getTitle();
+}
+
+bool Movie::operator>=(const Movie& rhs) const {
+    return getTitle() >= rhs.getTitle();
 }

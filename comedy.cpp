@@ -7,27 +7,3 @@
 //
 
 #include "comedy.hpp"
-
-
-
-bool Comedy::operator==(const Movie &rhs) const{
-    return getTitle() == rhs.getTitle();
-};
-bool Comedy::operator!=(const Movie &rhs) const{
-    return !(*this == rhs);
-};
-bool Comedy::operator<(const Movie &rhs) const{
-    //-	comedy movies (‘F’) sorted by Title, then Year it released
-
-    return (getTitle() < rhs.getTitle() ) && ( getYear() < rhs.getYear() );
-};
-bool Comedy::operator>(const Movie &rhs) const{
-    return (getTitle() > rhs.getTitle() ) && ( getYear() > rhs.getYear() );
-};
-bool Comedy::operator<=(const Movie &rhs) const
-{
-    return (getTitle() <= rhs.getTitle() ) && ( getYear() <= rhs.getYear() );
-};
-bool Comedy::operator>=(const Movie &rhs) const{
-    return (getTitle() >= rhs.getTitle() ) && ( getYear() >= rhs.getYear() );
-};

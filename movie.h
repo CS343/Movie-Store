@@ -17,13 +17,13 @@ using namespace std;
 
 class Movie {
    
-     friend ostream& operator<<(ostream &output, const Movie &movie);
+     //friend ostream& operator<<(ostream &output, const Movie &movie);
 public:
     
     
     Movie();          // default constructor, data is set to an empty string
-    //~Movie();
-    Movie(const string title, string director, int year);      // data is set equal to parameter
+    ~Movie();
+    //Movie(const string title, string director, int year);      // data is set equal to parameter
     //Movie(const Movie &);    // copy constructor
     //Movie& operator=(const Movie &);
     
@@ -35,7 +35,8 @@ public:
     //Movie movie = new Comedy,Classic, OR drama
     
     //movie.setData(istream&);
-    virtual bool setData(istream&);
+    //virtual bool setData(istream&);
+    
     
     virtual bool operator==(const Movie &) const;
     virtual bool operator!=(const Movie &) const;
@@ -45,7 +46,14 @@ public:
     virtual bool operator>=(const Movie &) const;
     
     
-    
+    /*
+    virtual bool operator==(const Movie &) const;
+    bool operator!=(const Movie &) const;
+    bool operator<(const Movie &) const;
+    bool operator>(const Movie &) const;
+    bool operator<=(const Movie &) const;
+    bool operator>=(const Movie &) const;
+     */
     
     //getter for the release year
 	int getYear() const;

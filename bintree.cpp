@@ -725,7 +725,7 @@ void BinTree::displaySidewaysHelper(Node* current, int level) const {
             cout << "    ";
         }
         
-        cout << *current->data << endl;        // display information of object
+        //cout << *current->data << endl;        // display information of object
         displaySidewaysHelper(current->left, level);
     }
 }
@@ -881,7 +881,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		output << *current->data  << " ";
+		//output << *current->data  << " ";
 		outputHelper(output,current->right);
 	}
 	return output;

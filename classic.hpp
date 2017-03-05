@@ -13,8 +13,10 @@
 #include "movie.h"
 
 class Classic : public Movie {
-    
+    //friend ostream& operator<<(ostream &output, const Movie &movie);
+
 public:
+    //bool setData(istream&);
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;

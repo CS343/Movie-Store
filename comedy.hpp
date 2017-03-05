@@ -10,17 +10,7 @@
 #define comedy_hpp
 #include "movie.h"
 #include <stdio.h>
-class Comedy: public Movie{
-    
-    
-public:
-    
-     bool operator==(const Movie &) const;
-     bool operator!=(const Movie &) const;
-     bool operator<(const Movie &) const;
-     bool operator>(const Movie &) const;
-     bool operator<=(const Movie &) const;
-     bool operator>=(const Movie &) const;
+class Comedy : public Movie{
     
 };
 #endif /* comedy_hpp */
