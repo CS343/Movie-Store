@@ -6,9 +6,7 @@ amount of the movie in stock.
 Child classes of the movie class may have more attributes. The movie class
 simply has the core attributes of any given movie.
 */
-//dante
-//fdsfads
-//movie class
+
 using namespace std;
 class Movie {
    
