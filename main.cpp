@@ -10,7 +10,12 @@
 #include "store.h"
 #include <iostream>
 #include <fstream>
-
+#include "movie.h"
+//testing Movie
+#include "comedy.h"
+#include "bintree.h"
+#include "moviefactory.h"
+//end test movie
 using namespace std;
 
 int main() {
@@ -51,6 +56,26 @@ int main() {
     transactionFile.close();
     
     // end of the main function
+    
+    /*      TESTING MOVIE       */
+    
+    BinTree comedyMovieStorage;
+    Movie *movie = new Comedy();
+    
+    Movie *movie1 =  new Comedy();
+    
+    std::cout << (*movie1 < *movie ? "YES THEY IZ" : "nah" ) << std::endl;
+    comedyMovieStorage.insert(movie);
+    comedyMovieStorage.insert(movie1);
+    std::cout << comedyMovieStorage << std::endl;
+    Movie *returnPtr;
+    returnPtr = Movie_Factory::make_movie('D');
+    
+    
+    
+    
+    
+    /*      END TESET MOVIE     */
     return 0;
     
 };

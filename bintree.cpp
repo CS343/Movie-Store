@@ -123,6 +123,8 @@ BinTree::~BinTree(){
  |
  |=============================================================================|
  */
+
+/*
 BinTree::BinTree(const BinTree &rhs){
     if(rhs.isEmpty()){
         //if the rhs is empty, quickly set this root to nullptr, and do not
@@ -133,6 +135,7 @@ BinTree::BinTree(const BinTree &rhs){
         root = copyTreeHelper(root, rhs.root);
     }
 }
+ */
 
 
 /*
@@ -157,6 +160,8 @@ BinTree::BinTree(const BinTree &rhs){
  |=============================================================================|
  */
 //IM A GOD
+
+/*
 typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
                                                 Node *rhsCurrent){
     if(rhsCurrent == nullptr){
@@ -180,6 +185,7 @@ typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
     //return the current subtree node.
     return thisCurrent;
 }
+ */
 /*
  |=============================< ASSIGNMENT OPERATOR >=========================|
  |	Function Name:
@@ -197,6 +203,7 @@ typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
  |		-> Movie default constructor is properly implemented.
  |=============================================================================|
  */
+/*
 BinTree& BinTree::operator=(const BinTree &rhs){
     if(*this != rhs){//if its not the same object, reconstruct this as a copy of
         //RHS(deep copy)
@@ -207,7 +214,7 @@ BinTree& BinTree::operator=(const BinTree &rhs){
     return *this;
 }
 
-
+*/
 
 
 /*
@@ -881,7 +888,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		//output << *current->data  << " ";
+		output << *current->data  << " | | ";
 		outputHelper(output,current->right);
 	}
 	return output;

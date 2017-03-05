@@ -118,7 +118,7 @@ public:
      *========================================================================*/
     
     
-	BinTree(const BinTree &rhs);
+	//BinTree(const BinTree &rhs);
 
 	/*=========================< ASSIGNMENT OPERATOR >========================|
 	|	Function Name:
@@ -428,7 +428,7 @@ private:
 	|	Postconditions:
 	|		-> initalizes the current object with a deep copy of rhs
 	*========================================================================*/
-	Node* copyTreeHelper(Node *thisCurent, Node *rhsCurrent);
+	//Node* copyTreeHelper(Node *thisCurent, Node *rhsCurrent);
 
 	/*=========================< EQUALS HELPER >==============================|
 	|	Function Name:

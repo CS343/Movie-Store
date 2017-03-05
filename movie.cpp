@@ -47,7 +47,14 @@ void Movie::setStock(int stock){
 }
 
 
+std::ostream& operator<<(std::ostream &output, const Movie &rhs){
+   // rhs.print();
+    //output <<"HELLO FRIOM MOVIE";
+    rhs.print(output);
+    return output;
+}
 
+/*
 
 //------------------------- operator==,!= ------------------------------------
 bool Movie::operator==(const Movie& rhs) const {
@@ -60,6 +67,7 @@ bool Movie::operator!=(const Movie& rhs) const {
 
 //------------------------ operator<,>,<=,>= ---------------------------------
 bool Movie::operator<(const Movie& rhs) const {
+    std::cout << "PUTA SMIT" << std::endl;
     return getTitle() < rhs.getTitle();
 }
 
@@ -74,3 +82,4 @@ bool Movie::operator<=(const Movie& rhs) const {
 bool Movie::operator>=(const Movie& rhs) const {
     return getTitle() >= rhs.getTitle();
 }
+*/

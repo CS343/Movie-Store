@@ -17,7 +17,7 @@ using namespace std;
 
 class Movie {
    
-     //friend ostream& operator<<(ostream &output, const Movie &movie);
+     friend ostream& operator<<(ostream &output, const Movie &movie);
 public:
     
     
@@ -38,13 +38,19 @@ public:
     //virtual bool setData(istream&);
     
     
-    virtual bool operator==(const Movie &) const;
-    virtual bool operator!=(const Movie &) const;
-    virtual bool operator<(const Movie &) const;
-    virtual bool operator>(const Movie &) const;
-    virtual bool operator<=(const Movie &) const;
-    virtual bool operator>=(const Movie &) const;
-    
+    virtual bool operator==(const Movie &) const =0;
+    virtual bool operator!=(const Movie &) const =0;
+    virtual bool operator<(const Movie &) const =0;
+    virtual bool operator>(const Movie &) const =0;
+    virtual bool operator<=(const Movie &) const =0;
+    virtual bool operator>=(const Movie &) const =0;
+    //we need to do this way because friend functiona are choosen at compile time
+    //meaning at compile time the parent class 'abstract' is Movie
+    //hence movie operator << will be called everytime, a different approach
+    //to solving this problem is to relay the flow to another virutal
+    //method that will, given an input stream, change it , based off the virutal
+    //method of the choosen movie type.
+    virtual void print(ostream &)const = 0;
     
     /*
     virtual bool operator==(const Movie &) const;

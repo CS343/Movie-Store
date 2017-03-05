@@ -60,13 +60,14 @@ Pre-condition:
 Post-condition:
 */
 bool Store::readMovies(ifstream& infile){
-    
-    char movieType;
-    char* linee;
+
     string result;
     while(getline(infile,result)){
         
         if(result.at(0) != 'C' && result.at(0) != 'D' && result.at(0) != 'F'){ //|| result.at(0) != 'F' || result.at(0) != 'D'){
+            //another approach is to get the first char, then pass the ret of the ifstream to a Movie object to populate itself
+            
+            
             cout << "ERROR: " << result << endl;
             continue;
         }
@@ -82,6 +83,7 @@ bool Store::readMovies(ifstream& infile){
                 std::cout << cArray[i] << std::endl;
             }
         }
+        
 
         //0 is command , 1 is qualitity, 2 is author
         
