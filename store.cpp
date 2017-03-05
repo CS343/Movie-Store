@@ -70,9 +70,19 @@ bool Store::readMovies(ifstream& infile){
             cout << "ERROR: " << result << endl;
             continue;
         }
-
+        
+        
+  
         
         vector<string> arr = string_split(result, ',');
+        
+        if(result.at(0) == 'C'){
+            vector<string> cArray = string_split(arr[4], ' ');
+            for(int i  = 0; i <= 4; i++){
+                std::cout << cArray[i] << std::endl;
+            }
+        }
+
         //0 is command , 1 is qualitity, 2 is author
         
         //create a movie object and put into bst

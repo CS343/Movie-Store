@@ -1,5 +1,10 @@
 #include "nodedata.h"
 
+/*
+THIS APPROACH, the MOVIE class is an ABSTRACT NODE DATA class, each Movie type will inherit that NODE DATA methods,
+ such as comparision and define how they are compared.
+
+*/
 //------------------- constructors/destructor  -------------------------------
 NodeData::NodeData() { data = ""; }                         // default
 

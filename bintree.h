@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <stdio.h>
-#include "nodedata.h"
+#include "movie.h"
 #include <sstream>
 /*
  //|===========================================================================|
@@ -29,8 +29,8 @@
  --	Reconstructing from array/binary tree: O(n)
  
 	-> Abstract:
- This program is implemented using the NodeData class, each node within
- the tree structure is a tree node which contains a NodeData pointer.
+ This program is implemented using the Movie class, each node within
+ the tree structure is a tree node which contains a Movie pointer.
  
  Program_Features:
  -- Defaults constructor of 1 parameter.
@@ -39,21 +39,21 @@
  -- operator==, 	checks wether the two objects are the same.
  -- operator!=, 	check wether the two object are not the same.
  -- operator>>, 	output the current object in order traversal.
- -- insert, 		Inserts a NodeData pointer into the binary tree.
+ -- insert, 		Inserts a Movie pointer into the binary tree.
  -- isEmpty, 		checks if the Object is empty.
- --	retrieve,		searchs for specific NodeData target.
+ --	retrieve,		searchs for specific Movie target.
  -- bstreeToArray,	turns binary tree into an array.
  --	arrayToBstree,	turns array into binary tree.
  -- makeEmpty,		makes the object empty, deallocates all nodes
  -- displaysSideways,	displays the tree repersentation side ways.
- --	getHeight,		return the most-depth of a given NodeData.
+ --	getHeight,		return the most-depth of a given Movie.
  
  Assumptions:
  -- iostream library's are visable and included packages for
  output functionalities.
- -- NodeData is included within the program, to fufill the dependency this
- program has for NodeData.
- -- NodeData has correct implmentations of operator ==,!=, >, <, copy
+ -- Movie is included within the program, to fufill the dependency this
+ program has for Movie.
+ -- Movie has correct implmentations of operator ==,!=, >, <, copy
  Constructor.
  
  
@@ -65,7 +65,7 @@
 
 class BinTree {
 	struct Node {
-		NodeData *data;
+		Movie *data;
 		Node *right = nullptr;
 		Node *left = nullptr;
 	};
@@ -75,6 +75,9 @@ class BinTree {
 	const BinTree &bintree);
 
 public:
+    
+    
+
     /*=========================< DEFAULTCONSTRUCTOR >=========================|
      |	Function Name:
      |		-> Default constructor of BinTree
@@ -92,7 +95,7 @@ public:
 	|		-> Default destructor to clean up and destroy all memory that was 
 	|		used, called on main stack thread.
 	|		-> prevents memory leak, by deallocating all tree nodes and 
-	|		NodeData
+	|		Movie
 	|	Assumptions:
 	|		-> None
 	|	Preconditions:
@@ -107,7 +110,7 @@ public:
      |	Function Name:
      |		-> Copy constructor used to initalized a deep copy of rhs
      |	Assumptions:
-     |		-> NodeData copy constructor is implmented correctly
+     |		-> Movie copy constructor is implmented correctly
      |	Preconditions:
      |		-> None
      |	Postconditions:
@@ -122,31 +125,31 @@ public:
 	|		-> Assignment operator, used to make a deep copy of rhs from an
 	|		already constructed binary tree
 	|	Assumptions:
-	|		-> NodeData copy construcotor is implmented
-	|		-> delete was not called on retrieveal of an nodeData
+	|		-> Movie copy construcotor is implmented
+	|		-> delete was not called on retrieveal of an Movie
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
-	|		-> a deep copy of all NodeData from rhs is copied to this
+	|		-> a deep copy of all Movie from rhs is copied to this
 	*========================================================================*/
 	BinTree& operator=(const BinTree &rhs);
 
 	/*===============================< INSERT >===============================|
 	|	Function Name:
-	|		-> Insert function, used to insert NodeData pointer to the binary
+	|		-> Insert function, used to insert Movie pointer to the binary
 	|		tree
 	|	Assumptions:
-	|		-> NodeData comparision operators overloaded correctly
-	|		-> NodeData copy constructor implemented
+	|		-> Movie comparision operators overloaded correctly
+	|		-> Movie copy constructor implemented
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
 	|		-> Returns boolean pertaining to the succession of inserting the 
-	|		NodeData, 
+	|		Movie, 
 	|		-> Returns false if duplicate was attempted to be inserted, true
 	|		otherwise
 	*========================================================================*/
-	bool insert( NodeData *data);
+	bool insert( Movie *data);
 
 
 	/*=============================< ISEMPTY >================================|
@@ -165,7 +168,7 @@ public:
 	|	Function Name: Operator==
 	|		-> Overload of == operator
 	|	Assumptions:
-	|		-> NodeData operator == implemented
+	|		-> Movie operator == implemented
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
@@ -178,7 +181,7 @@ public:
 	|	Function Name:Operator!=
 	|		-> Checks if two tree's are different
 	|	Assumptions:
-	|		-> NOdeData == operator implemented
+	|		-> Movie == operator implemented
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
@@ -191,18 +194,18 @@ public:
 	|	Assumptions:
 	|		-> Second parameter point is not currently initalized to point to
 	|		An object in the structure.
-	|		-> User will not delete the returned NodeData pointer
+	|		-> User will not delete the returned Movie pointer
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
 	|		-> Returns a boolean in reguards to wether the object was found
-	|		-> Second Paramter pointer will point to the targetted NodeData
+	|		-> Second Paramter pointer will point to the targetted Movie
 	|		If found within the structure.
 	|		-> If Target is not found, second parameter(pointer) will point
 	|		to nullptr.
 	*========================================================================*/
 
-	bool retrieve(const NodeData &, NodeData *&) const;
+	bool retrieve(const Movie &, Movie *&) const;
 
 	/*=========================< BSTREETOARRAY >==============================|
 	|	Function Name:
@@ -212,12 +215,12 @@ public:
 	|		-> The Array given has been intalized with enough space to store
 	|		all elements of the binary tree
 	|	Preconditions:
-	|		-> NodeData pointer array has enough space to store all data 
+	|		-> Movie pointer array has enough space to store all data 
 	|	Postconditions:
 	|		-> Binary tree is set to NULL, and emptied. the array now contains
-	|		all NodeData data that was previously in the tree
+	|		all Movie data that was previously in the tree
 	*========================================================================*/
-	void bstreeToArray(NodeData *[]);
+	void bstreeToArray(Movie *[]);
     
     /*=========================< ARRAYTOBSTREE ===============================|
      |	Function Name:
@@ -231,7 +234,7 @@ public:
      |		-> Array index's are set to null, binary tree is reconstructed 
 	 |		as a balenced binary search tree
      *========================================================================*/
-    void arrayToBSTree(NodeData *[]);
+    void arrayToBSTree(Movie *[]);
     
 
 
@@ -244,7 +247,7 @@ public:
 	|	Preconditions:
 	|		-> None
 	|	Postconditions:
-	|		-> All memory allocated, from tree node and NodeData is deallocated
+	|		-> All memory allocated, from tree node and Movie is deallocated
 	*========================================================================*/
 	void makeEmpty();
 
@@ -273,16 +276,16 @@ public:
      |		-> None
      |	Postconditions:
      |		-> Returns 1+ the number of largest subchildren from the target
-	 |		NodeData
+	 |		Movie
      *========================================================================*/
     
-	int getHeight(const NodeData &) const;
+	int getHeight(const Movie &) const;
     
 private:
     
     /*================================< CLEAR >===============================|
      |	Function Name:
-     |		-> Clear, deallocates all Tree Nodes and NodeData objects
+     |		-> Clear, deallocates all Tree Nodes and Movie objects
      |	Assumptions:
      |		-> user sets the root to nullptr if called.
      |	Preconditions:
@@ -303,7 +306,7 @@ private:
      |		-> None
      |	Postconditions:
      |		-> Returns 1+ the number of largest subchildren from the target
-	 |		NodeData
+	 |		Movie
      *========================================================================*/
 	int getHeightHelper(Node *) const;
     
@@ -316,10 +319,10 @@ private:
      |	Preconditions:
      |		-> None
      |	Postconditions:
-     |		-> Returns number of heights of the so found NodeData
+     |		-> Returns number of heights of the so found Movie
      *========================================================================*/
     
-    int getNode(const NodeData &, Node *) const;
+    int getNode(const Movie &, Node *) const;
 
 
 	/*=========================< DISPLAY SizeWAYS >===========================|
@@ -335,7 +338,7 @@ private:
 	void displaySidewaysHelper(Node *, int) const;
 	/*=========================< GETSIZZEOFARRAY Helper >=====================|
 	|	Function Name:
-	|		-> get size of array helper, given an array of nodeData pointers
+	|		-> get size of array helper, given an array of Movie pointers
 	|		returns the number of elements inside that array
 	|	Assumptions:
 	|		-> None
@@ -345,7 +348,7 @@ private:
 	|		-> Returns an interger pertaining to the number of elements inside
 	|		the array
 	*========================================================================*/
-	int getSizeOfArrayHelper(NodeData *[]);
+	int getSizeOfArrayHelper(Movie *[]);
 
 	/*=========================< ARRAY TO BSTREE HELPER >=====================|
 	|	Function Name:
@@ -358,7 +361,7 @@ private:
 	|		-> the array is set to all NULL, and BALAENCE BSTree is 
 	|		constructed from the array
 	*========================================================================*/
-	Node* arrayToBSTreeHelper(NodeData *[], int, int);
+	Node* arrayToBSTreeHelper(Movie *[], int, int);
 
 	/*=========================< DELETE Tree Node Helper >====================|
 	|	Function Name:
@@ -379,29 +382,29 @@ private:
 	|		-> None
 	|	Preconditions:
 	|		-> array is intialitated with enough data spaces to store all
-	|		NodeData elements in the array.
+	|		Movie elements in the array.
 	|	Postconditions:
-	|		-> All nodeData elemets are inside the array, and bst tree is set
+	|		-> All Movie elemets are inside the array, and bst tree is set
 	|		to null.
 	*========================================================================*/
-	int bstreeToArrayHelper(Node *, NodeData *[], int);
+	int bstreeToArrayHelper(Node *, Movie *[], int);
 
 
 	/*=========================< RETRIEVE HELPER >============================|
 	|	Function Name:
 	|		-> retrieve helper facade function
 	|	Assumptions:
-	|		-> User does not delete the nodeData returned by this functon
+	|		-> User does not delete the Movie returned by this functon
 	|	Preconditions:
-	|		-> The pointer of nodeData has no reference to another object
+	|		-> The pointer of Movie has no reference to another object
 	|	Postconditions:
 	|		-> Returns a booleaning signifying if the ovject instered was
 	|		a duplicate inside the tree, true if it was not a duplicate
 	|		false otherwise. 
 	|		-> The pointer of the secon parameter which is a reference 
-	|		is now linked to the NodeData object found inside.
+	|		is now linked to the Movie object found inside.
 	*========================================================================*/
-	bool retrieveHelper(const NodeData &, NodeData *&, Node *)const;
+	bool retrieveHelper(const Movie &, Movie *&, Node *)const;
 	/*=========================< OUTPUT OVERLOAD OPERATOR >===================|
 	|	Function Name:
 	|		-> OUTPUT OVERator facade
@@ -449,7 +452,7 @@ private:
 	|	Postconditions:
 	|		->
 	*========================================================================*/
-	Node* insert(Node *subtree, NodeData *dataPtr, bool&);
+	Node* insert(Node *subtree, Movie *dataPtr, bool&);
 
 	//the root pointer of the binary tree.
 	Node *root;
