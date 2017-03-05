@@ -308,7 +308,10 @@ typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 	}else if(*dataPtr > *subtree->data){
 		//go to the right, of the current subtree->right
 		subtree->right = insert(subtree->right, dataPtr, isInserted);
-	}
+    }else if(*dataPtr == *subtree->data){
+        //extra addition if we found duplicates, we are to increment the quantity
+        subtree->data->addStock(dataPtr->getStock());
+    }
     //last case is IF THE NEWDATA EQUALS the current node, we just ommit the
     //comparision and return the subtree without making more recursive stack
     //calls which will create new nodes.

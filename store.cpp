@@ -17,7 +17,7 @@ in are performed via doTransactions.
 #include <stdlib.h>
 #include "store.h"
 #include <sstream>
-
+#include "moviefactory.h"
 
 using namespace std;
 /*
@@ -71,18 +71,23 @@ bool Store::readMovies(ifstream& infile){
             cout << "ERROR: " << result << endl;
             continue;
         }
-        
-        
   
         
-        vector<string> arr = string_split(result, ',');
+        vector<string> split_movie_array = string_split(result, ',');
         
         if(result.at(0) == 'C'){
-            vector<string> cArray = string_split(arr[4], ' ');
+            vector<string> cArray = string_split(split_movie_array[4], ' ');
             for(int i  = 0; i <= 4; i++){
                 std::cout << cArray[i] << std::endl;
             }
         }
+        Movie *moviePtr;
+        
+        //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
+        moviePtr = Movie_Factory::make_movie(split_movie_array[0].c_str()[0]);
+        moviePtr->makeMovie(split_movie_array);
+        
+        
         
 
         //0 is command , 1 is qualitity, 2 is author
@@ -90,7 +95,7 @@ bool Store::readMovies(ifstream& infile){
         //create a movie object and put into bst
         
        // Movie *newMovie  =
-        cout << arr[1] << endl;
+        cout << split_movie_array[1] << endl;
         //cout << result << endl;
     }
     /*

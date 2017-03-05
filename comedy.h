@@ -10,6 +10,8 @@
 #define comedy_hpp
 #include "movie.h"
 #include <stdio.h>
+#include <iomanip>
+#include <vector>
 
 class Comedy : public Movie{
 public:
@@ -24,5 +26,7 @@ public:
     bool operator<=(const Movie &) const;
     bool operator>=(const Movie &) const;
     void print(std::ostream &) const;
+    
+    void makeMovie(std::vector<std::string>);
 };
 #endif /* comedy_hpp */

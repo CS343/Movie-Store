@@ -64,9 +64,34 @@ int main() {
     
     Movie *movie1 =  new Comedy();
     
+    Movie *movie2 =  new Comedy();
+    
+    movie->setTitle("YO MAMA");
+    movie->setStock(10);
+    movie->setYear(1991);
+    
+
+    
+    movie2->setTitle("YO MAMA");
+    movie2->setStock(10);
+    movie2->setYear(1991);
+    
+    
+    movie1->setTitle("YO BABA");
+    movie1->setStock(5);
+    movie1->setYear(1990);
     std::cout << (*movie1 < *movie ? "YES THEY IZ" : "nah" ) << std::endl;
+    //for insert the work flow is as follows:
+    //-> do not insert duplicates,
+    //-> we query the search tree for a matching title and year
+    //->if one does not exist then add it,
+    //->if one DOES exist, then take the current quantity number and add that to the retruieved movie object.
+    
     comedyMovieStorage.insert(movie);
     comedyMovieStorage.insert(movie1);
+    comedyMovieStorage.insert(movie2);
+    
+
     std::cout << comedyMovieStorage << std::endl;
     Movie *returnPtr;
     returnPtr = Movie_Factory::make_movie('D');

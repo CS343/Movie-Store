@@ -12,7 +12,8 @@ simply has the core attributes of any given movie.
 
 #include <iostream>
 #include <fstream>
-
+#include <iomanip>
+#include <vector>
 using namespace std;
 
 class Movie {
@@ -52,6 +53,8 @@ public:
     //method of the choosen movie type.
     virtual void print(ostream &)const = 0;
     
+    virtual void makeMovie(std::vector<std::string>) = 0;
+    
     /*
     virtual bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
@@ -84,6 +87,8 @@ public:
 
     //setter for the director of the movie
 	void setDirector(string director);
+    
+    void addStock(int);
     
 private:
     //year that the movie released

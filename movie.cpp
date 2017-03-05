@@ -45,6 +45,9 @@ int Movie::getStock() const{
 void Movie::setStock(int stock){
     this->stock = stock;
 }
+void Movie::addStock(int amount){
+    this->stock += amount;
+}
 
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){
