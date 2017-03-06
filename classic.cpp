@@ -12,31 +12,35 @@ Classic::Classic(){
     std::cout << "Classic constr called" << std::endl;
 }
 
-bool Classic::operator<(const Movie &rhs) const{
+bool Classic::operator<(const Classic &rhs) const{
     std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
     
-    return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
+    return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     
 };
 
-bool Classic::operator>(const Movie &rhs) const{
-    return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
+bool Classic::operator>(const Classic &rhs) const{
+    return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
+    
 };
 
-bool Classic::operator>=(const Movie &rhs) const{
-    return (this->getDirector() >= rhs.getDirector()) && (this->getTitle() >= rhs.getTitle());
+bool Classic::operator>=(const Classic &rhs) const{
+    return (this->getYear() >= rhs.getYear()) && ( this->getReleaseMonth() >= rhs.getReleaseMonth() ) && (this->getMajorActor() >= rhs.getMajorActor());
+    
 };
 
-bool Classic::operator<=(const Movie &rhs) const{
-    return (this->getDirector() <= rhs.getDirector()) && (this->getTitle() <= rhs.getTitle());
+bool Classic::operator<=(const Classic &rhs) const{
+    return (this->getYear() <= rhs.getYear()) && ( this->getReleaseMonth() <= rhs.getReleaseMonth() ) && (this->getMajorActor() <= rhs.getMajorActor());
+    
 };
 
-bool Classic::operator==(const Movie &rhs) const{
-    return (this->getDirector() == rhs.getDirector()) && (this->getTitle() == rhs.getTitle());
+bool Classic::operator==(const Classic &rhs) const{
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getMajorActor() == rhs.getMajorActor());
+    
 };
 
-bool Classic::operator!=(const Movie &rhs) const{
+bool Classic::operator!=(const Classic &rhs) const{
     return !(*this == rhs);
 };
 
@@ -63,6 +67,9 @@ int Classic::getReleaseMonth() const{
     return this->release_month;
 }
 
+std::string Classic::getMajorActor() const{
+    return getMajorActorFirst() + " " + getMajorActorLast();
+}
 /*
  Given an vector/array of data, populate the current movie object with its respective elements
  

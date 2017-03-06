@@ -90,6 +90,8 @@ public:
     
     void addStock(int);
     
+   // virtual int getReleaseMonth() const =0;
+    
 private:
     //year that the movie released
     int year;

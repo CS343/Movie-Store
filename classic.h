@@ -19,12 +19,12 @@ public:
     
     Classic();
     ~Classic() {};
-    bool operator==(const Movie &) const;
-    bool operator!=(const Movie &) const;
-    bool operator<(const Movie &) const;
-    bool operator>(const Movie &) const;
-    bool operator<=(const Movie &) const;
-    bool operator>=(const Movie &) const;
+    bool operator==(const Classic &) const;
+    bool operator!=(const Classic &) const;
+    bool operator<(const Classic &) const;
+    bool operator>(const Classic &) const;
+    bool operator<=(const Classic &) const;
+    bool operator>=(const Classic &) const;
     void print(std::ostream &) const;
     void setMajorActorFirst(std::string);
     std::string getMajorActorFirst() const;
@@ -36,6 +36,8 @@ public:
     void setReleaseMonth(int month);
     
     int getReleaseMonth() const;
+    
+    std::string getMajorActor() const;
     
     
     
