@@ -16,13 +16,31 @@ Drama::Drama(){
 bool Drama::operator<(const Movie &rhs) const{
    // std::cout << "< called from Drama" << std::endl;
     //-	dramas (‘D’) are sorted by Director, then Title
-
-    return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
-    
+    if(this->getDirector() < rhs.getDirector()){
+        return true;
+    }else if(this->getDirector() == rhs.getDirector()){
+        if(this->getTitle() < rhs.getTitle()){
+            return true;
+        }
+    }
+    //return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
+    return true;
 };
 
 bool Drama::operator>(const Movie &rhs) const{
-    return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
+    // std::cout << "< called from Drama" << std::endl;
+    //-	dramas (‘D’) are sorted by Director, then Title
+    if(this->getDirector() > rhs.getDirector()){
+        return true;
+    }else if(this->getDirector() == rhs.getDirector()){
+        if(this->getTitle() > rhs.getTitle()){
+            return true;
+        }
+    }
+    //return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
+    return true;
+    
+    //return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
 };
 
 bool Drama::operator>=(const Movie &rhs) const{

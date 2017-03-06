@@ -23,7 +23,7 @@ public:
     
     
     Movie();          // default constructor, data is set to an empty string
-    ~Movie();
+    //~Movie();
     //Movie(const string title, string director, int year);      // data is set equal to parameter
     //Movie(const Movie &);    // copy constructor
     //Movie& operator=(const Movie &);

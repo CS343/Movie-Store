@@ -73,14 +73,12 @@ bool Store::readMovies(ifstream& infile){
  */
     string result;
     while(getline(infile,result)){
-        
         if(result.at(0) != 'C' && result.at(0) != 'D' && result.at(0) != 'F'){ //|| result.at(0) != 'F' || result.at(0) != 'D'){
             //another approach is to get the first char, then pass the ret of the ifstream to a Movie object to populate itself
-            cout << "ERROR: " << result << endl;
+            cout << "ERROR: (REcieved an invalid command) " << result << endl;
             continue;
         }
         vector<string> split_movie_array = string_split(result, ',');
-
         Movie *moviePtr;
         char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
@@ -92,30 +90,27 @@ bool Store::readMovies(ifstream& infile){
         //check for success if it was successful it was inserted if it was not
         //it either was duplicate, so we need to increment the quntity and delete the made object
         
-        bool success;
+        bool success = false;
         switch (action) {
             case 'F':
                 //insert into comedy bintree
-                //success = _comedyStorage.insert(moviePtr);
+                success = _comedyStorage.insert(moviePtr);
                 break;
             case 'D':
-                //success = _dramaStorage.insert(moviePtr);
+                success = _dramaStorage.insert(moviePtr);
                 break;
             case 'C':
                 success = _classicStorage.insert(moviePtr);
             default:
                 break;
         }
-        
         if (!success){
             cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
         }else{
             std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
-
     }
-
     
     return true;
 }

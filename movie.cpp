@@ -16,9 +16,6 @@ Movie::Movie(){
     year = 0000;
     stock = 10;
 }
-Movie::~Movie(){
-    
-}
 
 int Movie::getYear() const{
     return this->year;
@@ -64,32 +61,3 @@ std::ostream& operator<<(std::ostream &output, const Movie &rhs){
     return output;
 }
 
-/*
-
-//------------------------- operator==,!= ------------------------------------
-bool Movie::operator==(const Movie& rhs) const {
-    return getTitle() == rhs.getTitle();
-}
-
-bool Movie::operator!=(const Movie& rhs) const {
-    return getTitle() != rhs.getTitle();
-}
-
-//------------------------ operator<,>,<=,>= ---------------------------------
-bool Movie::operator<(const Movie& rhs) const {
-    std::cout << "PUTA SMIT" << std::endl;
-    return getTitle() < rhs.getTitle();
-}
-
-bool Movie::operator>(const Movie& rhs) const {
-    return getTitle() > rhs.getTitle();
-}
-
-bool Movie::operator<=(const Movie& rhs) const {
-    return getTitle() <= rhs.getTitle();
-}
-
-bool Movie::operator>=(const Movie& rhs) const {
-    return getTitle() >= rhs.getTitle();
-}
-*/

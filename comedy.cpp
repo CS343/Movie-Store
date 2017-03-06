@@ -18,12 +18,32 @@ Comedy::Comedy(){
 
 bool Comedy::operator<(const Movie &rhs) const{
     //std::cout << "< called from COmedy" << std::endl;
-    return (this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
-
+    if(this->getTitle() < rhs.getTitle()){
+        return true;
+    }else if (this->getTitle() == rhs.getTitle()){
+        if(this->getYear() < rhs.getYear()){
+            return true;
+        }
+    }else{
+        return false;
+    }
+    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+    return true;
 };
 
 bool Comedy::operator>(const Movie &rhs) const{
-    return (this->getTitle() > rhs.getTitle()) && (this->getYear() > rhs.getYear());
+    if(this->getTitle() > rhs.getTitle()){
+        return true;
+    }else if (this->getTitle() == rhs.getTitle()){
+        if(this->getYear() > rhs.getYear()){
+            return true;
+        }
+    }else{
+        return false;
+    }
+    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+    return true;
+    //return (this->getTitle() > rhs.getTitle()) && (this->getYear() > rhs.getYear());
 };
 
 bool Comedy::operator>=(const Movie &rhs) const{
@@ -35,7 +55,7 @@ bool Comedy::operator<=(const Movie &rhs) const{
 };
 
 bool Comedy::operator==(const Movie &rhs) const{
-    return (this->getTitle() == rhs.getTitle()) && (this->getYear() == rhs.getYear());
+    return (this->getTitle() == rhs.getTitle()) && (this->getYear() == rhs.getYear()) && ( this->getDirector() == rhs.getDirector() );
 };
 
 bool Comedy::operator!=(const Movie &rhs) const{

@@ -235,7 +235,7 @@ BinTree& BinTree::operator=(const BinTree &rhs){
 |==============================================================================|
 */
 bool BinTree::insert( Movie *dataPtr){
-    std::cout << "inserting : ... " << *dataPtr << std::endl;
+    //std::cout << "inserting : ... " << *dataPtr << std::endl;
 	//the recursive stack call will return a root(subtree)
 	//we want to retain the entire structure and its changes 
 	//inserted so we need to 'save it'.
@@ -285,7 +285,7 @@ bool BinTree::insert( Movie *dataPtr){
 typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 &isInserted){
 	if(subtree == nullptr){
-             std::cout << "found a spot" << std::endl;
+          //   std::cout << "found a spot" << std::endl;
 		//found a parking spot park it.
 		Node *newNode = new Node;
 		//Movie *Movie = new Movie(*dataPtr);
@@ -302,7 +302,7 @@ typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 
     //compare the current subtree->data object with the newData Item.
 	}else if(*dataPtr < *subtree->data){
-        std::cout << "less than" << std::endl;
+        //std::cout << "less than" << std::endl;
 		//new Node Data is less than current Node, move left
 		subtree->left = insert(subtree->left, dataPtr, isInserted);
 	//To AVOID Duplicates, we have two conditional else if statments that will
@@ -312,11 +312,11 @@ typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 	//current node(base case) and unwinde the recursive stack back to root.
 	}else if(*dataPtr > *subtree->data){
 		//go to the right, of the current subtree->right
-             std::cout << "more  than" << std::endl;
+            // std::cout << "more  than" << std::endl;
 		subtree->right = insert(subtree->right, dataPtr, isInserted);
     }else if(*dataPtr == *subtree->data){
     //else{
-             std::cout << "equal" << std::endl;
+        std::cout << "equal" << std::endl;
         //extra addition if we found duplicates, we are to increment the quantity
         subtree->data->addStock(dataPtr->getStock());
     }
@@ -899,7 +899,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		output << *current->data  << " | | ";
+		output << *current->data  << "  ,  ";
 		outputHelper(output,current->right);
 	}
 	return output;

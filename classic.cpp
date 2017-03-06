@@ -17,19 +17,42 @@ Classic::Classic(){
 bool Classic::operator<(const Movie &rhs) const{
   //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
-    
-    return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
-    
+
+    if(this->getYear() < rhs.getYear()){
+        return true;
+    }else if(this->getYear() == rhs.getYear()){
+        if(this->getReleaseMonth() < rhs.getReleaseMonth()){
+            return true;
+        }
+    }else{
+        return false;
+    }
+    //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
+    return false;
 };
 
 bool Classic::operator>(const Movie &rhs) const{
-    std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
-    return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
+   // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
+    //  std::cout << "< called from Classic" << std::endl;
+    //-	Classics (‘D’) are sorted by Director, then Title
+    if(this->getYear() > rhs.getYear()){
+        return true;
+    }else if(this->getYear() == rhs.getYear()){
+        if(this->getReleaseMonth() > rhs.getReleaseMonth()){
+            return true;
+        }
+    }else{
+        return false;
+    }
+    //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
+    return false;
+    
+   // return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
     
 };
 
 bool Classic::operator>=(const Movie &rhs) const{
-    std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
+  //  std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     return (this->getYear() >= rhs.getYear()) && ( this->getReleaseMonth() >= rhs.getReleaseMonth() ) && (this->getMajorActor() >= rhs.getMajorActor());
     
 };
@@ -40,8 +63,8 @@ bool Classic::operator<=(const Movie &rhs) const{
 };
 
 bool Classic::operator==(const Movie &rhs) const{
-    std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getMajorActor() == rhs.getMajorActor());
+   // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getTitle() == rhs.getTitle());
     
 };
 
@@ -50,43 +73,7 @@ bool Classic::operator!=(const Movie &rhs) const{
 };
 
 
-/*
- 
- 
-bool Classic::operator<(const Classic &rhs) const{
-    std::cout << "< called from Classic" << std::endl;
-    //-	Classics (‘D’) are sorted by Director, then Title
-    
-    return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
-    
-};
 
-bool Classic::operator>(const Classic &rhs) const{
-    return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
-    
-};
-
-bool Classic::operator>=(const Classic &rhs) const{
-    return (this->getYear() >= rhs.getYear()) && ( this->getReleaseMonth() >= rhs.getReleaseMonth() ) && (this->getMajorActor() >= rhs.getMajorActor());
-    
-};
-
-bool Classic::operator<=(const Classic &rhs) const{
-    return (this->getYear() <= rhs.getYear()) && ( this->getReleaseMonth() <= rhs.getReleaseMonth() ) && (this->getMajorActor() <= rhs.getMajorActor());
-    
-};
-
-bool Classic::operator==(const Classic &rhs) const{
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getMajorActor() == rhs.getMajorActor());
-    
-};
-
-bool Classic::operator!=(const Classic &rhs) const{
-    return !(*this == rhs);
-};
-
- 
- */
 
 void Classic::setMajorActorFirst(std::string firstName){
     this->major_actor_firstName = firstName;
