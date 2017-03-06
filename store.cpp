@@ -60,7 +60,12 @@ Pre-condition:
 Post-condition:
 */
 bool Store::readMovies(ifstream& infile){
-
+/*
+ This ReadMovies method works as follows , as you make a Movie parent class, given a command or action pass that to the Movie constructor
+ which will return a movie type , now check what the movie type is and insert that movie into the corresponding binary tree storage
+ -> inside the insert method of the binary tree there is a check that check wether a element has been found, if found, then increment
+    its quntitty, and check for success checker if not success means quntitt updateed and we delete the duplicate movie object
+ */
     string result;
     while(getline(infile,result)){
         
@@ -87,6 +92,7 @@ bool Store::readMovies(ifstream& infile){
         char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
         moviePtr = Movie_Factory::make_movie(action);
+        //give the array with data to the respective object makeMovie method
         moviePtr->makeMovie(split_movie_array);
         
         //insert the movie object

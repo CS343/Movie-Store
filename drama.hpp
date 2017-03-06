@@ -12,16 +12,20 @@
 #include <stdio.h>
 #include "movie.h"
 
-class Drama: public Movie{
-    //friend ostream& operator<<(ostream &output, const Movie &movie);
-
+class Drama:public Movie{
+    
 public:
-    //bool setData(istream&);
+    
+    Drama();
+    ~Drama() {};
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
     bool operator<=(const Movie &) const;
     bool operator>=(const Movie &) const;
+    void print(std::ostream &) const;
+    
+    void makeMovie(std::vector<std::string>);
 };
 #endif /* drama_hpp */

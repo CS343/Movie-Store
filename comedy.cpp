@@ -41,7 +41,10 @@ bool Comedy::operator==(const Movie &rhs) const{
 bool Comedy::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
 };
-
+/*
+ Given an vector/array of data, populate the current movie object with its respective elements
+ 
+ */
 void Comedy::makeMovie(std::vector<std::string> array){
     std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year

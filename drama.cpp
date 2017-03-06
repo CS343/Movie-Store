@@ -8,27 +8,56 @@
 
 #include "drama.hpp"
 
+Drama::Drama(){
+    
+    std::cout << "Drama constr called" << std::endl;
+}
 
-/*
-bool Drama::operator==(const Movie &rhs) const{
-    return getTitle() == rhs.getTitle();
+bool Drama::operator<(const Movie &rhs) const{
+    std::cout << "< called from Drama" << std::endl;
+    //-	dramas (‘D’) are sorted by Director, then Title
+
+    return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
+    
 };
+
+bool Drama::operator>(const Movie &rhs) const{
+    return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
+};
+
+bool Drama::operator>=(const Movie &rhs) const{
+    return (this->getDirector() >= rhs.getDirector()) && (this->getTitle() >= rhs.getTitle());
+};
+
+bool Drama::operator<=(const Movie &rhs) const{
+    return (this->getDirector() <= rhs.getDirector()) && (this->getTitle() <= rhs.getTitle());
+};
+
+bool Drama::operator==(const Movie &rhs) const{
+    return (this->getDirector() == rhs.getDirector()) && (this->getTitle() == rhs.getTitle());
+};
+
 bool Drama::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
-    
 };
-bool Drama::operator<(const Movie &rhs) const{
+/*
+ Given an vector/array of data, populate the current movie object with its respective elements
+ 
+ */
+void Drama::makeMovie(std::vector<std::string> array){
+    std::cout << "Make Movie for Comed called" << std::endl;
+    //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
+    int year = atoi(array[4].c_str());
+    int stock = atoi(array[1].c_str());
+    this->setYear(year);
+    this->setDirector(array[2]);
+    this->setTitle(array[3]);
+    this->setStock(stock);
     
-};
-bool Drama::operator>(const Movie &rhs) const{
-    
-};
-bool Drama::operator<=(const Movie &rhs) const
-{
-    
-};
-bool Drama::operator>=(const Movie &rhs) const{
-    
-};
+}
 
-*/
+//output operator work around, flow transition.
+void Drama::print(std::ostream& output) const{
+    output << "Title: " << getDirector() << "\t" << "Year: " << getTitle() << std::setw(10) <<"STOCK: " << getStock();
+    
+}
