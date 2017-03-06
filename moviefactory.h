@@ -15,6 +15,26 @@
 #include "drama.h"
 class Movie_Factory{
 public:
+    /*
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #   Function_Description:
+     #       -
+     #   Preconditions:
+     #       -
+     #       -
+     #   Postconditions:
+     #       -
+     #       -
+     #
+     #   Assumptions:
+     #       -
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     */
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     static Movie* make_movie(char choice);
 };
 #endif /* moviefactory_hpp */

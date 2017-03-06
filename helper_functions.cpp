@@ -8,6 +8,22 @@
 
 #include "helper_functions.h"
 
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 std::vector<std::string> Helper_Functions::string_split(std::string s, const char delimiter)
 {
     size_t start=0;

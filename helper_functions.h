@@ -14,7 +14,21 @@
 #include <string>
 class Helper_Functions{
 public:
-    
+    /*
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #   Function_Description:
+     #       -
+     #   Preconditions:
+     #       -
+     #       -
+     #   Postconditions:
+     #       -
+     #       -
+     #
+     #   Assumptions:
+     #       -
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     */
     static std::vector<std::string> string_split(std::string, char);
 
 };

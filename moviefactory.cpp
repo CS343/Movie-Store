@@ -7,7 +7,21 @@
 //
 
 #include "moviefactory.h"
-
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 Movie* Movie_Factory::make_movie(char choice){
     Movie *returnPtr;
     switch (choice) {

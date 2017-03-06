@@ -11,25 +11,26 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
-
-#include <fstream>
-#include <iostream>
-#include <stdlib.h>
 #include "store.h"
-#include <sstream>
-#include "moviefactory.h"
 
 using namespace std;
 /*
-default constructor
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 Store::Store(){
-    
-    
-    //HashTable* customerHashTable = new HashTable();
-    //HashTable customerHashTable;
+
     
 }
 
@@ -56,14 +57,38 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
 
 
 void Store::showMovies() {
+    std::cout << std::endl;
+    std::cout << "Classic Inventory" << std::endl;
     std::cout << this->_classicStorage << std::endl;
+    std::cout << std::endl;
+    std::cout << "Comedy Inventory" << std::endl;
+    std::cout << this->_comedyStorage << std::endl;
+    std::cout << std::endl;
+    std::cout << "Drama Inventory" << std::endl;
+    std::cout << this->_dramaStorage << std::endl;
+    
+    std::cout << std::endl;
+    std::cout << "SHOW CUSTOMERS" << std::endl;
+    customerHashTable.showAllItems();
+    
 }
 
+
 /*
-read in the movies from the data file
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 bool Store::readMovies(ifstream& infile){
 /*
  This ReadMovies method works as follows , as you make a Movie parent class, given a command or action pass that to the Movie constructor
@@ -111,130 +136,170 @@ bool Store::readMovies(ifstream& infile){
             std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
     }
-    
     return true;
 }
 
 /*
-read in the customers from the data file
-Pre-condition:
-Post-condition:
+$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+#   Function_Description:
+#       -
+#   Preconditions:
+#       -
+#       -
+#   Postconditions:
+#       -
+#       -
+#
+#   Assumptions:
+#       -
+$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
 */
+
+
 bool Store::readCustomers(ifstream& infile){
-    
-    
-    //char* charLine;
-    string id;
-    string firstName;
-    string lastName;
-    
+    string id,firstName, lastName;
     for(;;){
-        
-        
         if (infile.eof()){
             break;    
         }
-        
+        //grab the customer data from file
         infile >> id >> firstName >> lastName;
-        
-        //cout << "first name: \t" << firstName << "   id: " << id << "lasdtName : " << lastName <<endl;
-        
-        
-        
-        /*
-            ~Needs rework
-                create default construcotr and call setter methods.
-         */
-        
+        //create the customer object given the data;
         Customer* customerObj = new Customer(id, firstName, lastName);
-        //cout<< "Customer object popualted: " << *customerObj << endl;
-        /*
-        customerObj->setCustomerID(id);
-        customerObj->setFirstName(firstName);
-        customerObj->setLastName(lastName); 
-        */
         
-        // customers is the HashTable name
-        
-        // CHECK - this function is for some reason private in the header file
-        // shouldn't it be public? plus shouldn't the parameter be a of
-        // type Customer? instead of just a customerID?
-        
-        
-        /// insert newly created customer object into the hash Table storage
-        int returnIndex = customerHashTable.hash(customerObj);
-        
-        /*
-        if(returnIndex == atoi(customerObj->getCustomerID().c_str()) ){
-            cout << returnIndex << " = " << customerObj->getCustomerID() << endl;
-        } else{
-            cout << "failed" << endl;
-        }
-        */
-        
-        /*
-        Customer* cusPtr;
-        cout << customerHashTable.retrieveCustomer(customerObj->getCustomerID(), cusPtr) << endl;
-        
-         */
-        
-        //customerHashTable.
+        //insert the customer into the store object, and customer hashmap
+        customerHashTable.insert(customerObj->getCustomerID(), customerObj);
     }
- 
-    
-    
-    
-    /*
-    char charLine[80];
-    char* s;
-    
-
-    // may not work because "line" has to be a char*
-    infile.getline (charLine, 1000);    // change to max
-    
-    //std::cout << charLine << std::endl;
-    
-    s = strtok (charLine," ");
-    
-    while(s != NULL){
-        
-        printf("%s\n", s);
-        s = strtok(NULL, " ");
-    }
-    int i = 0;
-    
-    for(;;){
-        if(s[i] == '\n'){
-           break;
-        }
-        cout << s[i] << endl;
-        i++;
-    }
-    */
-    
-    
-    
     return true;
-    
-    
-    
 }
 
 /*
-read in the transactions from the data file
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 bool Store::readTransactions(ifstream& infile){
     return true;
 }
 
 /*
-carry out all the transactions in the transactions queue
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 bool Store::doTransactions(){
     return true;
 }
+
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 

@@ -23,7 +23,7 @@ public:
     
     
     Movie();          // default constructor, data is set to an empty string
-    //~Movie();
+    virtual ~Movie()=0;
     //Movie(const string title, string director, int year);      // data is set equal to parameter
     //Movie(const Movie &);    // copy constructor
     //Movie& operator=(const Movie &);
@@ -38,21 +38,52 @@ public:
     //movie.setData(istream&);
     //virtual bool setData(istream&);
     
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual bool operator==(const Movie &) const =0;
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual bool operator!=(const Movie &) const =0;
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual bool operator<(const Movie &) const =0;
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:overload for binary sorting
+     #'=0' means pure virtual
+     #which means base class says it wont need
+     #to implement the code, but anything that
+     #inherits from it better dam well implement
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual bool operator>(const Movie &) const =0;
-    virtual bool operator<=(const Movie &) const =0;
-    virtual bool operator>=(const Movie &) const =0;
+
     //we need to do this way because friend functiona are choosen at compile time
     //meaning at compile time the parent class 'abstract' is Movie
     //hence movie operator << will be called everytime, a different approach
     //to solving this problem is to relay the flow to another virutal
     //method that will, given an input stream, change it , based off the virutal
     //method of the choosen movie type.
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual void print(ostream &)const = 0;
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual void makeMovie(std::vector<std::string>) = 0;
     
     /*
@@ -63,37 +94,82 @@ public:
     bool operator<=(const Movie &) const;
     bool operator>=(const Movie &) const;
      */
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the release year
 	int getYear() const;
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the release year
 	void setYear(int year);
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the title of the movie
 	string getTitle() const;
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the title of the movie
 	void setTitle(string title);
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the stock of the movie
 	int getStock() const;
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the stock of the movie
 	void setStock(int stock);
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the director of the movie
 	string getDirector() const;
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the director of the movie
 	void setDirector(string director);
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     void addStock(int);
     
     
     //virtual std:;string getReleaseMonth() const;
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual int getReleaseMonth()const ;
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual std::string getMajorActor() const;
      
 private:

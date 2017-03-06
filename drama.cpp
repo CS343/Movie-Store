@@ -43,14 +43,6 @@ bool Drama::operator>(const Movie &rhs) const{
     //return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
 };
 
-bool Drama::operator>=(const Movie &rhs) const{
-    return (this->getDirector() >= rhs.getDirector()) && (this->getTitle() >= rhs.getTitle());
-};
-
-bool Drama::operator<=(const Movie &rhs) const{
-    return (this->getDirector() <= rhs.getDirector()) && (this->getTitle() <= rhs.getTitle());
-};
-
 bool Drama::operator==(const Movie &rhs) const{
     return (this->getDirector() == rhs.getDirector()) && (this->getTitle() == rhs.getTitle());
 };

@@ -16,17 +16,33 @@
 class Comedy : public Movie{
 public:
     
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     Comedy();
-    ~Comedy() {};
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    ~Comedy(){};
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
-    bool operator<=(const Movie &) const;
-    bool operator>=(const Movie &) const;
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     void print(std::ostream &) const;
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     void makeMovie(std::vector<std::string>);
 };
 #endif /* comedy_hpp */

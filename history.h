@@ -7,7 +7,32 @@ class History : Transaction {
 
 
 public:
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
     //perform the transaction
 	bool doTransaction();
 };

@@ -18,6 +18,13 @@
 #include "bintree.h"
 #include "moviefactory.h"
 //end test movie
+
+/*  Testing    */
+#include "hashTable.h"
+
+/*   testing  */
+
+#include "customer.h"
 using namespace std;
 
 int main() {
@@ -137,6 +144,30 @@ int main() {
     std::cout << ("71939" < "81942" ? "true" : "false") << std::endl;
     
     /*      END TESET MOVIE     */
+    
+    HashTable hashtable;
+    Customer *testPtr;
+    
+    
+    /*  Testing CustomerClass   */
+    Customer *cust1 = new Customer("1111", "danny","ly");
+    Customer *cust2 = new Customer("1010","Kevin","Ly");
+    
+    hashtable.insert(cust1->getCustomerID(), cust1);
+    hashtable.insert(cust2->getCustomerID(), cust2);
+    
+    
+    std::cout << (hashtable.retrieveCustomer("1010", testPtr) ? "Retrieved" : "not found" ) << std::endl;
+    std::cout << *testPtr << std::endl;
+    
+    
+    std::cout << *cust1 <<std::endl;
+    
+    std::cout << *cust2 <<std::endl;
+    
+    
+    /*  End Testing Customer Class  */
+         
     return 0;
     
 };

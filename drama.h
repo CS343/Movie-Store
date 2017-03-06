@@ -15,15 +15,29 @@
 class Drama:public Movie{
     
 public:
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     
     Drama();
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     ~Drama() {};
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
-    bool operator<=(const Movie &) const;
-    bool operator>=(const Movie &) const;
+
     void print(std::ostream &) const;
     
     
