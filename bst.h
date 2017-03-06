@@ -22,7 +22,7 @@ private:
     an Movie object and two pointers that point to two different nodes
     */
     struct Node{
-        Movie data;
+        Movie *data;
         Node* left = nullptr;
         Node* right = nullptr;
     };

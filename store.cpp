@@ -11,24 +11,26 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
-
-#include <fstream>
-#include <iostream>
-#include <stdlib.h>
 #include "store.h"
-#include <sstream>
-
 
 using namespace std;
 /*
-default constructor
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 Store::Store(){
 
-    //HashTable* customerHashTable = new HashTable();
-    //HashTable customerHashTable;
     
 }
 
@@ -54,183 +56,259 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
 }
 
 
-/*
-read in the movies from the data file
-Pre-condition:
-Post-condition:
-*/
-bool Store::readMovies(ifstream& infile){
+void Store::showMovies() {
+    std::cout << std::endl;
+    std::cout << "Classic Inventory" << std::endl;
+    std::cout << this->_classicStorage << std::endl;
+    std::cout << std::endl;
+    std::cout << "Comedy Inventory" << std::endl;
+    std::cout << this->_comedyStorage << std::endl;
+    std::cout << std::endl;
+    std::cout << "Drama Inventory" << std::endl;
+    std::cout << this->_dramaStorage << std::endl;
     
-    char movieType;
-    char* linee;
+    std::cout << std::endl;
+    std::cout << "SHOW CUSTOMERS" << std::endl;
+    customerHashTable.showAllItems();
+    
+}
+
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+bool Store::readMovies(ifstream& infile){
+/*
+ This ReadMovies method works as follows , as you make a Movie parent class, given a command or action pass that to the Movie constructor
+ which will return a movie type , now check what the movie type is and insert that movie into the corresponding binary tree storage
+ -> inside the insert method of the binary tree there is a check that check wether a element has been found, if found, then increment
+    its quntitty, and check for success checker if not success means quntitt updateed and we delete the duplicate movie object
+ */
     string result;
     while(getline(infile,result)){
-        
         if(result.at(0) != 'C' && result.at(0) != 'D' && result.at(0) != 'F'){ //|| result.at(0) != 'F' || result.at(0) != 'D'){
-            cout << "ERROR: " << result << endl;
+            //another approach is to get the first char, then pass the ret of the ifstream to a Movie object to populate itself
+            cout << "ERROR: (REcieved an invalid command) " << result << endl;
             continue;
         }
-
+        vector<string> split_movie_array = string_split(result, ',');
+        Movie *moviePtr;
+        char action = split_movie_array[0].c_str()[0];
+        //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
+        moviePtr = Movie_Factory::make_movie(action);
+        //give the array with data to the respective object makeMovie method
+        moviePtr->makeMovie(split_movie_array);
         
-        vector<string> arr = string_split(result, ',');
-        //0 is command , 1 is qualitity, 2 is author
+        //insert the movie object
+        //check for success if it was successful it was inserted if it was not
+        //it either was duplicate, so we need to increment the quntity and delete the made object
         
-        //create a movie object and put into bst
-        
-       // Movie *newMovie  =
-        cout << arr[1] << endl;
-        //cout << result << endl;
-    }
-    /*
-    for(;;){
-
-        
-        infile >> movieType;
-        if(movieType != 'C' || movieType != 'F' || movieType != 'D'){
-            //invalid command return/print an error code
-            //get line
-            //skip parsing line
-            cout << "found an invalid char : " << movieType << endl;
-            infile.getline(linee, 200);
-            continue;
-            
+        bool success = false;
+        switch (action) {
+            case 'F':
+                //insert into comedy bintree
+                success = _comedyStorage.insert(moviePtr);
+                break;
+            case 'D':
+                success = _dramaStorage.insert(moviePtr);
+                break;
+            case 'C':
+                success = _classicStorage.insert(moviePtr);
+            default:
+                break;
         }
-        
-        cout << "movie type " << movieType << endl;
-        
-        infile.getline(linee, 200);
-        
-        if(infile.eof()){
-            break;
+        if (!success){
+            cout << "deleteing: " << *moviePtr << endl;
+            delete moviePtr;
+        }else{
+            std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
     }
-     */
-    
-
-    
     return true;
 }
 
 /*
-read in the customers from the data file
-Pre-condition:
-Post-condition:
+$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+#   Function_Description:
+#       -
+#   Preconditions:
+#       -
+#       -
+#   Postconditions:
+#       -
+#       -
+#
+#   Assumptions:
+#       -
+$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
 */
+
+
 bool Store::readCustomers(ifstream& infile){
-    
-    
-    //char* charLine;
-    string id;
-    string firstName;
-    string lastName;
-    
+    string id,firstName, lastName;
     for(;;){
-        
-        
         if (infile.eof()){
             break;    
         }
-        
+        //grab the customer data from file
         infile >> id >> firstName >> lastName;
-        
-        //cout << "first name: \t" << firstName << "   id: " << id << "lasdtName : " << lastName <<endl;
-        
-        
-        
-        /*
-            ~Needs rework
-                create default construcotr and call setter methods.
-         */
-        
+        //create the customer object given the data;
         Customer* customerObj = new Customer(id, firstName, lastName);
-        //cout<< "Customer object popualted: " << *customerObj << endl;
-        /*
-        customerObj->setCustomerID(id);
-        customerObj->setFirstName(firstName);
-        customerObj->setLastName(lastName); 
-        */
         
-        // customers is the HashTable name
-        
-        // CHECK - this function is for some reason private in the header file
-        // shouldn't it be public? plus shouldn't the parameter be a of
-        // type Customer? instead of just a customerID?
-        
-        
-        /// insert newly created customer object into the hash Table storage
-        int returnIndex = customerHashTable.hash(customerObj);
-        
-        /*
-        if(returnIndex == atoi(customerObj->getCustomerID().c_str()) ){
-            cout << returnIndex << " = " << customerObj->getCustomerID() << endl;
-        } else{
-            cout << "failed" << endl;
-        }
-        */
-        
-        /*
-        Customer* cusPtr;
-        cout << customerHashTable.retrieveCustomer(customerObj->getCustomerID(), cusPtr) << endl;
-        
-         */
-        
-        //customerHashTable.
+        //insert the customer into the store object, and customer hashmap
+        customerHashTable.insert(customerObj->getCustomerID(), customerObj);
     }
- 
-    
-    
-    
-    /*
-    char charLine[80];
-    char* s;
-    
-
-    // may not work because "line" has to be a char*
-    infile.getline (charLine, 1000);    // change to max
-    
-    //std::cout << charLine << std::endl;
-    
-    s = strtok (charLine," ");
-    
-    while(s != NULL){
-        
-        printf("%s\n", s);
-        s = strtok(NULL, " ");
-    }
-    int i = 0;
-    
-    for(;;){
-        if(s[i] == '\n'){
-           break;
-        }
-        cout << s[i] << endl;
-        i++;
-    }
-    */
-    
-    
-    
     return true;
-    
-    
-    
 }
 
 /*
-read in the transactions from the data file
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 bool Store::readTransactions(ifstream& infile){
+    string result;
+    while(getline(infile,result)){
+        if(result.at(0) != 'B' && result.at(0) != 'R' && result.at(0) != 'I' && result.at(0) != 'H'){
+            cout << "ERROR: (Recieved bad data) " << result << endl;
+            continue;
+        }
+        vector<string> split_movie_array = string_split(result, ',');
+    
+    }
     return true;
-}
+};
 
 /*
-carry out all the transactions in the transactions queue
-Pre-condition:
-Post-condition:
-*/
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 bool Store::doTransactions(){
     return true;
 }
+
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 

@@ -8,44 +8,158 @@
 #include "hashTable.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 HashTable::HashTable(){
-    length = 0;
     
-    //array = nullptr;
-    array = new Customer*[9999];
-}
-
-bool HashTable::retrieveCustomer(string customerID, Customer* cusPtr){
-    
-    int index = atoi(customerID.c_str());
-    
-    if(array[index] != nullptr){
-        cusPtr = array[index];
-        return true;
-    } else{
-        return false;
+    table = new HashEntry *[128];
+    for(int i =0; i < 128; i++){
+        table[i] = NULL;
     }
+};
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+int HashTable::_hashFunction(int key){
     
+    return key % 128;
+}
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+void HashTable::insert(std::string key,  Customer *value){
+    int hash = _hashFunction(atoi(key.c_str()));
+    while(table[hash] != NULL && table[hash]->key != key){
+        //using a linear hashing algorithm if the currnet one is
+        //full increment to the next index
+        hash = _hashFunction(hash + 1);
+    }
+    if(table[hash] != NULL){
+        delete table[hash];
+    }
+    table[hash] = new HashEntry(key, value);
+}
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
+bool HashTable::retrieveCustomer(std::string customerID, Customer *&returnPtr){
+    //i want to return a direct reference to the parameter pointer and link it with actual data,
+    //therefore i need to add the reference '&' to tell the function
+    //'Do not make a copy of the pointer parmeter',
+    //'take the actually dam thing, and use it'
+    //therefore when this function dies, an actual thing has been don to the parameter
+    int hash = _hashFunction(atoi(customerID.c_str()));
+    
+    while(table[hash] != NULL && table[hash]->key != customerID){
+        hash = _hashFunction(hash + 1);
+    }
+    if(table[hash] == NULL){
+        //item is not found
+        returnPtr = nullptr;
+    }else{
+        returnPtr = table[hash]->value;
+        return true;
+    }
+    return false;
+}
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+void HashTable::showAllItems() const{
+    for(int i =0; i < 128; i++){
+        if(table[i] != NULL){
+            std::cout <<"["<<i<<"]" <<*table[i]->value << std::endl;
+        }
+    }
 }
 
 /*
-Pre-condition:
-Post-condition:
-*/
-int HashTable::hash(Customer* customerObj){
-    
-    int index = 0;
-    
-    string custID = customerObj->getCustomerID();
-    
-    index = atoi(custID.c_str());
-    
-    array[index] = customerObj;
-    
-    length++;
-    
-    return index;
-    
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+HashTable::~HashTable(){
+    for(int i =0; i < 128; i++){
+        if(table[i] != NULL){
+            delete table[i];
+        }
+    }
+    delete[] table;
 }
+
+
+
 

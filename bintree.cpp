@@ -1,6 +1,8 @@
 #include "bintree.h"
 // :g/.\{81,\}/p
 
+//DANNY WAS HERE
+
 /*
  //|===========================================================================|
  //|                                                                           |
@@ -24,8 +26,8 @@
  	--	Reconstructing from array/binary tree: O(n)
 
 	-> Abstract:
-		This program is implemented using the NodeData class, each node within
-		the tree structure is a tree node which contains a NodeData pointer.
+		This program is implemented using the Movie class, each node within
+		the tree structure is a tree node which contains a Movie pointer.
  
  Program_Features:
  -- Defaults constructor of 1 parameter.
@@ -34,21 +36,21 @@
  -- operator==, 	checks wether the two objects are the same.
  -- operator!=, 	check wether the two object are not the same.
  -- operator>>, 	output the current object in order traversal.
- -- insert, 		Inserts a NodeData pointer into the binary tree.
+ -- insert, 		Inserts a Movie pointer into the binary tree.
  -- isEmpty, 		checks if the Object is empty.
- --	retrieve,		searchs for specific NodeData target.
+ --	retrieve,		searchs for specific Movie target.
  -- bstreeToArray,	turns binary tree into an array.
  --	arrayToBstree,	turns array into binary tree.
  -- makeEmpty,		makes the object empty, deallocates all nodes
  -- displaysSideways,	displays the tree repersentation side ways.
- --	getHeight,		return the most-depth of a given NodeData.
+ --	getHeight,		return the most-depth of a given Movie.
  
  Assumptions:
  -- iostream library's are visable and included packages for
  output functionalities.
- -- NodeData is included within the program, to fufill the dependency this
- program has for NodeData.
- -- NodeData has correct implmentations of operator ==,!=, >, <, copy
+ -- Movie is included within the program, to fufill the dependency this
+ program has for Movie.
+ -- Movie has correct implmentations of operator ==,!=, >, <, copy
  Constructor.
 
  
@@ -79,6 +81,7 @@ BinTree::BinTree(){
     //default root to null
     //set the root to nullptr.
     root = nullptr;
+    //std::cout << "bintree constructor called " << std::endl;
 }
 
 /*
@@ -91,13 +94,14 @@ BinTree::BinTree(){
  |	Pre-Conditions:
  |		-> None
  |	Post-Conditions:
- |		-> Deallocates all tree nodes and NodeData contained to prevent
+ |		-> Deallocates all tree nodes and Movie contained to prevent
  |		Memory leaks.
  |	ASSUMPTIONS:
  |		-> None.
  |=============================================================================|
  */
 BinTree::~BinTree(){
+   // std::cout << "bintree destructor called" << std::endl;
     //call clear helper method
     clear(root);
     //set root to nullptr
@@ -121,6 +125,8 @@ BinTree::~BinTree(){
  |
  |=============================================================================|
  */
+
+/*
 BinTree::BinTree(const BinTree &rhs){
     if(rhs.isEmpty()){
         //if the rhs is empty, quickly set this root to nullptr, and do not
@@ -131,6 +137,7 @@ BinTree::BinTree(const BinTree &rhs){
         root = copyTreeHelper(root, rhs.root);
     }
 }
+ */
 
 
 /*
@@ -139,7 +146,7 @@ BinTree::BinTree(const BinTree &rhs){
  |		-> Copy constructor helper function( facade )
  |	Description:
  |		->  Facade helper function to make deep copies f rhs object
- |		-> This function works by making a new tree Node and NodeData.
+ |		-> This function works by making a new tree Node and Movie.
  |		this recursive function says make the current node's child left and
  |		right, to a recursive sack call, each stack call check if the current
  |		child is nullptr( signafying we are at a child without a currrent node)
@@ -155,6 +162,8 @@ BinTree::BinTree(const BinTree &rhs){
  |=============================================================================|
  */
 //IM A GOD
+
+/*
 typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
                                                 Node *rhsCurrent){
     if(rhsCurrent == nullptr){
@@ -163,8 +172,8 @@ typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
         //make a new node
         Node *newNode = new Node;
         //copy over the rhs data to a newData Node
-        NodeData *newNodeData = new NodeData(*rhsCurrent->data);
-        newNode->data = newNodeData;
+        Movie *newMovie = new Movie(*rhsCurrent->data);
+        newNode->data = newMovie;
         //link the current leaf with the new node.
         thisCurrent = newNode;
         //make a recursive stack call for the current nodes left,
@@ -178,6 +187,7 @@ typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
     //return the current subtree node.
     return thisCurrent;
 }
+ */
 /*
  |=============================< ASSIGNMENT OPERATOR >=========================|
  |	Function Name:
@@ -189,12 +199,13 @@ typename BinTree::Node* BinTree::copyTreeHelper(Node *thisCurrent,
  |	Pre-Conditions:
  |		-> None
  |	Post-Conditions:
- |		-> This is reconstructed with a deep copy of rhs NodeData elements.
- |		-> This function allocates new NodeData objects
+ |		-> This is reconstructed with a deep copy of rhs Movie elements.
+ |		-> This function allocates new Movie objects
  |	ASSUMPTIONS:
- |		-> NodeData default constructor is properly implemented.
+ |		-> Movie default constructor is properly implemented.
  |=============================================================================|
  */
+/*
 BinTree& BinTree::operator=(const BinTree &rhs){
     if(*this != rhs){//if its not the same object, reconstruct this as a copy of
         //RHS(deep copy)
@@ -205,7 +216,7 @@ BinTree& BinTree::operator=(const BinTree &rhs){
     return *this;
 }
 
-
+*/
 
 
 /*
@@ -213,17 +224,18 @@ BinTree& BinTree::operator=(const BinTree &rhs){
 |	Function Name:
 |		-> insert 
 |	Description:
-|		-> insert a NodeData pointer into the current binary tree
+|		-> insert a Movie pointer into the current binary tree
 |	Pre-Conditions:
 |		-> None
 |	Post-Conditions:
-|		-> dataPtr (NodeData) is inserted into the binary tree
+|		-> dataPtr (Movie) is inserted into the binary tree
 |		-> Returns  true if inserted, false if we have a duplicate
 |	ASSUMPTIONS:
 |		-> None.
 |==============================================================================|
 */
-bool BinTree::insert( NodeData *dataPtr){
+bool BinTree::insert( Movie *dataPtr){
+    //std::cout << "inserting : ... " << *dataPtr << std::endl;
 	//the recursive stack call will return a root(subtree)
 	//we want to retain the entire structure and its changes 
 	//inserted so we need to 'save it'.
@@ -233,7 +245,7 @@ bool BinTree::insert( NodeData *dataPtr){
     //not inserted, once it is inserted we can change to assume it has correctly
     //inserted.
     
-    //the parameters are Node * root, NodeData* dataPtr, and bool &reference
+    //the parameters are Node * root, Movie* dataPtr, and bool &reference
 	root = insert(root, dataPtr, isInserted);
     
 	return isInserted;
@@ -247,7 +259,7 @@ bool BinTree::insert( NodeData *dataPtr){
 |		-> This method is a redirection of the original insert method.
 |		-> This method works by checking wether the current root is nullptr.
 |		If it is not, we then check wether the current data to insert is less
-|		than or greater than the current Node's data(NodeData) if it is less
+|		than or greater than the current Node's data(Movie) if it is less
 |		make a recursive call to the left of the current nodes left child 
 |		pointer, otherwise make a recursive call to the right of current node
 |		child, Once one of the current sub Nodes have found a child's pointer
@@ -267,28 +279,30 @@ bool BinTree::insert( NodeData *dataPtr){
 |		-> Inserts the newNode data into the binary tree structure
 |	ASSUMPTIONS:
 |		-> DataPtr is not nulllptr, or NULL
-|		-> operator ==,!=,>,< are implmented correctly in NodeData Object.
+|		-> operator ==,!=,>,< are implmented correctly in Movie Object.
 |==============================================================================|
 */
-typename BinTree::Node* BinTree::insert(Node *subtree, NodeData *dataPtr, bool
+typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 &isInserted){
 	if(subtree == nullptr){
+          //   std::cout << "found a spot" << std::endl;
 		//found a parking spot park it.
 		Node *newNode = new Node;
-		//NodeData *nodeData = new NodeData(*dataPtr);
+		//Movie *Movie = new Movie(*dataPtr);
 		newNode->data = dataPtr;
 		//link the current previous calling stack 
 		subtree = newNode;
         //switch the referenced parameter to true, signifying we have correctly
         //inserted the new Node.
 		isInserted = true;
-		//keep in mind, dataPtr is a NODEDATA
-		//subtree is a NODE that CONTAINS(data field) a NODEDATA
-		//NodeDATA has overloaded comparision operators to use here.
+		//keep in mind, dataPtr is a Movie
+		//subtree is a NODE that CONTAINS(data field) a Movie
+		//Movie has overloaded comparision operators to use here.
 		//comparing two node data.
 
     //compare the current subtree->data object with the newData Item.
 	}else if(*dataPtr < *subtree->data){
+        //std::cout << "less than" << std::endl;
 		//new Node Data is less than current Node, move left
 		subtree->left = insert(subtree->left, dataPtr, isInserted);
 	//To AVOID Duplicates, we have two conditional else if statments that will
@@ -298,8 +312,14 @@ typename BinTree::Node* BinTree::insert(Node *subtree, NodeData *dataPtr, bool
 	//current node(base case) and unwinde the recursive stack back to root.
 	}else if(*dataPtr > *subtree->data){
 		//go to the right, of the current subtree->right
+            // std::cout << "more  than" << std::endl;
 		subtree->right = insert(subtree->right, dataPtr, isInserted);
-	}
+    }else if(*dataPtr == *subtree->data){
+    //else{
+        std::cout << "equal" << std::endl;
+        //extra addition if we found duplicates, we are to increment the quantity
+        subtree->data->addStock(dataPtr->getStock());
+    }
     //last case is IF THE NEWDATA EQUALS the current node, we just ommit the
     //comparision and return the subtree without making more recursive stack
     //calls which will create new nodes.
@@ -308,6 +328,7 @@ typename BinTree::Node* BinTree::insert(Node *subtree, NodeData *dataPtr, bool
 	//return the populated subtree from the above if statment
 	return subtree;
 }
+
 
 /*
 |================================< OPERATOR == >===============================|
@@ -320,7 +341,7 @@ typename BinTree::Node* BinTree::insert(Node *subtree, NodeData *dataPtr, bool
 |	Post-Conditions:
 |		-> Return a boolean reguarding if two binary tree are equals
 |	ASSUMPTIONS:
-|		-> NodeData operator == is correctly implmented.
+|		-> Movie operator == is correctly implmented.
 |	
 |==============================================================================|
 */
@@ -340,7 +361,7 @@ bool BinTree::operator==(const BinTree &rhs) const{
 |	Post-Conditions:
 |		-> Returns a boolean reguarding if two binary trees are equal.
 |	ASSUMPTIONS:
-|		-> NodeData operator == is correctly implemented
+|		-> Movie operator == is correctly implemented
 |==============================================================================|
 */
 bool BinTree::equalsHelper( const Node *thisCurrent,const  Node *rhsCurrent)
@@ -393,14 +414,14 @@ bool BinTree::operator!=(const BinTree &rhs) const{
  |	Description:
  |		-> given a pointer as a second parameter, retrieve will look for the
  |		target object, if found link/point the second parameter to the found
- |		NodeData in the binary tree, and return true, else the second
+ |		Movie in the binary tree, and return true, else the second
  |		pointer will equal nullptr
  |	Pre-Conditions:
  |		-> None
  |	Post-Conditions:
  |		-> Returns true if item is found, false otherwise. The second parameter
  |		is a reference to a pointer will equal nullptr if returned false.
- |		otherwise will point to the corresponding targeted NodeData within
+ |		otherwise will point to the corresponding targeted Movie within
  |		the binary tree.
  |	ASSUMPTIONS:
  |		-> second parameter pointerToResult is not pointing to anything prior
@@ -408,7 +429,7 @@ bool BinTree::operator!=(const BinTree &rhs) const{
  |=============================================================================|
  */
 
-bool BinTree::retrieve(const NodeData &target, NodeData *&pointerToResult)
+bool BinTree::retrieve(const Movie &target, Movie *&pointerToResult)
  const{
     //redirect to facade method.
     return retrieveHelper(target, pointerToResult, root);
@@ -419,7 +440,7 @@ bool BinTree::retrieve(const NodeData &target, NodeData *&pointerToResult)
  |		-> Retrieve helper function (facade)
  |	Description:
  |		-> Performs a binary search for the target node, the second parameter
- |		is referenced to the NodeData if the target has been located within
+ |		is referenced to the Movie if the target has been located within
  |		The structure.
  |	Pre-Conditions:
  |		-> None
@@ -428,14 +449,14 @@ bool BinTree::retrieve(const NodeData &target, NodeData *&pointerToResult)
  |	ASSUMPTIONS:
  |		-> pointerToResult has been freed, such that iff it had reference
  |		to data it was freed, to prevent memory leaks.
- |		-> NodeData operator >, <, ==, !=, have all been correctly implemented
+ |		-> Movie operator >, <, ==, !=, have all been correctly implemented
  |		and check and return if the data contained are respective to their
  |		definitions.
- |      -> User does not delete the NodeData of the second parameter if the 
- |      NodeData was found,
+ |      -> User does not delete the Movie of the second parameter if the 
+ |      Movie was found,
  |=============================================================================|
  */
-bool BinTree::retrieveHelper(const NodeData &target, NodeData *&pointerToResult,
+bool BinTree::retrieveHelper(const Movie &target, Movie *&pointerToResult,
                              Node *current) const{
     if(current == nullptr){
         //base case
@@ -446,7 +467,7 @@ bool BinTree::retrieveHelper(const NodeData &target, NodeData *&pointerToResult,
         return false;
         //if the item is found within the structure, point pointerToResult to
 		// the
-        //NodeData object, and return true, signifying item found.
+        //Movie object, and return true, signifying item found.
     }else if(*current->data == target){
         pointerToResult = current->data;
         return true;
@@ -470,12 +491,12 @@ bool BinTree::retrieveHelper(const NodeData &target, NodeData *&pointerToResult,
  |	Function Name:
  |		-> bstTree to Array
  |	Description:
- |		-> This function transfers the current bstTree to an array of NodeData
+ |		-> This function transfers the current bstTree to an array of Movie
  |		Pointers, using an inorder walk/traversal to popualte the array.
  |		-> this function also NUll's the current tree after execution.
  |		-> Things to keep in mind are, when nulling the tree we do not want to
  |		call clear/make empty, for these functions will destroy the Tree node
- |		AND the NodeData associated with them. we also need to delete the
+ |		AND the Movie associated with them. we also need to delete the
  |		tree nodes in an event where after transfering our node data we want
  |		to resuse this tree, our insert method would over-write/loss reference
  |		to the old exising Node's so to be safe its better to delete the
@@ -483,7 +504,7 @@ bool BinTree::retrieveHelper(const NodeData &target, NodeData *&pointerToResult,
  |		-> Thus calling a helper function deleteTreeNodesHelper does the job
  |		to deallocate exisiting tree nodes.
  |	Pre-Conditions:
- |		-> array of NodeData Pointers
+ |		-> array of Movie Pointers
  |	Post-Conditions:
  |		-> Binary tree is empty, root is set to null, and array given is
  |		now populated with a sorted repersentation of the bstree.
@@ -491,13 +512,13 @@ bool BinTree::retrieveHelper(const NodeData &target, NodeData *&pointerToResult,
  |		-> None.
  |=============================================================================|
  */
-void BinTree::bstreeToArray(NodeData* array[]){
-    //Parameter: array of NodeData Ptrs
+void BinTree::bstreeToArray(Movie* array[]){
+    //Parameter: array of Movie Ptrs
     bstreeToArrayHelper(root, array, 0);
     //because we are transfering the nodes from bstree to array and we need to
-    //null out the exising nodes, we need to transfer the NodeData safely
-    //WITHOUT deleting the NodeData,s so calling a function that will just
-    //delete/de-allocate the tree nodes, and not the NodeData, so we wont have
+    //null out the exising nodes, we need to transfer the Movie safely
+    //WITHOUT deleting the Movie,s so calling a function that will just
+    //delete/de-allocate the tree nodes, and not the Movie, so we wont have
     //leaks
     deleteTreeNodesHelper(root);
     //set the tree to nullptr, or empty it out.
@@ -510,12 +531,12 @@ void BinTree::bstreeToArray(NodeData* array[]){
  |	Function Name:
  |		-> bstTree to array helper function(facade)
  |	Description:
- |		-> This function transfers the current bstTree to an array of NodeData
+ |		-> This function transfers the current bstTree to an array of Movie
  |		Pointers, using an inorder walk/traversal to popualte the array.
  |		-> this function also NUll's the current tree after execution.
  |		-> Things to keep in mind are, when nulling the tree we do not want to
  |		call clear/make empty, for these functions will destroy the Tree node
- |		AND the NodeData associated with them. we also need to delete the
+ |		AND the Movie associated with them. we also need to delete the
  |		tree nodes in an event where after transfering our node data we want
  |		to resuse this tree, our insert method would over-write/loss reference
  |		to the old exising Node's so to be safe its better to delete the
@@ -532,7 +553,7 @@ void BinTree::bstreeToArray(NodeData* array[]){
  |		to all NULL values to prevent memory leaks.
  |=============================================================================|
  */
-int BinTree::bstreeToArrayHelper(Node *current, NodeData *array[], int index){
+int BinTree::bstreeToArrayHelper(Node *current, Movie *array[], int index){
     //out base case if the current node is nullptr, signifying we reached a node
     //whose child are nullptr, return the current counting index
     if(current == nullptr){
@@ -549,7 +570,7 @@ int BinTree::bstreeToArrayHelper(Node *current, NodeData *array[], int index){
     }
     //used in an INORDER traversal where the index is kept and returned from the
     //two recursive calls,
-    //set the arrays current index to the current nodes's NodeData Pointer
+    //set the arrays current index to the current nodes's Movie Pointer
     array[index++] = current->data;
     if(current->right != nullptr){
         index = bstreeToArrayHelper(current->right, array, index);
@@ -562,7 +583,7 @@ int BinTree::bstreeToArrayHelper(Node *current, NodeData *array[], int index){
  |	Function Name:
  |		-> array to bstree
  |	Description:
- |		-> populates this binary tree from the given array NodeData elements
+ |		-> populates this binary tree from the given array Movie elements
  |	Pre-Conditions:
  |		-> None
  |	Post-Conditions:
@@ -572,7 +593,7 @@ int BinTree::bstreeToArrayHelper(Node *current, NodeData *array[], int index){
  |
  |=============================================================================|
  */
-void BinTree::arrayToBSTree(NodeData *array[]){
+void BinTree::arrayToBSTree(Movie *array[]){
     //cout << "SIZE FUNCTON: " <<getSizeOfArrayHelper(array) <<endl;
     root = arrayToBSTreeHelper(array,0,(getSizeOfArrayHelper(array) -1));
 }
@@ -596,14 +617,14 @@ void BinTree::arrayToBSTree(NodeData *array[]){
  |		-> High and Low need to be correctly adjusted
  |	Post-Conditions:
  |		-> nulls the given array, and populates THIS binary tree with the
- |		respective nodeData elements from the array.
+ |		respective Movie elements from the array.
  |	ASSUMPTIONS:
  |		-> getSozeOFArray is correctly implmented.
  |
  |=============================================================================|
  */
 
-typename BinTree::Node* BinTree::arrayToBSTreeHelper(NodeData *array[],
+typename BinTree::Node* BinTree::arrayToBSTreeHelper(Movie *array[],
                                                      int low, int high){
     if(low > high){
         //eventually the middle tracker will minus 1 until mid is less than low
@@ -616,8 +637,8 @@ typename BinTree::Node* BinTree::arrayToBSTreeHelper(NodeData *array[],
     }
     //get the current mid of the array
     int mid = (low + high)/2;
-    //get the NodeData pointer at the center of THIS sub array
-    NodeData *dataPtr = array[mid];
+    //get the Movie pointer at the center of THIS sub array
+    Movie *dataPtr = array[mid];
     //construct the tree Node.
     Node *newNode = new Node;
     //reference/link the new tree node to the data pointer taken from the sub
@@ -650,7 +671,7 @@ typename BinTree::Node* BinTree::arrayToBSTreeHelper(NodeData *array[],
  |		-> MakeEmpty
  |	Description:
  |		-> This function calls clear, functon to remove,deallocate all tree
- |		Tree nodes and NodeData associated with the treeNode.
+ |		Tree nodes and Movie associated with the treeNode.
  |	Pre-Conditions:
  |		-> None
  |	Post-Conditions:
@@ -722,7 +743,7 @@ void BinTree::displaySidewaysHelper(Node* current, int level) const {
             cout << "    ";
         }
         
-        cout << *current->data << endl;        // display information of object
+        //cout << *current->data << endl;        // display information of object
         displaySidewaysHelper(current->left, level);
     }
 }
@@ -756,12 +777,12 @@ void BinTree::displaySidewaysHelper(Node *current, int depth) const{
  |			-> IF THE node is Found, returns a depth starting at 1.
  |			-> IF THE node is NOT Found, returns a depth of zero(0).
  |	ASSUMPTIONS:
- |		-> operator == has been implemened in NodeData.
+ |		-> operator == has been implemened in Movie.
  |
  |=============================================================================|
  */
 
-int BinTree::getHeight(const NodeData &target) const{
+int BinTree::getHeight(const Movie &target) const{
     return getNode(target, root);
 }
 
@@ -783,10 +804,10 @@ int BinTree::getHeight(const NodeData &target) const{
  |=============================================================================|
  */
 
-int BinTree::getNode(const NodeData &target, Node *current) const{
+int BinTree::getNode(const Movie &target, Node *current) const{
     if(current == nullptr){
         return 0;
-        //if the current NodeData matches our target to look for..
+        //if the current Movie matches our target to look for..
     }else if(*current->data == target){
         // ... Make a recursive call to the getHeightHelper passing in the
         // pointer of the node that matches the target.
@@ -878,7 +899,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		output << *current->data  << " ";
+		output << *current->data  << "  ,  ";
 		outputHelper(output,current->right);
 	}
 	return output;
@@ -895,11 +916,11 @@ Topics will be included by a week before test date, (topics will)
  |		-> clear function helper
  |	Description:
  |		-> clear is called to empty the current binary tree, by deallocating
- |		all tree nodes and treeNodes NodeData objects held.
+ |		all tree nodes and treeNodes Movie objects held.
  |	Pre-Conditions:
  |		-> None;
  |	Post-Conditions:
- |		-> All tree Nodes and NodeData contained are deallocated/deleted.
+ |		-> All tree Nodes and Movie contained are deallocated/deleted.
  |	ASSUMPTIONS:
  |		-> The User must make the root nullptr, after calling clear.
  |=============================================================================|
@@ -912,7 +933,7 @@ void BinTree::clear(Node *subtree){
         clear(subtree->right);
         //make a recursive call to the current subtree's left child
         clear(subtree->left);
-        //need not only delete the Node but also the NodeData
+        //need not only delete the Node but also the Movie
         //first delete/dealllocate the subtree's NodeDat
         delete subtree->data;
         //now delete the tree's Node.
@@ -960,7 +981,7 @@ bool BinTree::isEmpty() const{
 |==============================================================================|
 */
 
-int BinTree::getSizeOfArrayHelper(NodeData *array[]){
+int BinTree::getSizeOfArrayHelper(Movie *array[]){
 	
 	int numElements = 0;
 	int index = 0;	
@@ -983,7 +1004,7 @@ int BinTree::getSizeOfArrayHelper(NodeData *array[]){
 |		-> delete tree helper function
 |	Description:
 |		-> used to deallocate all tree nodes, mainly used for bstreetoarray
-|		when we need to remove just the treenodes and not the NodeData 
+|		when we need to remove just the treenodes and not the Movie 
 |		associated with them.
 |	Pre-Conditions:
 |		-> None.

@@ -3,7 +3,13 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "movie.h"
+/*
 
+This will hold a pointer to a Movie Object
+
+
+*/
 using namespace std;
 
 // simple class containing one string to use for testing

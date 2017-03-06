@@ -11,45 +11,79 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
+#ifndef STORE_H
+#define STORE_H
+
 #include <queue>
 #include "hashtable.h"
 #include "bst.h"
 #include <vector>
 #include "bintree.h"
+#include <fstream>
+#include <iostream>
+#include <stdlib.h>
+#include "helper_functions.h"
+#include "moviefactory.h"
 
-using namespace std;
 class Store {
 
-    
-private:
-
-    vector<string> string_split(string, const char);
-    //queue of all transactions to perform
-	//Queue transactions;
-	
-	//hashtable of all customer accounts
-	HashTable customerHashTable;
-	
-	//bst of movie inventory currently in stock
-	BST inventory;
-    
-    //use this one
-    BinTree movieInventory;
 
 public:
-
-    //default constructor
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
 	Store();
-
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    void showMovies();
+    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //read in the movies from the data file
-	bool readMovies(ifstream& infile);
-
+    bool readMovies(std::ifstream& infile);
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //read in the customers from the data file
-	bool readCustomers(ifstream& infile);
-
+    bool readCustomers(std::ifstream& infile);
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //read in the transactions from the data file
-    bool readTransactions(ifstream& infile);
-
+    bool readTransactions(std::ifstream& infile);
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //carry out all the transactions in the transactions queue
 	bool doTransactions();
+    
+private:
+    
+    std::vector<std::string> string_split(std::string, const char);
+    //queue of all transactions to perform
+    //Queue transactions;
+    
+    //hashtable of all customer accounts
+    HashTable customerHashTable;
+    
+    
+    BinTree _classicStorage;
+    BinTree _comedyStorage;
+    BinTree _dramaStorage;
 };
+
+#endif /*    STORE_H   */
