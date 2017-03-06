@@ -88,7 +88,7 @@ int main() {
     //-> we query the search tree for a matching title and year
     //->if one does not exist then add it,
     //->if one DOES exist, then take the current quantity number and add that to the retruieved movie object.
-    
+    /*
     comedyMovieStorage.insert(movie);
     comedyMovieStorage.insert(movie1);
     comedyMovieStorage.insert(movie2);
@@ -101,12 +101,7 @@ int main() {
     testArray.push_back("DANNY LY");
     testArray.push_back("GREAT MANDINGO");
     testArray.push_back("1991");
-    //testArray[0] = "FF";
-    //testArray[1] = "10";
-   /* testArray[2] = "Danny Ly";
-    testArray[3] = "Great Mnadingo";
-    testArray[4] = "1991";
-    */
+
     cout << testArray[2] << endl;
     Movie *movie3 = new Comedy();
     movie3->makeMovie(testArray);
@@ -118,7 +113,7 @@ int main() {
     
     cout << *movie3 << endl;
     
-    
+    */
     
     /*      END TESET MOVIE     */
     return 0;

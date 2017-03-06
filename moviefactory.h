@@ -11,7 +11,8 @@
 #include "movie.h"
 #include <stdio.h>
 #include "comedy.h"
-
+#include "classic.h"
+#include "drama.h"
 class Movie_Factory{
 public:
     static Movie* make_movie(char choice);

@@ -14,17 +14,30 @@
 #include "movie.h"
 #include "helper_functions.h"
 
-class Classic: public Movie{
+class Classic: public Movie {
 public:
     
     Classic();
     ~Classic() {};
+    
+    bool operator==(const Movie &) const;
+    bool operator!=(const Movie &) const;
+    bool operator<(const Movie &) const;
+    bool operator>(const Movie &) const;
+    bool operator<=(const Movie &) const;
+    bool operator>=(const Movie &) const;
+    
+    /*
     bool operator==(const Classic &) const;
     bool operator!=(const Classic &) const;
     bool operator<(const Classic &) const;
     bool operator>(const Classic &) const;
     bool operator<=(const Classic &) const;
     bool operator>=(const Classic &) const;
+     
+    
+    */
+    
     void print(std::ostream &) const;
     void setMajorActorFirst(std::string);
     std::string getMajorActorFirst() const;
@@ -47,8 +60,6 @@ private:
     std::string major_actor_lastName;
     
     int release_month;
-
-    
     
 };
 #endif /* classic_hpp */

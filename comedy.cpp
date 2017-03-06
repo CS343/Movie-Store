@@ -13,11 +13,11 @@
 
 Comedy::Comedy(){
     
-    std::cout << "comedy constr called" << std::endl;
+    //std::cout << "comedy constr called" << std::endl;
 }
 
 bool Comedy::operator<(const Movie &rhs) const{
-    std::cout << "< called from COmedy" << std::endl;
+    //std::cout << "< called from COmedy" << std::endl;
     return (this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
 
 };
@@ -46,7 +46,7 @@ bool Comedy::operator!=(const Movie &rhs) const{
  
  */
 void Comedy::makeMovie(std::vector<std::string> array){
-    std::cout << "Make Movie for Comed called" << std::endl;
+   // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
     int year = atoi(array[4].c_str());
     int stock = atoi(array[1].c_str());
@@ -59,7 +59,8 @@ void Comedy::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Comedy::print(std::ostream& output) const{
-    output <<"Year: " << setw(10) << getYear() << "Title: " << getTitle() << setw(10) << "Director: " << getDirector() << std::setw(5) <<"STOCK: " << getStock();
+    output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
+    //output <<"Year: " << "   " << getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
     
 }
 

@@ -9,9 +9,47 @@
 #include "classic.h"
 Classic::Classic(){
     
-    std::cout << "Classic constr called" << std::endl;
+   // std::cout << "Classic constr called" << std::endl;
 }
 
+
+
+bool Classic::operator<(const Movie &rhs) const{
+  //  std::cout << "< called from Classic" << std::endl;
+    //-	Classics (‘D’) are sorted by Director, then Title
+    
+    return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
+    
+};
+
+bool Classic::operator>(const Movie &rhs) const{
+    return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
+    
+};
+
+bool Classic::operator>=(const Movie &rhs) const{
+    return (this->getYear() >= rhs.getYear()) && ( this->getReleaseMonth() >= rhs.getReleaseMonth() ) && (this->getMajorActor() >= rhs.getMajorActor());
+    
+};
+
+bool Classic::operator<=(const Movie &rhs) const{
+    return (this->getYear() <= rhs.getYear()) && ( this->getReleaseMonth() <= rhs.getReleaseMonth() ) && (this->getMajorActor() <= rhs.getMajorActor());
+    
+};
+
+bool Classic::operator==(const Movie &rhs) const{
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getMajorActor() == rhs.getMajorActor());
+    
+};
+
+bool Classic::operator!=(const Movie &rhs) const{
+    return !(*this == rhs);
+};
+
+
+/*
+ 
+ 
 bool Classic::operator<(const Classic &rhs) const{
     std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
@@ -44,6 +82,8 @@ bool Classic::operator!=(const Classic &rhs) const{
     return !(*this == rhs);
 };
 
+ 
+ */
 
 void Classic::setMajorActorFirst(std::string firstName){
     this->major_actor_firstName = firstName;
@@ -78,7 +118,7 @@ void Classic::makeMovie(std::vector<std::string> array){
     
     std::vector<std::string> extra_classic_data = Helper_Functions::string_split(array[4], ' ');
     
-    std::cout << "Make Movie for Comed called" << std::endl;
+   // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
     int year = atoi(extra_classic_data[4].c_str());
     int stock = atoi(array[1].c_str());
@@ -93,6 +133,7 @@ void Classic::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Classic::print(std::ostream& output) const{
-    output <<"Year: " << setw(5) << getYear() << "Title: " << getTitle() << setw(5) << "Director: " << getDirector() << std::setw(5) <<"STOCK: " << getStock();
+        output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
+    //output <<"Year: " << " " << getYear() << "  Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock() <<  "   Major Actor: " << getMajorActor() << "   Get month: " << getReleaseMonth();
     
 }

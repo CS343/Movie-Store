@@ -10,7 +10,7 @@
 #include "movie.h"
 
 Movie::Movie(){
-    std::cout << "Movie Consturctor called"<< std::endl;
+    //std::cout << "Movie Consturctor called"<< std::endl;
     title = "";
     director = "";
     year = 0000;
@@ -48,6 +48,13 @@ void Movie::setStock(int stock){
 void Movie::addStock(int amount){
     this->stock += amount;
 }
+std::string Movie::getMajorActor() const{
+    return "";
+}
+int Movie::getReleaseMonth() const{
+    return 0;
+}
+
 
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){

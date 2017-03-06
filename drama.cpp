@@ -6,15 +6,15 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include "drama.hpp"
+#include "drama.h"
 
 Drama::Drama(){
     
-    std::cout << "Drama constr called" << std::endl;
+   // std::cout << "Drama constr called" << std::endl;
 }
 
 bool Drama::operator<(const Movie &rhs) const{
-    std::cout << "< called from Drama" << std::endl;
+   // std::cout << "< called from Drama" << std::endl;
     //-	dramas (‘D’) are sorted by Director, then Title
 
     return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
@@ -45,7 +45,7 @@ bool Drama::operator!=(const Movie &rhs) const{
  
  */
 void Drama::makeMovie(std::vector<std::string> array){
-    std::cout << "Make Movie for Comed called" << std::endl;
+   // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
     int year = atoi(array[4].c_str());
     int stock = atoi(array[1].c_str());
@@ -58,6 +58,7 @@ void Drama::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Drama::print(std::ostream& output) const{
-    output <<"Year: " << setw(5) << getYear() << "Title: " << getTitle() << setw(5) << "Director: " << getDirector() << std::setw(5) <<"STOCK: " << getStock();
+        output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
+    //output <<"Year: " << "   "<< getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
     
 }

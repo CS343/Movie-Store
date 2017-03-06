@@ -74,7 +74,6 @@ bool Store::readMovies(ifstream& infile){
             cout << "ERROR: " << result << endl;
             continue;
         }
-
         vector<string> split_movie_array = string_split(result, ',');
 
         Movie *moviePtr;
@@ -87,28 +86,33 @@ bool Store::readMovies(ifstream& infile){
         //insert the movie object
         //check for success if it was successful it was inserted if it was not
         //it either was duplicate, so we need to increment the quntity and delete the made object
-        /*
+        
         bool success;
         switch (action) {
             case 'F':
                 //insert into comedy bintree
                 success = _comedyStorage.insert(moviePtr);
                 break;
-                
+            case 'D':
+                success = _dramaStorage.insert(moviePtr);
+                break;
+            case 'C':
+                success = _classicStorage.insert(moviePtr);
             default:
                 break;
         }
-     
-        if (!success)
-            delete moviePtr;
         
-*/
+        if (!success){
+            delete moviePtr;
+        }else{
+            std::cout << "successfully inserted: " << *moviePtr << std::endl;
+        }
         //0 is command , 1 is qualitity, 2 is author
         
         //create a movie object and put into bst
         
        // Movie *newMovie  =
-        cout << split_movie_array[1] << endl;
+        //cout << split_movie_array[1] << endl;
         //cout << result << endl;
     }
     /*
