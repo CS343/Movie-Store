@@ -26,7 +26,8 @@ Pre-condition:
 Post-condition:
 */
 Store::Store(){
-
+    
+    
     //HashTable* customerHashTable = new HashTable();
     //HashTable customerHashTable;
     
@@ -53,6 +54,10 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
     return output;
 }
 
+
+void Store::showMovies() {
+    std::cout << this->_classicStorage << std::endl;
+}
 
 /*
 read in the movies from the data file
@@ -91,10 +96,10 @@ bool Store::readMovies(ifstream& infile){
         switch (action) {
             case 'F':
                 //insert into comedy bintree
-                success = _comedyStorage.insert(moviePtr);
+                //success = _comedyStorage.insert(moviePtr);
                 break;
             case 'D':
-                success = _dramaStorage.insert(moviePtr);
+                //success = _dramaStorage.insert(moviePtr);
                 break;
             case 'C':
                 success = _classicStorage.insert(moviePtr);
@@ -103,43 +108,13 @@ bool Store::readMovies(ifstream& infile){
         }
         
         if (!success){
+            cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
         }else{
             std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
-        //0 is command , 1 is qualitity, 2 is author
-        
-        //create a movie object and put into bst
-        
-       // Movie *newMovie  =
-        //cout << split_movie_array[1] << endl;
-        //cout << result << endl;
-    }
-    /*
-    for(;;){
 
-        
-        infile >> movieType;
-        if(movieType != 'C' || movieType != 'F' || movieType != 'D'){
-            //invalid command return/print an error code
-            //get line
-            //skip parsing line
-            cout << "found an invalid char : " << movieType << endl;
-            infile.getline(linee, 200);
-            continue;
-            
-        }
-        
-        cout << "movie type " << movieType << endl;
-        
-        infile.getline(linee, 200);
-        
-        if(infile.eof()){
-            break;
-        }
     }
-     */
-    
 
     
     return true;

@@ -47,6 +47,8 @@ int main() {
     //structure
     store.readCustomers(customerFile);
     store.readMovies(movieFile);
+    
+    store.showMovies();
     //store.readTransactions(transactionFile);
     
     //perform all operations
@@ -114,6 +116,25 @@ int main() {
     cout << *movie3 << endl;
     
     */
+    //C, 10, Michael Curtiz, Casablanca, Humphrey Bogart 8 1942
+    //C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
+    
+    Movie *test1 = new Classic();
+    Movie *test2 = new Classic();
+    test1->setYear(1942);
+    test1->setStock(10);
+    test1->setTitle("Casablanca");
+    test1->setDirector("Michael Curtiz");
+    
+    
+    test2->setYear(1939);
+    test2->setStock(10);
+    test2->setTitle("The Wizard of Oz");
+    test2->setDirector("Victor Fleming");
+    
+    std::cout << (*test1 == *test2 ? "They are the same" : "not the same") << std::endl;
+    //younger dates are first
+    std::cout << ("71939" < "81942" ? "true" : "false") << std::endl;
     
     /*      END TESET MOVIE     */
     return 0;

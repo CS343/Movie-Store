@@ -16,6 +16,7 @@ class Helper_Functions{
 public:
     
     static std::vector<std::string> string_split(std::string, char);
+
 };
 
 #endif /* helper_functions_hpp */

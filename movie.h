@@ -90,8 +90,12 @@ public:
     
     void addStock(int);
     
+    
+    //virtual std:;string getReleaseMonth() const;
+    
     virtual int getReleaseMonth()const ;
     virtual std::string getMajorActor() const;
+     
 private:
     //year that the movie released
     int year;

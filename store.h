@@ -44,7 +44,9 @@ public:
 
     //default constructor
 	Store();
-
+    void showMovies();
+    
+    
     //read in the movies from the data file
 	bool readMovies(ifstream& infile);
 

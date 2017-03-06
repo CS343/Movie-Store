@@ -23,11 +23,13 @@ bool Classic::operator<(const Movie &rhs) const{
 };
 
 bool Classic::operator>(const Movie &rhs) const{
+    std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
     
 };
 
 bool Classic::operator>=(const Movie &rhs) const{
+    std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     return (this->getYear() >= rhs.getYear()) && ( this->getReleaseMonth() >= rhs.getReleaseMonth() ) && (this->getMajorActor() >= rhs.getMajorActor());
     
 };
@@ -38,6 +40,7 @@ bool Classic::operator<=(const Movie &rhs) const{
 };
 
 bool Classic::operator==(const Movie &rhs) const{
+    std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
     return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getMajorActor() == rhs.getMajorActor());
     
 };
@@ -122,13 +125,14 @@ void Classic::makeMovie(std::vector<std::string> array){
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
     int year = atoi(extra_classic_data[4].c_str());
     int stock = atoi(array[1].c_str());
-    
+    int releaseMonth = atoi(extra_classic_data[3].c_str());
     this->setYear(year);
     this->setDirector(array[2]);
     this->setTitle(array[3]);
     this->setStock(stock);
     this->setMajorActorFirst(extra_classic_data[1]);
     this->setMajorActorLast(extra_classic_data[2]);
+    this->setReleaseMonth(releaseMonth);
 }
 
 //output operator work around, flow transition.
