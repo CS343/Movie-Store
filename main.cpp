@@ -56,7 +56,7 @@ int main() {
     store.readMovies(movieFile);
     
     store.showMovies();
-    //store.readTransactions(transactionFile);
+    store.readTransactions(transactionFile);
     
     //perform all operations
     //store.doTransactions();
@@ -69,7 +69,7 @@ int main() {
     // end of the main function
     
     /*      TESTING MOVIE       */
-    
+    /*
     BinTree comedyMovieStorage;
     Movie *movie = new Comedy();
     
@@ -97,6 +97,7 @@ int main() {
     //-> we query the search tree for a matching title and year
     //->if one does not exist then add it,
     //->if one DOES exist, then take the current quantity number and add that to the retruieved movie object.
+     */
     /*
     comedyMovieStorage.insert(movie);
     comedyMovieStorage.insert(movie1);
@@ -125,7 +126,8 @@ int main() {
     */
     //C, 10, Michael Curtiz, Casablanca, Humphrey Bogart 8 1942
     //C, 10, Victor Fleming, The Wizard of Oz, Judy Garland 7 1939
-    
+    /*      Testing Movie class     */
+    /*
     Movie *test1 = new Classic();
     Movie *test2 = new Classic();
     test1->setYear(1942);
@@ -142,7 +144,7 @@ int main() {
     std::cout << (*test1 == *test2 ? "They are the same" : "not the same") << std::endl;
     //younger dates are first
     std::cout << ("71939" < "81942" ? "true" : "false") << std::endl;
-    
+    */
     /*      END TESET MOVIE     */
     
     HashTable hashtable;
@@ -150,6 +152,7 @@ int main() {
     
     
     /*  Testing CustomerClass   */
+    /*
     Customer *cust1 = new Customer("1111", "danny","ly");
     Customer *cust2 = new Customer("1010","Kevin","Ly");
     
@@ -165,7 +168,7 @@ int main() {
     
     std::cout << *cust2 <<std::endl;
     
-    
+    */
     /*  End Testing Customer Class  */
          
     return 0;

@@ -189,8 +189,17 @@ bool Store::readCustomers(ifstream& infile){
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
 bool Store::readTransactions(ifstream& infile){
+    string result;
+    while(getline(infile,result)){
+        if(result.at(0) != 'B' && result.at(0) != 'R' && result.at(0) != 'I' && result.at(0) != 'H'){
+            cout << "ERROR: (Recieved bad data) " << result << endl;
+            continue;
+        }
+        vector<string> split_movie_array = string_split(result, ',');
+    
+    }
     return true;
-}
+};
 
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
