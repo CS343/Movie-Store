@@ -72,9 +72,11 @@ bool Store::readMovies(ifstream& infile){
             continue;
         }
   
-        
+
         vector<string> split_movie_array = string_split(result, ',');
-        
+        for(int i =0; i < split_movie_array.size(); i++){
+            std::cout <<"[ " << i << "]" << split_movie_array[i] << std::endl;
+        }
         if(result.at(0) == 'C'){
             vector<string> cArray = string_split(split_movie_array[4], ' ');
             for(int i  = 0; i <= 4; i++){
@@ -82,14 +84,30 @@ bool Store::readMovies(ifstream& infile){
             }
         }
         Movie *moviePtr;
-        
+        char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
-        moviePtr = Movie_Factory::make_movie(split_movie_array[0].c_str()[0]);
+        moviePtr = Movie_Factory::make_movie(action);
         moviePtr->makeMovie(split_movie_array);
         
+        //insert the movie object
+        //check for success if it was successful it was inserted if it was not
+        //it either was duplicate, so we need to increment the quntity and delete the made object
+        /*
+        bool success;
+        switch (action) {
+            case 'F':
+                //insert into comedy bintree
+                success = _comedyStorage.insert(moviePtr);
+                break;
+                
+            default:
+                break;
+        }
+     
+        if (!success)
+            delete moviePtr;
         
-        
-
+*/
         //0 is command , 1 is qualitity, 2 is author
         
         //create a movie object and put into bst

@@ -11,6 +11,8 @@
 #include <iostream>
 #include <fstream>
 #include "movie.h"
+#include <string>
+#include <vector>
 //testing Movie
 #include "comedy.h"
 #include "bintree.h"
@@ -91,12 +93,30 @@ int main() {
     comedyMovieStorage.insert(movie1);
     comedyMovieStorage.insert(movie2);
     
-
+    //std::string testArray[10];
+    vector<std::string> testArray;
+    //testArray.insert(0, "F");
+    testArray.push_back("F");
+    testArray.push_back("10");
+    testArray.push_back("DANNY LY");
+    testArray.push_back("GREAT MANDINGO");
+    testArray.push_back("1991");
+    //testArray[0] = "FF";
+    //testArray[1] = "10";
+   /* testArray[2] = "Danny Ly";
+    testArray[3] = "Great Mnadingo";
+    testArray[4] = "1991";
+    */
+    cout << testArray[2] << endl;
+    Movie *movie3 = new Comedy();
+    movie3->makeMovie(testArray);
+    
+    
     std::cout << comedyMovieStorage << std::endl;
     Movie *returnPtr;
     returnPtr = Movie_Factory::make_movie('D');
     
-    
+    cout << *movie3 << endl;
     
     
     

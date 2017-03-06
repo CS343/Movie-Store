@@ -5,7 +5,10 @@
 //  Created by Danny Ly on 3/5/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
-
+/*
+ 
+ COMEDYS IS KEY STROKE F
+ */
 #include "comedy.h"
 
 Comedy::Comedy(){
@@ -41,6 +44,14 @@ bool Comedy::operator!=(const Movie &rhs) const{
 
 void Comedy::makeMovie(std::vector<std::string> array){
     std::cout << "Make Movie for Comed called" << std::endl;
+    //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
+    int year = atoi(array[4].c_str());
+    int stock = atoi(array[1].c_str());
+    this->setYear(year);
+    this->setDirector(array[2]);
+    this->setTitle(array[3]);
+    this->setStock(stock);
+    
 }
 
 //output operator work around, flow transition.

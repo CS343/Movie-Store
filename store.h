@@ -36,9 +36,9 @@ private:
     //use this one
     BinTree movieInventory;
     
-    BinTree _cStore;
-    BinTree _fStore;
-    BinTree _dStore;
+    BinTree _classicStorage;
+    BinTree _comedyStorage;
+    BinTree _dramaStorage;
 
 public:
 
