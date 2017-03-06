@@ -59,7 +59,7 @@ void Comedy::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Comedy::print(std::ostream& output) const{
-    output << "Title: " << getTitle() << "\t" << "Year: " << getYear() << std::setw(10) <<"STOCK: " << getStock();
+    output <<"Year: " << setw(10) << getYear() << "Title: " << getTitle() << setw(10) << "Director: " << getDirector() << std::setw(5) <<"STOCK: " << getStock();
     
 }
 

@@ -58,6 +58,6 @@ void Drama::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Drama::print(std::ostream& output) const{
-    output << "Title: " << getDirector() << "\t" << "Year: " << getTitle() << std::setw(10) <<"STOCK: " << getStock();
+    output <<"Year: " << setw(5) << getYear() << "Title: " << getTitle() << setw(5) << "Director: " << getDirector() << std::setw(5) <<"STOCK: " << getStock();
     
 }

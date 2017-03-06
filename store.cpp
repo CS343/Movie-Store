@@ -71,23 +71,12 @@ bool Store::readMovies(ifstream& infile){
         
         if(result.at(0) != 'C' && result.at(0) != 'D' && result.at(0) != 'F'){ //|| result.at(0) != 'F' || result.at(0) != 'D'){
             //another approach is to get the first char, then pass the ret of the ifstream to a Movie object to populate itself
-            
-            
             cout << "ERROR: " << result << endl;
             continue;
         }
-  
 
         vector<string> split_movie_array = string_split(result, ',');
-        for(int i =0; i < split_movie_array.size(); i++){
-            std::cout <<"[ " << i << "]" << split_movie_array[i] << std::endl;
-        }
-        if(result.at(0) == 'C'){
-            vector<string> cArray = string_split(split_movie_array[4], ' ');
-            for(int i  = 0; i <= 4; i++){
-                std::cout << cArray[i] << std::endl;
-            }
-        }
+
         Movie *moviePtr;
         char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
