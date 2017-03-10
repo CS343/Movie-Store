@@ -25,6 +25,7 @@ in are performed via doTransactions.
 #include "helper_functions.h"
 #include "moviefactory.h"
 #include "transactionfactory.h"
+#include "transaction.h"
 class Store {
 
 
@@ -72,7 +73,7 @@ public:
     void showInventory() const;
 private:
     
-    std::queue<Transaction> transactionQueue;
+    std::queue<Transaction*> transactionQueue;
     
     std::vector<std::string> string_split(std::string, const char);
     //queue of all transactions to perform

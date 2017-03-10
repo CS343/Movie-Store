@@ -14,70 +14,69 @@ The Borrow, Return, and ViewInventory class all extend this class
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
-
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 class Transaction {
-
-    
-private:
-
-    // Contains the title of the movie 
-    std::string movieTitle;
-	
-	// Indicates, by a user's ID, which Customer completes this transaction
-	int userID;
-	
-	// Indicates the type of transaction - Borrow, Return, or Inventory
-	char transactionType;
-	
-	char format;
-	
-	char genre;
-	
-	// The year the movie was released
-	int year;
-	
-	// The amount of copies the store owns for this movie
-	int amount;
-	
-	// the name of a major in the movie
-    std::string actor;
 
 public:
 
-    // returns the title of the movie
-    std::string getMovieTitle();
-
+    Transaction();
+    
+    
+    //setters
+    
+    void setCustomerID(std::string);
     //std::string print() const;
     void setMovieTitle(std::string movieTitle);
+    
+    void setTransactionAmount(int);
+    
+    
+    void setTransactionType(char transactionType);
 
-	int getUserID();
+    void setMediaType(char);
+    
+    
+    //getters
+    std::string getMovieTitle() const;
 
-	void setUserID(int userID);
+    std::string getCustomerID() const;
+    
+	char getTransactionType() const;
 
-	char getTransactionType();
-
-	void setTransactionType(char transactionType);
-
-	char getFormat();
-
-	void setFormat(char format);
-
-	char getGenre();
-
-	void setGenre(char genre);
+    int getTransactionAmount() const;
+	
+    char getMediaType() const;
 
 	int getYear();
 
 	void setYear(int year);
 
-	int getAmount();
-
-	void setAmount(int amount);
-
-    std::string getActor();
-
-    void setActor(std::string actor);
-
 	bool doTransaction();
+    
+    void print() const;
+    
+private:
+    
+    
+    std::string movieTitle;
+    
+    std::string customerID;
+    
+    int transactionAmount;
+    
+    char mediaType;//typically D
+    
+    // Indicates the type of transaction - Borrow, Return, or Inventory
+    char transactionType;
+
+    
+    // The year the movie was released
+    int year;
+
+    // the name of a major in the movie
+    std::string actor;
 };
 #endif /* TRANSACTION_H */

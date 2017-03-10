@@ -200,6 +200,8 @@ bool Store::readTransactions(ifstream& infile){
     char command;
     for(;;){
         infile >> command;//take the char in the beginning of the line
+        
+        if (infile.eof()) break;
                             //check wether the valid commands are polled
         if(command != 'B' && command != 'R' && command!= 'I' && command !='H'){
             getline(infile, result); // throw away line
@@ -208,13 +210,14 @@ bool Store::readTransactions(ifstream& infile){
         }
         
         //error data checked, now populate the objects
+        Transaction *trans  = TransactionFactory::makeTransaction(infile, command);
         
+        transactionQueue.push(trans);
+        //getline(infile,result);
         
-        getline(infile,result);
+        //std::cout  << "GOOD results:" << command << result << endl;
         
-        std::cout  << "GOOD results:" << command << result << endl;
-        
-        if (infile.eof()) break;
+       
     }
     return true;
 };
