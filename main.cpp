@@ -59,7 +59,7 @@ int main() {
     store.readTransactions(transactionFile);
     
     //perform all operations
-    //store.doTransactions();
+    store.doTransactions();
     
     //closes the ifstreams
     customerFile.close();

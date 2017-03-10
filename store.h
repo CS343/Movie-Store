@@ -71,9 +71,11 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     void showInventory() const;
+    
+    bool searchInventory(char);
 private:
     
-    std::queue<Transaction*> transactionQueue;
+    std::queue<Transaction *> transactionQueue;
     
     std::vector<std::string> string_split(std::string, const char);
     //queue of all transactions to perform

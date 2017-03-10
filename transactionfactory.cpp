@@ -6,64 +6,47 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include <stdio.h>
 
 #include "transactionfactory.h"
 
 Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char command){
-    Transaction *trans;
+    Transaction *transactionPtr;
     std::string result;
+    
+    
+
+    std::getline(input, result);
+    //std::string ayyo = result.substr(1, 5);// gets the ID[a,b)
+    std::string ayyo1 = result.substr(1,10);//get the first half, if the last
+    std::string ayoo2 = result;
+    //index contains a number good we have quantity, if not, bad we have default to
+    //borrowing 1 quntity.
+    
+    std::vector<std::string> first_half = Helper_Functions::string_split(ayyo1, ' ');
+    
     switch (command) {
         case 'B':
         {
-            //std::cout << "borrow" << result << std::endl;
-            getline(input, result);
-            std::string ayyo = result.substr(1, 5);// gets the ID[a,b)
-            std::string ayyo1 = result.substr(1,10);//get the first half, if the last
-            //index contains a number good we have quantity, if not, bad we have default to
-            //borrowing 1 quntity.
-            
-            std::vector<std::string> first_half = Helper_Functions::string_split(ayyo1, ' ');
     
-            trans = new Borrow;
-            trans->setCustomerID(first_half[0]);
+            transactionPtr = new Borrow();
+            /* new */
             
-            
-            trans->setTransactionType(command);
-            //each string in c++ is a string array of chars
-            trans->setMediaType(first_half[1][0]);
-            trans->setMovieGenre(first_half[2][0]);
-         
-            if(isdigit(first_half[3][0])){
-                int amt = std::atoi(first_half[3].c_str());
-               // std::cout << "we have a digit: " << amt<< std::endl;
-                trans->setTransactionAmount(amt);
-            }else{
-                trans->setTransactionAmount(1);
-                //std::cout << "we have a alpha: " << first_half[3][0] << std::endl;
-            }
-            
-            trans->makeTransaction();
-            std::cout << std::endl;
-            trans->print();
+            //give it the resulting string, and teh genre
+            //within the method it will do all the splitting depedent on
+            //what genere is specified.
+            //transactionPtr->makeTransaction(result, command);
             break;
         }
             
         case 'R':
-            getline(input, result);
-            //std::cout << "RENT" << result << std::endl;
+            transactionPtr = new Return();
             break;
             
         case 'H':
-            getline(input, result);
-            //std::cout << "HISTORY" << result << std::endl;
+            transactionPtr = new History();
             break;
         case 'I':
-            getline(input, result);
-            //std::cout << "Inventory" << result << std::endl;
-            //inventory print
-            
-            //trans = Vew
+            transactionPtr = new ViewInventory();
             break;
             
         default:
@@ -71,10 +54,12 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
     }
     
     
+    transactionPtr->makeTransaction(result, command);
+    //std::cout << std::endl;
+    //transactionPtr->doTransaction();
+    return transactionPtr;
     
-    return trans;
-    
-    
+    //return NULL;
     
 }
 

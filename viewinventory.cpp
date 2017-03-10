@@ -6,5 +6,24 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include <stdio.h>
+
 #include "viewinventory.h"
+
+
+
+
+void ViewInventory::makeTransaction(std::string result, char transactionType){
+   // std::cout << "making command" << std::endl;
+    
+    this->setTransactionType(transactionType);
+  };
+
+
+bool ViewInventory::doTransaction() {
+    //
+    std::ostringstream ss;
+    
+    ss << "\nTransaction Type: " << this->getTransactionType();
+    std::cout << ss.str() << std::endl;
+    return true;
+}

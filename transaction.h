@@ -1,3 +1,8 @@
+
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
+
+
 /*-------Class description------
 A Transaction object is created for all the transactions in the
 data4commands.txt file. Each line in the text file represents a transaction.
@@ -11,28 +16,27 @@ stored in the Store class' "transactions" queue.
 The Borrow, Return, and ViewInventory class all extend this class
 */
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
-
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+#include "helper_functions.h"
 class Transaction {
 
 public:
 
     Transaction();
-    
-    
+
+    virtual ~Transaction(){};
     //setters
     
     void setCustomerID(std::string);
   
     void setMovieTitle(std::string movieTitle);
     
-    void setTransactionAmount(int);
     
+    void setTransactionAmount(int);
     
     void setTransactionType(char transactionType);
 
@@ -40,9 +44,16 @@ public:
     
     void setMovieGenre(char);
     
-    void setYear(int year);
+    void setMovieDirector(std::string);
     
+    void setMovieYear(std::string year);
+    
+    void setMovieReleasedMonth(char);
+    
+    void setFirstName(std::string);
+    void setLastName(std::string);
     //getters
+    
     char getMovieGenre() const;
     
     std::string getMovieTitle() const;
@@ -55,18 +66,21 @@ public:
 	
     char getMediaType() const;
 
-	int getYear() const;
-
+    std::string getMovieYear() const;
     
+    std::string getMovieDirector() const;
+    
+    char getMovieReleasedMonth() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
     //methods
-	bool doTransaction();
-    
-    virtual void makeTransaction();
-    void print() const;
+    virtual bool doTransaction();
+    virtual void makeTransaction(std::string, char);
+    virtual void print() const;
     
 private:
     
-    
+    std::string movieDirector;
     std::string movieTitle;
     
     std::string customerID;
@@ -81,8 +95,12 @@ private:
     //movie Type AKA movie Genre
     char movieGenre;
     
+    char movieReleasedMonth;
 
-    int year;
+    std::string movieYear;
 
+    std::string firstName;
+    
+    std::string lastName;
 };
 #endif /* TRANSACTION_H */

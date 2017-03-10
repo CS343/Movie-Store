@@ -165,7 +165,7 @@ bool Store::readCustomers(ifstream& infile){
         //grab the customer data from file
         infile >> id >> firstName >> lastName;
         //create the customer object given the data;
-        Customer* customerObj = new Customer(id, firstName, lastName);
+        Customer *customerObj = new Customer(id, firstName, lastName);
         
         //insert the customer into the store object, and customer hashmap
         customerHashTable.insert(customerObj->getCustomerID(), customerObj);
@@ -209,18 +209,53 @@ bool Store::readTransactions(ifstream& infile){
             continue;
         }
         
+    
+        
         //error data checked, now populate the objects
-        Transaction *trans  = TransactionFactory::makeTransaction(infile, command);
         
-        transactionQueue.push(trans);
-        //getline(infile,result);
+        Transaction *transactionPtr;
+        transactionPtr  = TransactionFactory::makeTransaction(infile, command);
+        Customer *temp = nullptr;
+        if(!(this->customerHashTable.retrieveCustomer(transactionPtr->getCustomerID(), temp))){
+            
+            std::cout << "Customer ID does not exist: " << transactionPtr->getCustomerID() << std::endl;
+        }
+        std::cout << std::endl;
+        //transactionPtr->doTransaction();
         
-        //std::cout  << "GOOD results:" << command << result << endl;
-        
-       
+        transactionQueue.push(transactionPtr);
+  
     }
     return true;
 };
+
+
+bool Store::doTransactions(){
+    while(!this->transactionQueue.empty()){
+        Transaction *ptr;
+        ptr = this->transactionQueue.front();
+        ptr->doTransaction();
+        
+        this->transactionQueue.pop();
+    }
+    return true;
+    
+}
+bool Store::searchInventory(char movieGenre){
+    switch (movieGenre) {
+        case 'C':
+            
+            break;
+        case 'F':
+            break;
+        case 'D':
+            
+            break;
+        default:
+            break;
+    }
+    return true;
+}
 
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -237,9 +272,6 @@ bool Store::readTransactions(ifstream& infile){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-bool Store::doTransactions(){
-    return true;
-}
 
 
 /*

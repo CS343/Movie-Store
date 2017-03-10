@@ -1,32 +1,18 @@
 //
-//  borrow.cpp
+//  return.cpp
 //  movie Store
 //
 //  Created by Danny Ly on 3/9/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include "borrow.h"
 
-
-
-bool Borrow::doTransaction() {
-    std::ostringstream ss;
-    
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    ss << "\nMovie Title: " << this->getMovieTitle();
-    ss << "\nCustomer ID: " << this->getCustomerID();
-    ss << "\nMedia Type: "  << this->getMediaType();
-    ss << "\nMovie Genre: " << this->getMovieGenre();
-    ss << "\nTransaction Amount: " << this->getTransactionAmount();
-    std::cout << ss.str() << std::endl;
-    return true;
-}
+#include "return.h"
 
 
 
 
-void Borrow::makeTransaction(std::string result, char transactionType){
+void Return::makeTransaction(std::string result, char transactionType){
     //std::cout << "making command" << std::endl;
     
     /*
@@ -46,7 +32,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
      std::cout <<  "SECOND HALF : " << ayoo2 << std::endl;
      //make the rest of the transaction
      std::vector<std::string> second_half = Helper_Functions::string_split(ayoo2, ',');
-
+     
      
      */
     
@@ -62,10 +48,8 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     std::vector<std::string> first_half_vector = Helper_Functions::string_split(first_half_string, ' ');
     std::string second_half_string = result.substr(10, result.length());
     
-
-    this->setCustomerID(first_half_vector[0]);
     
-    //std::cout<<"CUT AND SEW" << first_half_vector[0] << "CUT AND SEW"<< std::endl;
+    this->setCustomerID(first_half_vector[0]);
     this->setMovieGenre(first_half_vector[2][0]);
     this->setMediaType(first_half_vector[1][0]);
     this->setTransactionType(transactionType);
@@ -78,7 +62,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
             std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,',');
             this->setMovieTitle(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
-            //std::cout << "funny Movie" << std::endl;
+           // std::cout << "funny Movie" << std::endl;
             break;
         }
         case 'D':
@@ -96,7 +80,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
         case 'C':
         {
             std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,' ');
-             //classics re split by white space with month, year, firstname, lastname
+            //classics re split by white space with month, year, firstname, lastname
             this->setMovieReleasedMonth(second_half_vector[0][0]);
             this->setMovieYear(second_half_vector[1]);
             this->setFirstName(second_half_vector[2]);
@@ -107,5 +91,20 @@ void Borrow::makeTransaction(std::string result, char transactionType){
         default:
             break;
     }
-
+    
 };
+bool Return::doTransaction() {
+    
+    //query the movie database by looking at this movie title,
+    //then increment the quntity of the stores amount by 1
+    std::ostringstream ss;
+ 
+    ss << "\nTransaction Type: " << this->getTransactionType();
+    ss << "\nMovie Title: " << this->getMovieTitle();
+    ss << "\nCustomer ID: " << this->getCustomerID();
+    ss << "\nMedia Type: "  << this->getMediaType();
+    ss << "\nMovie Genre: " << this->getMovieGenre();
+    ss << "\nTransaction Amount: " << this->getTransactionAmount();
+    std::cout << ss.str() << std::endl;
+    return true;
+}

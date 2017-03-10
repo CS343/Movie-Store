@@ -47,6 +47,7 @@ Movie::Movie(){
  */
 Movie::~Movie(){}
 
+
 int Movie::getYear() const{
     return this->year;
 }

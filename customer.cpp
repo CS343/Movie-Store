@@ -63,7 +63,7 @@ Customer::Customer(string id, string firstName, string lastName){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-void Customer::setCustomerID(string customerID){
+void Customer::setCustomerID(std::string customerID){
     this->customerID = customerID;
 }
 /*
