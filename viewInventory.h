@@ -5,15 +5,17 @@ transaction to view the inventory of the store.
 
 #include "transaction.h"
 
-#ifndef TRANSACTION_H
-#define TRANSACTION_H
-class ViewInventory : Transaction {
+#ifndef VIEWHISTORY_H
+#define VIEWHISTORY_H
+class ViewInventory : public Transaction {
 
 
 public:
 
     //perform the transaction
 	bool doTransaction();
+    
+    void makeTransaction();
 };
 
-#endif /*   VIEWTRANSACTION_H   */
+#endif /*   VIEWHISTORY_H   */

@@ -13,3 +13,8 @@
 Borrow::~Borrow(){
     
 }
+
+
+void Borrow::makeTransaction(){
+    std::cout << "hello" << std::endl;
+}

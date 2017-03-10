@@ -28,7 +28,7 @@ public:
     //setters
     
     void setCustomerID(std::string);
-    //std::string print() const;
+  
     void setMovieTitle(std::string movieTitle);
     
     void setTransactionAmount(int);
@@ -38,8 +38,13 @@ public:
 
     void setMediaType(char);
     
+    void setMovieGenre(char);
+    
+    void setYear(int year);
     
     //getters
+    char getMovieGenre() const;
+    
     std::string getMovieTitle() const;
 
     std::string getCustomerID() const;
@@ -50,12 +55,13 @@ public:
 	
     char getMediaType() const;
 
-	int getYear();
+	int getYear() const;
 
-	void setYear(int year);
-
+    
+    //methods
 	bool doTransaction();
     
+    virtual void makeTransaction();
     void print() const;
     
 private:
@@ -71,12 +77,12 @@ private:
     
     // Indicates the type of transaction - Borrow, Return, or Inventory
     char transactionType;
-
     
-    // The year the movie was released
+    //movie Type AKA movie Genre
+    char movieGenre;
+    
+
     int year;
 
-    // the name of a major in the movie
-    std::string actor;
 };
 #endif /* TRANSACTION_H */

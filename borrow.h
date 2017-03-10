@@ -16,6 +16,8 @@ public:
 
   //perform the transaction
     ~Borrow();
+    
+    void makeTransaction();
 	bool doTransaction();
 private:
     int borrow_amount;

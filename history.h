@@ -3,7 +3,7 @@ This class extends the transaction class, and is specifically a
 transaction to display the history of transactions of the store.
 */
 
-class History : Transaction {
+class History : public Transaction {
 
 
 public:
@@ -35,4 +35,6 @@ public:
     
     //perform the transaction
 	bool doTransaction();
+    
+    void makeTransaction();
 };
