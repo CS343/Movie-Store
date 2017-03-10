@@ -235,6 +235,7 @@ bool Store::doTransactions(){
         Transaction *ptr;
         ptr = this->transactionQueue.front();
         ptr->doTransaction();
+        //ptr->doTransaction(&customerHashTable, &_classicStorage, &_comedyStorage, &_dramaStorage);
         
         this->transactionQueue.pop();
     }

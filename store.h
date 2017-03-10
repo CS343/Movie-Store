@@ -28,7 +28,7 @@ in are performed via doTransactions.
 #include "transaction.h"
 class Store {
 
-
+    friend class Transaction;
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
