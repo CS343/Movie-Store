@@ -3,6 +3,11 @@ This class is a factory for creating transactions. Since transactions
 are an action, this is a proper use of the factory design pattern.
 */
 
+#include "transaction.h"
+#include "borrow.h"
+#include "history.h"
+#include "return.h"
+#include "viewinventory.h"
 class TransactionFactory {
 
 private:
@@ -11,6 +16,7 @@ private:
 	char transactionType;
 
 public:
+    static Transaction makeTransaction(std::ifstream &input, char command);
 	// transactionType setter and getter
 	char getTransactionType();
 	

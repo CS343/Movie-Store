@@ -207,7 +207,9 @@ bool Store::readTransactions(ifstream& infile){
             continue;
         }
         
-        //
+        //error data checked, now populate the objects
+        
+        
         getline(infile,result);
         
         std::cout  << "GOOD results:" << command << result << endl;

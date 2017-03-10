@@ -10,6 +10,11 @@ stored in the Store class' "transactions" queue.
 
 The Borrow, Return, and ViewInventory class all extend this class
 */
+
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
+
+
 class Transaction {
 
     
@@ -75,3 +80,4 @@ public:
 
 	bool doTransaction();
 };
+#endif /* TRANSACTION_H */
