@@ -55,7 +55,7 @@ int main() {
     store.readCustomers(customerFile);
     store.readMovies(movieFile);
     
-    store.showMovies();
+    //store.showMovies();
     store.readTransactions(transactionFile);
     
     //perform all operations

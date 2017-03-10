@@ -56,7 +56,7 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
 }
 
 
-void Store::showMovies() {
+void Store::showInventory() const {
     std::cout << std::endl;
     std::cout << "Classic Inventory" << std::endl;
     std::cout << this->_classicStorage << std::endl;
@@ -190,13 +190,29 @@ bool Store::readCustomers(ifstream& infile){
  */
 bool Store::readTransactions(ifstream& infile){
     string result;
-    while(getline(infile,result)){
-        if(result.at(0) != 'B' && result.at(0) != 'R' && result.at(0) != 'I' && result.at(0) != 'H'){
-            cout << "ERROR: (Recieved bad data) " << result << endl;
+    
+    // get char 'command' throw char to transaction Factory
+    //the factory reads teh given char
+    //makes a query to getLine, to get tht one specific line
+    //the factory also takes an output stream,
+    //deending on the command, makes the approperiate Transactions Subclass object
+    //returns the subclass HERE, and we enqueue that result.
+    char command;
+    for(;;){
+        infile >> command;//take the char in the beginning of the line
+                            //check wether the valid commands are polled
+        if(command != 'B' && command != 'R' && command!= 'I' && command !='H'){
+            getline(infile, result); // throw away line
+            cout << "ERROR: (Recieved bad data) " << command << " "<<result << endl;
             continue;
         }
-        vector<string> split_movie_array = string_split(result, ',');
-    
+        
+        //
+        getline(infile,result);
+        
+        std::cout  << "GOOD results:" << command << result << endl;
+        
+        if (infile.eof()) break;
     }
     return true;
 };

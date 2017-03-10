@@ -12,10 +12,11 @@ The Borrow, Return, and ViewInventory class all extend this class
 */
 class Transaction {
 
+    
 private:
 
     // Contains the title of the movie 
-	string movieTitle;
+    std::string movieTitle;
 	
 	// Indicates, by a user's ID, which Customer completes this transaction
 	int userID;
@@ -34,14 +35,15 @@ private:
 	int amount;
 	
 	// the name of a major in the movie
-	string actor;
+    std::string actor;
 
 public:
 
     // returns the title of the movie
-	string getMovieTitle();
+    std::string getMovieTitle();
 
-	void setMovieTitle(string movieTitle);
+    //std::string print() const;
+    void setMovieTitle(std::string movieTitle);
 
 	int getUserID();
 
@@ -67,9 +69,9 @@ public:
 
 	void setAmount(int amount);
 
-	string getActor();
+    std::string getActor();
 
-	void setActor(string actor);
+    void setActor(std::string actor);
 
 	bool doTransaction();
 };

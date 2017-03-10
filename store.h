@@ -24,7 +24,7 @@ in are performed via doTransactions.
 #include <stdlib.h>
 #include "helper_functions.h"
 #include "moviefactory.h"
-
+#include "transactionfactory.h"
 class Store {
 
 
@@ -35,12 +35,6 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
 	Store();
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void showMovies();
     
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -70,8 +64,15 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //carry out all the transactions in the transactions queue
 	bool doTransactions();
-    
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    void showInventory() const;
 private:
+    
+    std::queue<Transaction> transactionQueue;
     
     std::vector<std::string> string_split(std::string, const char);
     //queue of all transactions to perform
@@ -84,6 +85,7 @@ private:
     BinTree _classicStorage;
     BinTree _comedyStorage;
     BinTree _dramaStorage;
+    
 };
 
 #endif /*    STORE_H   */

@@ -11,7 +11,8 @@ customer and creates an Customer object for each customer.
 #define CUSTOMER_H 
 #include <iostream>
 #include <string>
-
+#include <queue>
+#include "transaction.h"
 using namespace std;
 
 class Customer {
@@ -22,6 +23,8 @@ private:
 	string customerID;
 	string firstName;
     string lastName;
+    
+    std::queue<Transaction> history;
 
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -69,6 +72,8 @@ public:
     // sets the name of the customer according to the value of the parameter.
 	void setCustomerFirstName(string name);
     void setCustomerLastName(string name);
+    
+    void printHistory() const;
 	
 };
 

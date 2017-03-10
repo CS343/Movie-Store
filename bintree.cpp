@@ -876,8 +876,16 @@ int BinTree::getHeightHelper(Node *target) const{
 std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 	//needs fixing i do not use ht ouput stream at all NOT sure how it works..
 	//right now the helper is printing straight to the console using cout.
-	rhs.outputHelper(output, rhs.root);
-	output << std::endl;
+
+	//output << std::endl;
+    std::string format =
+    "|--------------------------------------------------|\n";
+    format+="|INVENTORY                                         |\n";
+    format+="|--------------------------------------------------|\n";
+    
+    output << format;
+    
+    rhs.outputHelper(output, rhs.root);
 	return output;
 }
 /*
@@ -899,7 +907,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		output << *current->data  << "  ,  ";
+		output << *current->data  << "  \n";
 		outputHelper(output,current->right);
 	}
 	return output;

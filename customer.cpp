@@ -176,3 +176,19 @@ ostream& operator<<(ostream& output, const Customer customerObj){
     output << customerObj.customerID << "\t" << customerObj.firstName << "\t" << customerObj.lastName;
     return output;
 }
+
+void Customer::printHistory() const{
+    std::string format =
+    "|--------------------------------------------------|\n";
+    format+="|INVENTORY                                         |\n";
+    format+="|--------------------------------------------------|\n";
+    
+    cout << format << endl;
+    /*
+    while(!(this->history.empty())){
+        //output the transaction print function string returned
+        //cout << this->history.front().print() << endl;
+    
+    }
+     */
+}
