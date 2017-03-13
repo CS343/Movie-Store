@@ -6,8 +6,8 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef classic_hpp
-#define classic_hpp
+#ifndef CLASSIC_H
+#define CLASSIC_H
 
 #include <stdio.h>
 
@@ -95,6 +95,8 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     std::string getMajorActor() const;
     
+ 
+    void setMajorActor(std::string firstName, std::string lastName);
     
     
     void makeMovie(std::vector<std::string>);
@@ -105,4 +107,4 @@ private:
     int release_month;
     
 };
-#endif /* classic_hpp */
+#endif /* CLASSIC_H */

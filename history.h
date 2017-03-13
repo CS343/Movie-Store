@@ -21,8 +21,9 @@ public:
     
     //perform the transaction
 	bool doTransaction();
-    
+    bool doTransaction(BinTree &, BinTree &, BinTree &, HashTable &);
+
     void makeTransaction(std::string, char);
 };
 
-#endif /*  HISTORY_H */
+#endif /* HISTORY_H */

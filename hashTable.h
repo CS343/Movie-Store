@@ -1,17 +1,29 @@
-/*---------- Class Description -----------
-This class represents a hash table of the customers that the store has on
-record. The hashtable is implemented using an array of linked lists -- i.e.
-an open hashtable.
-*/
-#ifndef HASHTABLE_h
-#define HASHTABLE_h
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
 
+#include <stdio.h>
 #include "customer.h"
-
 
 class HashTable {
 
 public:
+    
+    Customer *customer;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -31,6 +43,8 @@ public:
             this->key = key;
             this->value = value;
         }
+        
+        
     };
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:

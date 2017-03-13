@@ -11,6 +11,13 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
+
+/*
+ 
+ Notes to refactor, check for similar types in transaction and movie gettes
+ and method names
+ 
+ */
 #include "store.h"
 
 using namespace std;
@@ -243,6 +250,7 @@ bool Store::doTransactions(){
     return true;
     
 }
+/*
 bool Store::searchInventory(char movieGenre){
     switch (movieGenre) {
         case 'C':
@@ -258,7 +266,7 @@ bool Store::searchInventory(char movieGenre){
     }
     return true;
 }
-
+*/
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:

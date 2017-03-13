@@ -8,6 +8,29 @@
 
 #include "history.h"
 
+bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    //borrowing, 1 each time
+    
+    //Make this into a class that is inherited, into anothe rlayer //repeated code
+    
+    
+    Customer *returnCustomer;
+    
+    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    if(returnCustomer == nullptr){
+        //first retrieve the customer
+        //we are to check the ttrancsation type and make stock changes
+        std::cout << "customer does not exist" << std::endl;
+        return false;
+    }else{
+        
+        returnCustomer->displayHistory();
+   
+        return true;
+    }
+    
+    
+};
 
 
 void History::makeTransaction(std::string result, char transactionType){

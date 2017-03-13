@@ -429,10 +429,12 @@ bool BinTree::operator!=(const BinTree &rhs) const{
  |=============================================================================|
  */
 
-bool BinTree::retrieve(const Movie &target, Movie *&pointerToResult)
+
+
+bool BinTree::retrieveMovie(const Movie &target, Movie *&pointerToResult)
  const{
     //redirect to facade method.
-    return retrieveHelper(target, pointerToResult, root);
+    return retrieveMovie(target, pointerToResult, root);
 }
 /*
  |================================< RETRIEVE HELPER >==========================|
@@ -456,7 +458,7 @@ bool BinTree::retrieve(const Movie &target, Movie *&pointerToResult)
  |      Movie was found,
  |=============================================================================|
  */
-bool BinTree::retrieveHelper(const Movie &target, Movie *&pointerToResult,
+bool BinTree::retrieveMovie(const Movie &target, Movie *&pointerToResult,
                              Node *current) const{
     if(current == nullptr){
         //base case
@@ -475,12 +477,12 @@ bool BinTree::retrieveHelper(const Movie &target, Movie *&pointerToResult,
 		// is
         //less than the current node.
     }else if(target < *current->data){
-        return retrieveHelper(target, pointerToResult, current->left);
+        return retrieveMovie(target, pointerToResult, current->left);
         
         //make a recursive call to the right of the current node, if the target
 		//is larger than the current node.
     }else{
-        return retrieveHelper(target, pointerToResult, current->right);
+        return retrieveMovie(target, pointerToResult, current->right);
     }
 }
 

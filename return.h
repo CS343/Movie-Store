@@ -10,14 +10,12 @@ transaction to return a movie to the store
 #include "transaction.h"
 class Return : public Transaction {
 
-
 public:
-
-
     //perform the transaction
 	bool doTransaction();
-    
+
     void makeTransaction(std::string, char);
+    bool doTransaction(BinTree &, BinTree &, BinTree &, HashTable &);
 };
 
-#endif /*  RETURN_H */
+#endif /* RETURN_H */

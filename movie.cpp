@@ -28,7 +28,8 @@ Movie::Movie(){
     title = "";
     director = "";
     year = 0000;
-    stock = 10;
+    max_stock = 10;
+    current_stock = 10;
 }
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -47,48 +48,64 @@ Movie::Movie(){
  */
 Movie::~Movie(){}
 
+bool Movie::removeStock(int amount){
+    if((current_stock - amount) < 0){
+        current_stock-=amount;
+        return true;
+    }else{
+        return false;
+    }
+};
+
+bool Movie::addStock(int amount){
+    if( (current_stock + amount) > max_stock){
+        current_stock+=amount;
+        return true;
+    }else{
+        return false;
+    }
+};
 
 int Movie::getYear() const{
     return this->year;
-}
+};
 void Movie::setYear(int year){
     this->year = year;
-}
-string Movie::getDirector() const{
+};
+std::string Movie::getDirector() const{
     return this->director;
-}
-void Movie::setDirector(string director){
+};
+void Movie::setDirector(std::string director){
     this->director = director;
-}
-string Movie::getTitle() const{
+};
+std::string Movie::getTitle() const{
     return this->title;
-}
-void Movie::setTitle(string title){
-    this->title = title;
-}
+};
+void Movie::setTitle(std::string title){
+     this->title = title;
+};
 
 int Movie::getStock() const{
-    return this->stock;
-}
+    return this->current_stock;
+};
+
 void Movie::setStock(int stock){
-    this->stock = stock;
-}
-void Movie::addStock(int amount){
-    this->stock += amount;
-}
+    this->max_stock = stock;
+    this->current_stock = stock;
+};
+
 std::string Movie::getMajorActor() const{
     return "";
-}
+};
 int Movie::getReleaseMonth() const{
     return 0;
-}
+};
 
 
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){
    // rhs.print();
-    //output <<"HELLO FRIOM MOVIE";
     rhs.print(output);
     return output;
-}
+};
 

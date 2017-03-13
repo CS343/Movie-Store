@@ -9,22 +9,16 @@ customer and creates an Customer object for each customer.
 */
 #ifndef CUSTOMER_H
 #define CUSTOMER_H 
+
 #include <iostream>
-#include <string>
-#include <queue>
+#include <stdio.h>
 #include "transaction.h"
-using namespace std;
+#include <vector>
+
 
 class Customer {
 
-    friend ostream& operator<<(ostream& output, const Customer customerObj);
-    
-private:
-	string customerID;
-	string firstName;
-    string lastName;
-    
-    std::queue<Transaction*> history;
+    friend std::ostream& operator<<(std::ostream& output, const Customer customerObj);
 
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -38,7 +32,7 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    Customer(string, string, string);
+    Customer(std::string, std::string, std::string);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -46,7 +40,7 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     // returns the customerID - used to find a customer in the hash table
     //this is a unique ID assumed
-	string getCustomerID() const;
+    std::string getCustomerID() const;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -54,26 +48,41 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     // passes in a parameter and sets the customerID field according to the
     // value of the parameter
-	void setCustomerID(string customerID);
+    void setCustomerID(std::string customerID);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
+    void addTransaction(Transaction *);
+    
     // returns the name of the customer
-	string getCustomerFirstName() const;
+    std::string getCustomerFirstName() const;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    string getCustomerLastName() const;
+    std::string getCustomerLastName() const;
 
     // sets the name of the customer according to the value of the parameter.
-	void setCustomerFirstName(string name);
-    void setCustomerLastName(string name);
+    void setCustomerFirstName(std::string name);
+    void setCustomerLastName(std::string name);
     
-    void printHistory() const;
+ 
+    
+    void displayHistory() const;
+    
+ 
+    
+private:
+    std::string customerID;
+    std::string firstName;
+    std::string lastName;
+    
+    std::vector<Transaction *> history;
+
 	
 };
 

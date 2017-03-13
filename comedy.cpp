@@ -11,10 +11,7 @@
  */
 #include "comedy.h"
 
-Comedy::Comedy(){
-    
-    //std::cout << "comedy constr called" << std::endl;
-}
+Comedy::Comedy(){};
 
 bool Comedy::operator<(const Movie &rhs) const{
     //std::cout << "< called from COmedy" << std::endl;
@@ -49,7 +46,7 @@ bool Comedy::operator>(const Movie &rhs) const{
 
 
 bool Comedy::operator==(const Movie &rhs) const{
-    return (this->getTitle() == rhs.getTitle()) && (this->getYear() == rhs.getYear()) && ( this->getDirector() == rhs.getDirector() );
+    return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() == rhs.getYear()) );
 };
 
 bool Comedy::operator!=(const Movie &rhs) const{
@@ -69,12 +66,12 @@ void Comedy::makeMovie(std::vector<std::string> array){
     this->setTitle(array[3]);
     this->setStock(stock);
     
-}
+};
 
 //output operator work around, flow transition.
 void Comedy::print(std::ostream& output) const{
     output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
     //output <<"Year: " << "   " << getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
     
-}
+};
 

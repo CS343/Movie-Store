@@ -39,16 +39,20 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
         }
             
         case 'R':
+        {
             transactionPtr = new Return();
             break;
-            
+        }
         case 'H':
+        {
             transactionPtr = new History();
             break;
+        }
         case 'I':
+        {
             transactionPtr = new ViewInventory();
             break;
-            
+        }
         default:
             break;
     }
@@ -61,5 +65,5 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
     
     //return NULL;
     
-}
+};
 

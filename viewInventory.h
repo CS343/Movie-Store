@@ -22,4 +22,4 @@ public:
     void makeTransaction(std::string result, char command);
 };
 
-#endif /*   VIEWHISTORY_H   */
+#endif /* VIEWHISTORY_H */

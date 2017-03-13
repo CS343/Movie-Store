@@ -22,11 +22,12 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include <sstream>
 #include "hashTable.h"
 #include "bintree.h"
+
 #include "helper_functions.h"
 
-#include "borrow.h"
-#include "return.h"
-#include "history.h"
+#include "drama.h"
+#include "comedy.h"
+#include "classic.h"
 class Transaction {
 
 public:
@@ -53,12 +54,15 @@ public:
     
     void setMovieYear(std::string year);
     
-    void setMovieReleasedMonth(char);
+    void setMovieReleasedMonth(std::string);
     
     void setFirstName(std::string);
     void setLastName(std::string);
+    
+    void setActorName(std::string);
     //getters
     
+    std::string getActorName() const;
     char getMovieGenre() const;
     
     std::string getMovieTitle() const;
@@ -71,22 +75,23 @@ public:
 	
     char getMediaType() const;
 
-    std::string getMovieYear() const;
+    int getMovieYear() const;
     
     std::string getMovieDirector() const;
     
-    char getMovieReleasedMonth() const;
+    int getMovieReleasedMonth() const;
     std::string getFirstName() const;
     std::string getLastName() const;
     //methods
-    
-    virtual bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
+    virtual bool doTransaction();
+    //virtual bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
     virtual void makeTransaction(std::string, char);
     virtual void print() const;
     
 private:
     
     std::string movieDirector;
+    
     std::string movieTitle;
     
     std::string customerID;
@@ -101,12 +106,14 @@ private:
     //movie Type AKA movie Genre
     char movieGenre;
     
-    char movieReleasedMonth;
+    int movieReleasedMonth;
 
-    std::string movieYear;
+    int movieYear;
 
     std::string firstName;
     
     std::string lastName;
+    
+    std::string actorName;
 };
 #endif /* TRANSACTION_H */

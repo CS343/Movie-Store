@@ -10,6 +10,79 @@
 #include "return.h"
 
 
+bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    //borrowing, 1 each time
+    
+    //Make this into a class that is inherited, into anothe rlayer //repeated code
+    
+    
+    Customer *returnCustomer = nullptr;
+    
+    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    if(returnCustomer == nullptr){
+        //first retrieve the customer
+        //we are to check the ttrancsation type and make stock changes
+        std::cout << "customer does not exist" << std::endl;
+        return false;
+    }else{
+        switch (this->getTransactionType()) {
+                
+                Movie *moviePtr;
+            case 'D':
+            {
+                Drama temp_movie;
+                temp_movie.setDirector(this->getMovieDirector());
+                temp_movie.setTitle(this->getMovieDirector());
+                if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
+                    std::cout << "Item is not in the drama database " << std::endl;
+                    
+                }else{
+                    moviePtr->addStock();
+                }
+                break;
+                
+            }
+            case 'C':
+            {
+                Classic temp_movie;
+                temp_movie.setReleaseMonth(this->getMovieReleasedMonth());
+                temp_movie.setYear(this->getMovieYear());
+                temp_movie.setMajorActor(this->getFirstName(), this->getLastName());
+                
+                if(!(classicDB.retrieveMovie(temp_movie, moviePtr))){
+                    std::cout << "Item is not in the Classic database " << std::endl;
+                    
+                }else{
+                    moviePtr->addStock();
+                }
+                break;
+                
+            }
+            case 'F':
+            {
+                Drama temp_movie;
+                temp_movie.setTitle(this->getMovieTitle());
+                temp_movie.setYear(this->getMovieYear());
+                if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
+                    std::cout << "Item is not in the Comedy  database " << std::endl;
+                    
+                }else{
+                    moviePtr->addStock();
+                }
+                break;
+                
+            }
+            default:
+                break;
+        }
+        
+        returnCustomer->addTransaction(this);
+        
+        return true;
+    }
+    
+    
+};
 
 
 void Return::makeTransaction(std::string result, char transactionType){
@@ -81,7 +154,7 @@ void Return::makeTransaction(std::string result, char transactionType){
         {
             std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,' ');
             //classics re split by white space with month, year, firstname, lastname
-            this->setMovieReleasedMonth(second_half_vector[0][0]);
+            this->setMovieReleasedMonth(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
             this->setFirstName(second_half_vector[2]);
             this->setLastName(second_half_vector[3]);
@@ -107,4 +180,4 @@ bool Return::doTransaction() {
     ss << "\nTransaction Amount: " << this->getTransactionAmount();
     std::cout << ss.str() << std::endl;
     return true;
-}
+};

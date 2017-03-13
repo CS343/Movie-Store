@@ -1,3 +1,6 @@
+
+#ifndef STORE_H
+#define STORE_H
 /*---------- Class Description -----------
 This class represents the store itself. It has a Queue of the transactions,
 just like a movie store would have receipts for everything that was
@@ -11,8 +14,6 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
-#ifndef STORE_H
-#define STORE_H
 
 #include <queue>
 #include "hashtable.h"
@@ -91,4 +92,4 @@ private:
     
 };
 
-#endif /*    STORE_H   */
+#endif /* STORE_H */

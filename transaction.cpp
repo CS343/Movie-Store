@@ -15,7 +15,9 @@ Transaction::Transaction(){
 
 
 //getters
-
+std::string Transaction::getActorName() const{
+    return this->actorName;
+}
 std::string Transaction::getMovieTitle() const{
     return this->movieTitle;
 }
@@ -39,7 +41,7 @@ char Transaction::getMovieGenre() const{
     return this->movieGenre;
 }
 
-std::string Transaction::getMovieYear() const{
+int Transaction::getMovieYear() const{
     return this->movieYear;
 }
 
@@ -47,7 +49,7 @@ std::string Transaction::getMovieDirector() const{
     return this->movieDirector;
 }
 
-char Transaction::getMovieReleasedMonth() const{
+int Transaction::getMovieReleasedMonth() const{
     return this->movieReleasedMonth;
 }
 
@@ -60,14 +62,18 @@ std::string Transaction::getLastName() const{
 
 //setters
 
+void Transaction::setActorName(std::string actorName){
+    this->actorName = actorName;
+}
 void Transaction::setFirstName(std::string first){
     this->firstName = first;
 }
 void Transaction::setLastName(std::string last){
     this->lastName = last;
 }
-void Transaction::setMovieReleasedMonth(char month){
-    this->movieReleasedMonth = month;
+void Transaction::setMovieReleasedMonth(std::string month){
+    int value  = std::atoi(month.c_str());
+    this->movieReleasedMonth = value;
 }
 void Transaction::setMovieDirector(std::string director){
     this->movieDirector = director;
@@ -93,7 +99,9 @@ void Transaction::setMovieGenre(char genre) {
 }
 
 void Transaction::setMovieYear(std::string year){
-    this->movieYear = year;
+    
+    int value = std::atoi(year.c_str());
+    this->movieYear = value;
 }
 
 
@@ -107,14 +115,17 @@ void Transaction::makeTransaction(std::string result, char transactionType){
     
     std::cout << "studpid called" << std::endl;
 }
+
+/*
 bool Transaction::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
     
 }
-/*
+*/
+
 bool Transaction::doTransaction(){
     return true;
 }
-*/
+
 
 //print
 void Transaction::print() const{

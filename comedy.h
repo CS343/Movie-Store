@@ -6,8 +6,9 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef comedy_hpp
-#define comedy_hpp
+#ifndef COMEDY_H
+#define COMEDY_H
+
 #include "movie.h"
 #include <stdio.h>
 #include <iomanip>
@@ -45,4 +46,4 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     void makeMovie(std::vector<std::string>);
 };
-#endif /* comedy_hpp */
+#endif /* COMEDY_H */

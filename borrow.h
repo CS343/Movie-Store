@@ -15,7 +15,7 @@ class Borrow : public Transaction {
 public:
     Borrow(){};
 
-    
+    bool doTransaction();
     void makeTransaction(std::string, char transactionType);
     bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
 
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif /*   BORROW_H    */
+#endif /* BORROW_H */

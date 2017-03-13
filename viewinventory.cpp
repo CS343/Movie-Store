@@ -11,7 +11,11 @@
 
 
 bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    std::cout << classicDB << std::endl;
     
+    std::cout << comedyDB << std::endl;
+    std::cout << dramaDB << std::endl;
+    return true;
 }
 
 void ViewInventory::makeTransaction(std::string result, char transactionType){
