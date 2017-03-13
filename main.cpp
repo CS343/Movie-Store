@@ -14,10 +14,14 @@
 #include <string>
 #include <vector>
 
+
+#include "movie.h"
+#include "drama.h"
+#include "classic.h"
 //testing Movie
 //#include "comedy.h"
 //#include "bintree.h"
-#//include "moviefactory.h"
+//#include "moviefactory.h"
 //end test movie
 
 /*  Testing    */
@@ -68,6 +72,20 @@ int main() {
     movieFile.close();
     transactionFile.close();
     
+    
+    
+    Drama drama1, drama2;
+    
+    drama1.setDirector("Danny");
+    drama1.setTitle("gay men");
+    
+    drama2.setDirector("Kevin");
+    drama2.setTitle("gay men");
+    
+    std::cout << (drama1 == drama2 ? "same" : "not the same") << std::endl;
+    
+    
+
     // end of the main function
     
     /*      TESTING MOVIE       */
