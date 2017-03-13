@@ -231,6 +231,7 @@ bool Store::readTransactions(ifstream& infile){
 
 
 bool Store::doTransactions(){
+    //HYE BARDIA
     while(!this->transactionQueue.empty()){
         Transaction *ptr;
         ptr = this->transactionQueue.front();
