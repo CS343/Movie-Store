@@ -14,11 +14,11 @@ simply has the core attributes of any given movie.
 #include <fstream>
 #include <iomanip>
 #include <vector>
-using namespace std;
+
 
 class Movie {
    
-     friend ostream& operator<<(ostream &output, const Movie &movie);
+    friend std::ostream& operator<<(std::ostream &output, const Movie &movie);
 public:
     
     
@@ -78,7 +78,7 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    virtual void print(ostream &)const = 0;
+    virtual void print(std::ostream &)const = 0;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -114,14 +114,14 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the title of the movie
-	string getTitle() const;
+    std::string getTitle() const;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the title of the movie
-	void setTitle(string title);
+    void setTitle(std::string title);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -142,20 +142,20 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //getter for the director of the movie
-	string getDirector() const;
+    std::string getDirector() const;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the director of the movie
-	void setDirector(string director);
+    void setDirector(std::string director);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void addStock(int);
+
     
     
     //virtual std:;string getReleaseMonth() const;
@@ -164,14 +164,19 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    virtual int getReleaseMonth()const ;
+    virtual int getReleaseMonth() const ;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     virtual std::string getMajorActor() const;
-     
+    
+    
+    bool removeStock(int=1);
+    
+    bool addStock(int=1);
+    
 private:
     //year that the movie released
     int year;
@@ -180,8 +185,9 @@ private:
     std::string title, director;
     
     //physical copies of the movie in stock
-    int stock;
+    int current_stock;
     
+    int max_stock;
     //director of the movie
     
     

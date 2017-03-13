@@ -11,6 +11,13 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
+
+/*
+ 
+ Notes to refactor, check for similar types in transaction and movie gettes
+ and method names
+ 
+ */
 #include "store.h"
 
 using namespace std;
@@ -56,7 +63,7 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
 }
 
 
-void Store::showMovies() {
+void Store::showInventory() const {
     std::cout << std::endl;
     std::cout << "Classic Inventory" << std::endl;
     std::cout << this->_classicStorage << std::endl;
@@ -130,11 +137,14 @@ bool Store::readMovies(ifstream& infile){
                 break;
         }
         if (!success){
-            cout << "deleteing: " << *moviePtr << endl;
+            
+            //cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
-        }else{
+        }
+        /*else{
             std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
+         */
     }
     return true;
 }
@@ -165,10 +175,12 @@ bool Store::readCustomers(ifstream& infile){
         //grab the customer data from file
         infile >> id >> firstName >> lastName;
         //create the customer object given the data;
-        Customer* customerObj = new Customer(id, firstName, lastName);
+        Customer *customerObj = new Customer(id, firstName, lastName);
         
         //insert the customer into the store object, and customer hashmap
-        customerHashTable.insert(customerObj->getCustomerID(), customerObj);
+        
+        //customerHashTable.insert(customerObj->getCustomerID(), customerObj);
+        customerStorage.put(std::atoi(customerObj->getCustomerID().c_str()), customerObj);
     }
     return true;
 }
@@ -190,17 +202,100 @@ bool Store::readCustomers(ifstream& infile){
  */
 bool Store::readTransactions(ifstream& infile){
     string result;
-    while(getline(infile,result)){
-        if(result.at(0) != 'B' && result.at(0) != 'R' && result.at(0) != 'I' && result.at(0) != 'H'){
-            cout << "ERROR: (Recieved bad data) " << result << endl;
+    
+    // get char 'command' throw char to transaction Factory
+    //the factory reads teh given char
+    //makes a query to getLine, to get tht one specific line
+    //the factory also takes an output stream,
+    //deending on the command, makes the approperiate Transactions Subclass object
+    //returns the subclass HERE, and we enqueue that result.
+    char command;
+    for(;;){
+        infile >> command;//take the char in the beginning of the line
+        if (infile.eof()){ break;}
+                            //check wether the valid commands are polled
+        if(command != 'B' && command != 'R' && command!= 'I' && command !='H'){
+            getline(infile, result); // throw away line
+            cout << "ERROR: (Recieved bad data) " << command << " "<<result << endl;
             continue;
         }
-        vector<string> split_movie_array = string_split(result, ',');
+        
+        //error data checked, now populate the objects
+        
+        Transaction *transactionPtr;
+        transactionPtr  = TransactionFactory::makeTransaction(infile, command);
+        Customer *temp = nullptr;
+        
+        temp = this->customerStorage.get(std::atoi(transactionPtr->getCustomerID().c_str()));
+        if(temp == nullptr){
+            std::cout << "Customer ID does not exist@NEW :" << transactionPtr->getCustomerID()<< std::endl;
+        }
+        /*
+        if(!(this->customerHashTable.retrieveCustomer(transactionPtr->getCustomerID(), temp))){
+            
+            std::cout << "Customer ID does not exist: " << transactionPtr->getCustomerID() << std::endl;
+        }
+        */
+        std::cout << std::endl;
+        //transactionPtr->doTransaction();
     
+        transactionQueue.push(transactionPtr);
+  
     }
     return true;
 };
 
+
+bool Store::doTransactions(){
+    //HYE BARDIA
+    while(!(this->transactionQueue.empty())){
+        Transaction *ptr;
+        ptr = this->transactionQueue.front();
+        //BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB
+        bool successful = ptr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
+        
+        //std::cout << (successful ? "poped a transaction" : "failed to pop")<< std::endl;
+        //ptr->print();
+        this->transactionQueue.pop();
+    }
+    return true;
+    
+}
+/*
+bool Store::searchInventory(char movieGenre){
+    switch (movieGenre) {
+        case 'C':
+            
+            break;
+        case 'F':
+            break;
+        case 'D':
+            
+            break;
+        default:
+            break;
+    }
+    return true;
+}
+ 
+*/
+
+/*
+ +==============================================================================-
+ ||
+ ||   Function_Description:
+ ||       -
+ ||   Preconditions:
+ ||       -
+ ||       -
+ ||   Postconditions:
+ ||      -
+ ||       -
+ ||
+ ||   Assumptions:
+ ||       -
+ +==============================================================================-
+ */
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -216,9 +311,6 @@ bool Store::readTransactions(ifstream& infile){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-bool Store::doTransactions(){
-    return true;
-}
 
 
 /*

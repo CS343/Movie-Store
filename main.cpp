@@ -13,18 +13,23 @@
 #include "movie.h"
 #include <string>
 #include <vector>
+
+
+#include "movie.h"
+#include "drama.h"
+#include "classic.h"
 //testing Movie
-#include "comedy.h"
-#include "bintree.h"
-#include "moviefactory.h"
+//#include "comedy.h"
+//#include "bintree.h"
+//#include "moviefactory.h"
 //end test movie
 
 /*  Testing    */
-#include "hashTable.h"
+//#include "hashTable.h"
 
 /*   testing  */
 
-#include "customer.h"
+//#include "customer.h"
 using namespace std;
 
 int main() {
@@ -53,19 +58,34 @@ int main() {
     //send them to the store object to be read into the appropriate data
     //structure
     store.readCustomers(customerFile);
+    
     store.readMovies(movieFile);
     
-    store.showMovies();
+    //store.showMovies();
     store.readTransactions(transactionFile);
     
     //perform all operations
-    //store.doTransactions();
+    store.doTransactions();
     
     //closes the ifstreams
     customerFile.close();
     movieFile.close();
     transactionFile.close();
     
+    
+    
+    Drama drama1, drama2;
+    
+    drama1.setDirector("Danny");
+    drama1.setTitle("gay men");
+    
+    drama2.setDirector("Kevin");
+    drama2.setTitle("gay men");
+    
+    std::cout << (drama1 == drama2 ? "same" : "not the same") << std::endl;
+    
+    
+
     // end of the main function
     
     /*      TESTING MOVIE       */
@@ -147,8 +167,8 @@ int main() {
     */
     /*      END TESET MOVIE     */
     
-    HashTable hashtable;
-    Customer *testPtr;
+    //HashTable hashtable;
+    //Customer *testPtr;
     
     
     /*  Testing CustomerClass   */

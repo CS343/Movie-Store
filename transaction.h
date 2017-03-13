@@ -1,3 +1,8 @@
+
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
+
+
 /*-------Class description------
 A Transaction object is created for all the transactions in the
 data4commands.txt file. Each line in the text file represents a transaction.
@@ -10,66 +15,107 @@ stored in the Store class' "transactions" queue.
 
 The Borrow, Return, and ViewInventory class all extend this class
 */
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "hashTable.h"
+#include "bintree.h"
+
+#include "helper_functions.h"
+
+#include "drama.h"
+#include "comedy.h"
+#include "classic.h"
+
+#include "openhashtable.hpp"
 class Transaction {
-
-private:
-
-    // Contains the title of the movie 
-	string movieTitle;
-	
-	// Indicates, by a user's ID, which Customer completes this transaction
-	int userID;
-	
-	// Indicates the type of transaction - Borrow, Return, or Inventory
-	char transactionType;
-	
-	char format;
-	
-	char genre;
-	
-	// The year the movie was released
-	int year;
-	
-	// The amount of copies the store owns for this movie
-	int amount;
-	
-	// the name of a major in the movie
-	string actor;
 
 public:
 
-    // returns the title of the movie
-	string getMovieTitle();
+    Transaction();
 
-	void setMovieTitle(string movieTitle);
+    virtual ~Transaction(){};
+    //setters
+    
+    void setCustomerID(std::string);
+  
+    void setMovieTitle(std::string movieTitle);
+    
+    
+    void setTransactionAmount(int);
+    
+    void setTransactionType(char transactionType);
 
-	int getUserID();
+    void setMediaType(char);
+    
+    void setMovieGenre(char);
+    
+    void setMovieDirector(std::string);
+    
+    void setMovieYear(std::string year);
+    
+    void setMovieReleasedMonth(std::string);
+    
+    void setFirstName(std::string);
+    void setLastName(std::string);
+    
+    void setActorName(std::string);
+    //getters
+    
+    std::string getActorName() const;
+    char getMovieGenre() const;
+    
+    std::string getMovieTitle() const;
 
-	void setUserID(int userID);
+    std::string getCustomerID() const;
+    
+	char getTransactionType() const;
 
-	char getTransactionType();
+    int getTransactionAmount() const;
+	
+    char getMediaType() const;
 
-	void setTransactionType(char transactionType);
+    int getMovieYear() const;
+    
+    std::string getMovieDirector() const;
+    
+    int getMovieReleasedMonth() const;
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    //methods
+ 
+    virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
+    virtual void makeTransaction(std::string, char);
+    virtual void print() const;
+    
+private:
+    
+    std::string movieDirector;
+    
+    std::string movieTitle;
+    
+    std::string customerID;
+    
+    int transactionAmount;
+    
+    char mediaType;//typically D
+    
+    // Indicates the type of transaction - Borrow, Return, or Inventory
+    char transactionType;
+    
+    //movie Type AKA movie Genre
+    char movieGenre;
+    
+    int movieReleasedMonth;
 
-	char getFormat();
+    int movieYear;
 
-	void setFormat(char format);
-
-	char getGenre();
-
-	void setGenre(char genre);
-
-	int getYear();
-
-	void setYear(int year);
-
-	int getAmount();
-
-	void setAmount(int amount);
-
-	string getActor();
-
-	void setActor(string actor);
-
-	bool doTransaction();
+    std::string firstName;
+    
+    std::string lastName;
+    
+    std::string actorName;
 };
+#endif /* TRANSACTION_H */

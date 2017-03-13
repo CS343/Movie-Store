@@ -8,10 +8,7 @@
 
 #include "drama.h"
 
-Drama::Drama(){
-    
-   // std::cout << "Drama constr called" << std::endl;
-}
+Drama::Drama(){};
 
 bool Drama::operator<(const Movie &rhs) const{
    // std::cout << "< called from Drama" << std::endl;
@@ -64,11 +61,11 @@ void Drama::makeMovie(std::vector<std::string> array){
     this->setTitle(array[3]);
     this->setStock(stock);
     
-}
+};
 
 //output operator work around, flow transition.
 void Drama::print(std::ostream& output) const{
         output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
     //output <<"Year: " << "   "<< getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
     
-}
+};

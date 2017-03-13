@@ -133,8 +133,9 @@ bool Classic::operator>(const Movie &rhs) const{
 
 
 bool Classic::operator==(const Movie &rhs) const{
+    //released date then major actor
    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && (this->getTitle() == rhs.getTitle());
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && ( this->getMajorActor() == rhs.getMajorActor() );
     
 };
 /*
@@ -221,6 +222,10 @@ std::string Classic::getMajorActor() const{
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
+void Classic::setMajorActor(std::string firstName, std::string lastName){
+    this->major_actor_firstName = firstName;
+    this->major_actor_lastName = lastName;
+}
 
 void Classic::makeMovie(std::vector<std::string> array){
     

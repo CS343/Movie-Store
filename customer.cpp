@@ -7,8 +7,6 @@
 //
 
 #include "customer.h"
-#include <stdio.h>
-
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -24,9 +22,52 @@
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-Customer::Customer(){
+
+void Customer::displayHistory() const {
+    std::string format =
+    "|--------------------------------------------------|\n";
+    format+="|INVENTORY                                         |\n";
+    format+="|--------------------------------------------------|\n";
     
-}
+    std::cout << format << std::endl;
+    for(int i = 0; i < history.size(); i++){
+        std::cout << history[i] << std::endl;
+    }
+};
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+void Customer::addTransaction(Transaction *transaction){
+    history.push_back(transaction);
+};
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+Customer::Customer(){};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -43,11 +84,11 @@ Customer::Customer(){
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
 
-Customer::Customer(string id, string firstName, string lastName){
+Customer::Customer(std::string id, std::string firstName, std::string lastName){
     setCustomerID(id);
     setCustomerFirstName(firstName);
     setCustomerLastName(lastName);
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -63,9 +104,9 @@ Customer::Customer(string id, string firstName, string lastName){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-void Customer::setCustomerID(string customerID){
+void Customer::setCustomerID(std::string customerID){
     this->customerID = customerID;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -81,9 +122,9 @@ void Customer::setCustomerID(string customerID){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-void Customer::setCustomerFirstName(string firstName){
+void Customer::setCustomerFirstName(std::string firstName){
     this->firstName = firstName;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -99,9 +140,9 @@ void Customer::setCustomerFirstName(string firstName){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-void Customer::setCustomerLastName(string lastName){
+void Customer::setCustomerLastName(std::string lastName){
     this->lastName = lastName;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -117,9 +158,9 @@ void Customer::setCustomerLastName(string lastName){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-string Customer::getCustomerID() const{
+std::string Customer::getCustomerID() const{
     return this->customerID;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -136,9 +177,9 @@ string Customer::getCustomerID() const{
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
 
-string Customer::getCustomerFirstName() const{
+std::string Customer::getCustomerFirstName() const{
     return this->firstName;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -154,9 +195,9 @@ string Customer::getCustomerFirstName() const{
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-string Customer::getCustomerLastName() const{
+std::string Customer::getCustomerLastName() const{
     return this->lastName;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -172,7 +213,9 @@ string Customer::getCustomerLastName() const{
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-ostream& operator<<(ostream& output, const Customer customerObj){
+std::ostream& operator<<(std::ostream& output, const Customer customerObj){
     output << customerObj.customerID << "\t" << customerObj.firstName << "\t" << customerObj.lastName;
     return output;
-}
+};
+
+

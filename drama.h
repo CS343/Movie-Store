@@ -6,8 +6,8 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef drama_hpp
-#define drama_hpp
+#ifndef DRAMA_H
+#define DRAMA_H
 
 #include <stdio.h>
 #include "movie.h"
@@ -43,4 +43,4 @@ public:
     
     void makeMovie(std::vector<std::string>);
 };
-#endif /* drama_hpp */
+#endif /* DRAMA_H */

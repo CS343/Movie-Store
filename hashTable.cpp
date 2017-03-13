@@ -4,10 +4,24 @@
 //
 //  Created by Danny Ly on 3/3/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
-//
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
 #include "hashTable.h"
-#include <stdlib.h>
-#include <stdio.h>
+
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -49,7 +63,7 @@ HashTable::HashTable(){
 int HashTable::_hashFunction(int key){
     
     return key % 128;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -76,7 +90,7 @@ void HashTable::insert(std::string key,  Customer *value){
         delete table[hash];
     }
     table[hash] = new HashEntry(key, value);
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -112,7 +126,7 @@ bool HashTable::retrieveCustomer(std::string customerID, Customer *&returnPtr){
         return true;
     }
     return false;
-}
+};
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -134,7 +148,7 @@ void HashTable::showAllItems() const{
             std::cout <<"["<<i<<"]" <<*table[i]->value << std::endl;
         }
     }
-}
+};
 
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -158,7 +172,7 @@ HashTable::~HashTable(){
         }
     }
     delete[] table;
-}
+};
 
 
 

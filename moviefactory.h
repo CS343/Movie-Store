@@ -6,29 +6,33 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef moviefactory_hpp
-#define moviefactory_hpp
+#ifndef MOVIE_FACTORY_H
+#define MOVIE_FACTORY_H
+
 #include "movie.h"
 #include <stdio.h>
+
 #include "comedy.h"
 #include "classic.h"
 #include "drama.h"
+
 class Movie_Factory{
 public:
     /*
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #   Function_Description:
-     #       -
-     #   Preconditions:
-     #       -
-     #       -
-     #   Postconditions:
-     #       -
-     #       -
-     #
-     #   Assumptions:
-     #       -
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     +==============================================================================-
+     ||
+     ||   Function_Description:
+     ||       -
+     ||   Preconditions:
+     ||       -
+     ||       -
+     ||   Postconditions:
+     ||      -
+     ||       -
+     ||
+     ||   Assumptions:
+     ||       -
+     +==============================================================================-
      */
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -37,4 +41,4 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     static Movie* make_movie(char choice);
 };
-#endif /* moviefactory_hpp */
+#endif /* MOVIE_FACTORY_H */

@@ -1,32 +1,18 @@
+#ifndef HISTORY_H
+#define HISTORY_H
+
 /*---------- Class Description -----------
 This class extends the transaction class, and is specifically a 
 transaction to display the history of transactions of the store.
 */
 
-class History : Transaction {
+#include "transaction.h"
+class History : public Transaction {
 
 
 public:
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    History(){};
+
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -34,5 +20,10 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     
     //perform the transaction
-	bool doTransaction();
+	//bool doTransaction();
+    bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
+
+    void makeTransaction(std::string, char);
 };
+
+#endif /* HISTORY_H */

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef helper_functions_hpp
-#define helper_functions_hpp
+#ifndef HELPER_FUNCTIONS_H
+#define HELPER_FUNCTIONS_H
 
 #include <stdio.h>
 #include <vector>
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif /* helper_functions_hpp */
+#endif /* HELPER_FUNCTIONS_H */

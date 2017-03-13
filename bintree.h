@@ -1,5 +1,5 @@
-#ifndef bintree_h
-#define bintree_h
+#ifndef BINTREE_H
+#define BINTREE_H
 //DANNY WAS HERE
 
 #include <iostream>
@@ -76,7 +76,11 @@ class BinTree {
 
 public:
     
+    //bool retrieveMovie(std::string targetAttribute, Movie*& returnPtr);
+    //bool retrieveMovie(std::string targetAttribute, Movie*&, Node *) const;
     
+    //bool retrieve(const Movie &, Movie *&) const;
+    //bool retrieveHelper(const Movie &, Movie *&, Node *)const;
 
     /*=========================< DEFAULTCONSTRUCTOR >=========================|
      |	Function Name:
@@ -205,7 +209,7 @@ public:
 	|		to nullptr.
 	*========================================================================*/
 
-	bool retrieve(const Movie &, Movie *&) const;
+	bool retrieveMovie(const Movie &, Movie *&) const;
 
 	/*=========================< BSTREETOARRAY >==============================|
 	|	Function Name:
@@ -404,7 +408,7 @@ private:
 	|		-> The pointer of the secon parameter which is a reference 
 	|		is now linked to the Movie object found inside.
 	*========================================================================*/
-	bool retrieveHelper(const Movie &, Movie *&, Node *)const;
+	bool retrieveMovie(const Movie &, Movie *&, Node *)const;
 	/*=========================< OUTPUT OVERLOAD OPERATOR >===================|
 	|	Function Name:
 	|		-> OUTPUT OVERator facade
@@ -458,4 +462,4 @@ private:
 	Node *root;
 };
 
-#endif /* bintree_h */
+#endif /* BINTREE_H */

@@ -1,3 +1,6 @@
+
+#ifndef STORE_H
+#define STORE_H
 /*---------- Class Description -----------
 This class represents the store itself. It has a Queue of the transactions,
 just like a movie store would have receipts for everything that was
@@ -11,8 +14,6 @@ Finally, all transactions that were just read
 in are performed via doTransactions.
 */
 
-#ifndef STORE_H
-#define STORE_H
 
 #include <queue>
 #include "hashtable.h"
@@ -24,9 +25,13 @@ in are performed via doTransactions.
 #include <stdlib.h>
 #include "helper_functions.h"
 #include "moviefactory.h"
+#include "transactionfactory.h"
+#include "transaction.h"
+
+#include "openhashtable.hpp"
+
 
 class Store {
-
 
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -35,12 +40,6 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
 	Store();
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void showMovies();
     
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -69,9 +68,20 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //carry out all the transactions in the transactions queue
-	bool doTransactions();
     
+    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB);
+	bool doTransactions();
+    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+     #description:
+     #Assumption:
+     #Parameters:
+     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    void showInventory() const;
+    
+    bool searchInventory(char);
 private:
+    
+    std::queue<Transaction *> transactionQueue;
     
     std::vector<std::string> string_split(std::string, const char);
     //queue of all transactions to perform
@@ -80,10 +90,12 @@ private:
     //hashtable of all customer accounts
     HashTable customerHashTable;
     
+    OpenHashTable customerStorage;
     
     BinTree _classicStorage;
     BinTree _comedyStorage;
     BinTree _dramaStorage;
+    
 };
 
-#endif /*    STORE_H   */
+#endif /* STORE_H */

@@ -429,10 +429,12 @@ bool BinTree::operator!=(const BinTree &rhs) const{
  |=============================================================================|
  */
 
-bool BinTree::retrieve(const Movie &target, Movie *&pointerToResult)
+
+
+bool BinTree::retrieveMovie(const Movie &target, Movie *&pointerToResult)
  const{
     //redirect to facade method.
-    return retrieveHelper(target, pointerToResult, root);
+    return retrieveMovie(target, pointerToResult, root);
 }
 /*
  |================================< RETRIEVE HELPER >==========================|
@@ -456,7 +458,7 @@ bool BinTree::retrieve(const Movie &target, Movie *&pointerToResult)
  |      Movie was found,
  |=============================================================================|
  */
-bool BinTree::retrieveHelper(const Movie &target, Movie *&pointerToResult,
+bool BinTree::retrieveMovie(const Movie &target, Movie *&pointerToResult,
                              Node *current) const{
     if(current == nullptr){
         //base case
@@ -475,12 +477,12 @@ bool BinTree::retrieveHelper(const Movie &target, Movie *&pointerToResult,
 		// is
         //less than the current node.
     }else if(target < *current->data){
-        return retrieveHelper(target, pointerToResult, current->left);
+        return retrieveMovie(target, pointerToResult, current->left);
         
         //make a recursive call to the right of the current node, if the target
 		//is larger than the current node.
     }else{
-        return retrieveHelper(target, pointerToResult, current->right);
+        return retrieveMovie(target, pointerToResult, current->right);
     }
 }
 
@@ -740,7 +742,7 @@ void BinTree::displaySidewaysHelper(Node* current, int level) const {
         
         // indent for readability, 4 spaces per depth level
         for (int i = level; i >= 0; i--) {
-            cout << "    ";
+            std::cout << "    ";
         }
         
         //cout << *current->data << endl;        // display information of object
@@ -876,8 +878,16 @@ int BinTree::getHeightHelper(Node *target) const{
 std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 	//needs fixing i do not use ht ouput stream at all NOT sure how it works..
 	//right now the helper is printing straight to the console using cout.
-	rhs.outputHelper(output, rhs.root);
-	output << std::endl;
+
+	//output << std::endl;
+    std::string format =
+    "|--------------------------------------------------|\n";
+    format+="|INVENTORY                                         |\n";
+    format+="|--------------------------------------------------|\n";
+    
+    output << format;
+    
+    rhs.outputHelper(output, rhs.root);
 	return output;
 }
 /*
@@ -899,7 +909,7 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 std::ostream& BinTree::outputHelper(std::ostream &output, Node *current) const{
 	if(current != nullptr){
 		outputHelper(output,current->left);
-		output << *current->data  << "  ,  ";
+		output << *current->data  << "  \n";
 		outputHelper(output,current->right);
 	}
 	return output;
