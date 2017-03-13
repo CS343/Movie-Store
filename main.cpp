@@ -13,18 +13,19 @@
 #include "movie.h"
 #include <string>
 #include <vector>
+
 //testing Movie
-#include "comedy.h"
-#include "bintree.h"
-#include "moviefactory.h"
+//#include "comedy.h"
+//#include "bintree.h"
+#//include "moviefactory.h"
 //end test movie
 
 /*  Testing    */
-#include "hashTable.h"
+//#include "hashTable.h"
 
 /*   testing  */
 
-#include "customer.h"
+//#include "customer.h"
 using namespace std;
 
 int main() {
@@ -53,6 +54,7 @@ int main() {
     //send them to the store object to be read into the appropriate data
     //structure
     store.readCustomers(customerFile);
+    
     store.readMovies(movieFile);
     
     //store.showMovies();
@@ -147,8 +149,8 @@ int main() {
     */
     /*      END TESET MOVIE     */
     
-    HashTable hashtable;
-    Customer *testPtr;
+    //HashTable hashtable;
+    //Customer *testPtr;
     
     
     /*  Testing CustomerClass   */

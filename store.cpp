@@ -137,11 +137,14 @@ bool Store::readMovies(ifstream& infile){
                 break;
         }
         if (!success){
-            cout << "deleteing: " << *moviePtr << endl;
+            
+            //cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
-        }else{
+        }
+        /*else{
             std::cout << "successfully inserted: " << *moviePtr << std::endl;
         }
+         */
     }
     return true;
 }
@@ -175,7 +178,9 @@ bool Store::readCustomers(ifstream& infile){
         Customer *customerObj = new Customer(id, firstName, lastName);
         
         //insert the customer into the store object, and customer hashmap
-        customerHashTable.insert(customerObj->getCustomerID(), customerObj);
+        
+        //customerHashTable.insert(customerObj->getCustomerID(), customerObj);
+        customerStorage.put(std::atoi(customerObj->getCustomerID().c_str()), customerObj);
     }
     return true;
 }
@@ -207,8 +212,7 @@ bool Store::readTransactions(ifstream& infile){
     char command;
     for(;;){
         infile >> command;//take the char in the beginning of the line
-        
-        if (infile.eof()) break;
+        if (infile.eof()){ break;}
                             //check wether the valid commands are polled
         if(command != 'B' && command != 'R' && command!= 'I' && command !='H'){
             getline(infile, result); // throw away line
@@ -216,20 +220,25 @@ bool Store::readTransactions(ifstream& infile){
             continue;
         }
         
-    
-        
         //error data checked, now populate the objects
         
         Transaction *transactionPtr;
         transactionPtr  = TransactionFactory::makeTransaction(infile, command);
         Customer *temp = nullptr;
+        
+        temp = this->customerStorage.get(std::atoi(transactionPtr->getCustomerID().c_str()));
+        if(temp == nullptr){
+            std::cout << "Customer ID does not exist@NEW :" << transactionPtr->getCustomerID()<< std::endl;
+        }
+        /*
         if(!(this->customerHashTable.retrieveCustomer(transactionPtr->getCustomerID(), temp))){
             
             std::cout << "Customer ID does not exist: " << transactionPtr->getCustomerID() << std::endl;
         }
+        */
         std::cout << std::endl;
         //transactionPtr->doTransaction();
-        
+    
         transactionQueue.push(transactionPtr);
   
     }
@@ -239,12 +248,14 @@ bool Store::readTransactions(ifstream& infile){
 
 bool Store::doTransactions(){
     //HYE BARDIA
-    while(!this->transactionQueue.empty()){
+    while(!(this->transactionQueue.empty())){
         Transaction *ptr;
         ptr = this->transactionQueue.front();
-        ptr->doTransaction();
-        //ptr->doTransaction(&customerHashTable, &_classicStorage, &_comedyStorage, &_dramaStorage);
+        //BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB
+        bool successful = ptr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
         
+        //std::cout << (successful ? "poped a transaction" : "failed to pop")<< std::endl;
+        //ptr->print();
         this->transactionQueue.pop();
     }
     return true;

@@ -8,19 +8,18 @@
 
 #include "history.h"
 
-bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
     //Make this into a class that is inherited, into anothe rlayer //repeated code
     
     
     Customer *returnCustomer;
-    
-    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
     if(returnCustomer == nullptr){
         //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
-        std::cout << "customer does not exist" << std::endl;
+        std::cout << "customer does not exist@:NEW " << getCustomerID()<< std::endl;
         return false;
     }else{
         
@@ -75,6 +74,8 @@ void History::makeTransaction(std::string result, char transactionType){
     
     
 };
+
+/*
 bool History::doTransaction() {
     //popout this transactions read its customerID string held,
     //query the user DB for the customer,
@@ -86,3 +87,4 @@ bool History::doTransaction() {
     std::cout << ss.str() << std::endl;
     return true;
 }
+ */

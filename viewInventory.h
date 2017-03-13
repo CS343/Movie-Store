@@ -13,11 +13,9 @@ class ViewInventory : public Transaction {
 
 
 public:
-    bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
-    
-
+    bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &);
     ViewInventory(){};
-	bool doTransaction();
+	//bool doTransaction();
     
     void makeTransaction(std::string result, char command);
 };

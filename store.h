@@ -27,9 +27,12 @@ in are performed via doTransactions.
 #include "moviefactory.h"
 #include "transactionfactory.h"
 #include "transaction.h"
+
+#include "openhashtable.hpp"
+
+
 class Store {
 
-    friend class Transaction;
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -65,6 +68,8 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //carry out all the transactions in the transactions queue
+    
+    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB);
 	bool doTransactions();
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -85,6 +90,7 @@ private:
     //hashtable of all customer accounts
     HashTable customerHashTable;
     
+    OpenHashTable customerStorage;
     
     BinTree _classicStorage;
     BinTree _comedyStorage;

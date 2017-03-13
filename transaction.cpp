@@ -122,10 +122,6 @@ bool Transaction::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &
 }
 */
 
-bool Transaction::doTransaction(){
-    return true;
-}
-
 
 //print
 void Transaction::print() const{

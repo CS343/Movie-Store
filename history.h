@@ -20,8 +20,8 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     
     //perform the transaction
-	bool doTransaction();
-    bool doTransaction(BinTree &, BinTree &, BinTree &, HashTable &);
+	//bool doTransaction();
+    bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
 
     void makeTransaction(std::string, char);
 };

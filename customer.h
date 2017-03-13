@@ -12,9 +12,13 @@ customer and creates an Customer object for each customer.
 
 #include <iostream>
 #include <stdio.h>
-#include "transaction.h"
+//#include "transaction.h"
 #include <vector>
-
+//this is called forward declaration, to avoid circular dependancy,
+//circlular dependancy is defined as
+//A <-- includes B --> B includes A
+//both classes are included within each other, so they are collided against.
+class Transaction;
 
 class Customer {
 

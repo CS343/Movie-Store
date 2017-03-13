@@ -5,11 +5,11 @@
 //  Created by Danny Ly on 3/9/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
-
+#include <typeinfo>
 #include "borrow.h"
 
 
-bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
      //Make this into a class that is inherited, into anothe rlayer //repeated code
@@ -17,14 +17,15 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
     Customer *returnCustomer = nullptr;
     
-    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    
+    returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
     if(returnCustomer == nullptr){
   //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
         std::cout << "customer does not exist" << std::endl;
         return false;
     }else{
-        switch (this->getTransactionType()) {
+        switch (this->getMovieGenre()) {
             
             Movie *moviePtr;
             case 'D':
@@ -72,6 +73,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 
             }
             default:
+                std::cout << "WE always HERE: " << typeid(this->getTransactionType()).name() << "" << this->getTransactionType()<<"hello" << std::endl;
                 break;
         }
         
@@ -82,7 +84,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
     
 }
-
+/*
 
 bool Borrow::doTransaction() {
     std::ostringstream ss;
@@ -96,7 +98,7 @@ bool Borrow::doTransaction() {
     std::cout << ss.str() << std::endl;
     return true;
 }
-
+*/
 
 
 

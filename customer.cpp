@@ -30,7 +30,7 @@ void Customer::displayHistory() const {
     format+="|--------------------------------------------------|\n";
     
     std::cout << format << std::endl;
-    for(int i = 0; i <= history.size(); i++){
+    for(int i = 0; i < history.size(); i++){
         std::cout << history[i] << std::endl;
     }
 };

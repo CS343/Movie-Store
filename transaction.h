@@ -28,6 +28,8 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include "drama.h"
 #include "comedy.h"
 #include "classic.h"
+
+#include "openhashtable.hpp"
 class Transaction {
 
 public:
@@ -83,8 +85,8 @@ public:
     std::string getFirstName() const;
     std::string getLastName() const;
     //methods
-    virtual bool doTransaction();
-    //virtual bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
+ 
+    virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
     virtual void makeTransaction(std::string, char);
     virtual void print() const;
     

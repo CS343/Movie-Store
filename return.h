@@ -12,10 +12,10 @@ class Return : public Transaction {
 
 public:
     //perform the transaction
-	bool doTransaction();
+	//bool doTransaction();
 
     void makeTransaction(std::string, char);
-    bool doTransaction(BinTree &, BinTree &, BinTree &, HashTable &);
+    bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
 };
 
 #endif /* RETURN_H */

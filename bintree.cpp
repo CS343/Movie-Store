@@ -742,7 +742,7 @@ void BinTree::displaySidewaysHelper(Node* current, int level) const {
         
         // indent for readability, 4 spaces per depth level
         for (int i = level; i >= 0; i--) {
-            cout << "    ";
+            std::cout << "    ";
         }
         
         //cout << *current->data << endl;        // display information of object

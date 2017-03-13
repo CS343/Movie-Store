@@ -68,7 +68,7 @@ public:
      in the store. 
      Number of lines in data4movies.txt == number of Movie objects created
     */
-	bool buildTree(ifstream& infile);
+	bool buildTree(std::ifstream& infile);
 
 
     /*

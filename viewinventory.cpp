@@ -10,11 +10,12 @@
 #include "viewinventory.h"
 
 
-bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
-    std::cout << classicDB << std::endl;
+bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
+    
+    std::cout<<"CALLING" << classicDB << std::endl;
     
     std::cout << comedyDB << std::endl;
-    std::cout << dramaDB << std::endl;
+    std::cout << dramaDB <<"EDN CALLING"<< std::endl;
     return true;
 }
 
@@ -24,7 +25,7 @@ void ViewInventory::makeTransaction(std::string result, char transactionType){
     this->setTransactionType(transactionType);
   };
 
-
+/*
 bool ViewInventory::doTransaction() {
     //
     std::ostringstream ss;
@@ -33,3 +34,5 @@ bool ViewInventory::doTransaction() {
     std::cout << ss.str() << std::endl;
     return true;
 }
+ 
+ */

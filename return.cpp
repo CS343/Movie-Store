@@ -10,22 +10,24 @@
 #include "return.h"
 
 
-bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
+    
+    std::cout << "We are in here" << std::endl;
     
     //Make this into a class that is inherited, into anothe rlayer //repeated code
     
     
     Customer *returnCustomer = nullptr;
     
-    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
     if(returnCustomer == nullptr){
         //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
         std::cout << "customer does not exist" << std::endl;
         return false;
     }else{
-        switch (this->getTransactionType()) {
+        switch (this->getMovieGenre()) {
                 
                 Movie *moviePtr;
             case 'D':
@@ -73,6 +75,7 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 
             }
             default:
+                std::cout << "WE always here" << std::endl;
                 break;
         }
         
@@ -166,6 +169,8 @@ void Return::makeTransaction(std::string result, char transactionType){
     }
     
 };
+
+/*
 bool Return::doTransaction() {
     
     //query the movie database by looking at this movie title,
@@ -181,3 +186,4 @@ bool Return::doTransaction() {
     std::cout << ss.str() << std::endl;
     return true;
 };
+*/
