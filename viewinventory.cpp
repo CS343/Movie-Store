@@ -10,7 +10,9 @@
 #include "viewinventory.h"
 
 
-
+bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    
+}
 
 void ViewInventory::makeTransaction(std::string result, char transactionType){
    // std::cout << "making command" << std::endl;

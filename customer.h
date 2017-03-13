@@ -24,7 +24,7 @@ private:
 	string firstName;
     string lastName;
     
-    std::queue<Transaction *> history;
+    std::queue<Transaction*> history;
 
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%

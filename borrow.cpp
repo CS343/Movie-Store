@@ -8,8 +8,38 @@
 
 #include "borrow.h"
 
-
-
+bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    //borrowing, 1 each time
+    /*
+     Make this into a class that is inherited, into anothe rlayer repeated code
+     */
+    
+    Customer *returnCustomer = nullptr;
+    
+    customerDB.retrieveCustomer(this->getCustomerID(), returnCustomer);
+    if(returnCustomer == nullptr){
+        std::cout << "customer does not exist: " << this->getCustomerID() << std::endl;
+    }else{
+        Movie *moviePtr, *searchObj;
+        switch (this->getTransactionType()) {
+            case 'D':
+                searchObj = new Drama();
+                
+                //Drama tempMovie;
+                //tempMovie.
+                //query the Drama DB for movie
+                //dramaDB.retrieve(<#const Movie &#>, moviePtr);
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    
+    
+}
+/*
 bool Borrow::doTransaction() {
     std::ostringstream ss;
     
@@ -22,7 +52,7 @@ bool Borrow::doTransaction() {
     std::cout << ss.str() << std::endl;
     return true;
 }
-
+*/
 
 
 

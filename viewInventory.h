@@ -13,6 +13,8 @@ class ViewInventory : public Transaction {
 
 
 public:
+    bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
+    
 
     ViewInventory(){};
 	bool doTransaction();

@@ -17,7 +17,8 @@ public:
 
     
     void makeTransaction(std::string, char transactionType);
-	bool doTransaction();
+    bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
+
 
 };
 

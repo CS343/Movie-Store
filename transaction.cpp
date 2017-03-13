@@ -107,11 +107,14 @@ void Transaction::makeTransaction(std::string result, char transactionType){
     
     std::cout << "studpid called" << std::endl;
 }
-
+bool Transaction::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
+    
+}
+/*
 bool Transaction::doTransaction(){
     return true;
 }
-
+*/
 
 //print
 void Transaction::print() const{

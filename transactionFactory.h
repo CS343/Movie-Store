@@ -14,6 +14,9 @@ are an action, this is a proper use of the factory design pattern.
 #include <iostream>
 #include <fstream>
 #include "helper_functions.h"
+#include "drama.h"
+#include "classic.h"
+#include "comedy.h"
 class TransactionFactory {
 
 public:

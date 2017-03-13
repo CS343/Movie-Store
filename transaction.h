@@ -20,8 +20,13 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
+#include "hashTable.h"
+#include "bintree.h"
 #include "helper_functions.h"
+
+#include "borrow.h"
+#include "return.h"
+#include "history.h"
 class Transaction {
 
 public:
@@ -74,7 +79,8 @@ public:
     std::string getFirstName() const;
     std::string getLastName() const;
     //methods
-    virtual bool doTransaction();
+    
+    virtual bool doTransaction(BinTree &, BinTree&, BinTree &, HashTable &);
     virtual void makeTransaction(std::string, char);
     virtual void print() const;
     
