@@ -22,7 +22,7 @@ bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dram
         std::cout << "customer does not exist@:NEW " << getCustomerID()<< std::endl;
         return false;
     }else{
-        
+        std::cout << "Printing History for customer ID: " << this->getCustomerID() << std::endl;
         returnCustomer->displayHistory();
    
         return true;

@@ -172,6 +172,23 @@ void Classic::setMajorActorLast(std::string lastName){
     this->major_actor_lastName = lastName;
 };
 /*
+ +===============================================================================
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ +===============================================================================
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
  #       -
@@ -202,6 +219,11 @@ int Classic::getReleaseMonth() const{
 std::string Classic::getMajorActor() const{
     return getMajorActorFirst() + " " + getMajorActorLast();
 }
+
+void Classic::addMajorActorToList(std::string majorActorName){
+    list_major_actors.push_back(majorActorName);
+} 
+
 /*
  Given an vector/array of data, populate the current movie object with its respective elements
  
@@ -237,12 +259,13 @@ void Classic::makeMovie(std::vector<std::string> array){
     int stock = atoi(array[1].c_str());
     int releaseMonth = atoi(extra_classic_data[3].c_str());
     this->setYear(year);
-    this->setDirector(array[2]);
-    this->setTitle(array[3]);
+    this->setDirector(array[2].substr(1,array[2].size()));
+    this->setTitle(array[3].substr(1,array[3].size()));
     this->setStock(stock);
     this->setMajorActorFirst(extra_classic_data[1]);
     this->setMajorActorLast(extra_classic_data[2]);
     this->setReleaseMonth(releaseMonth);
+    addMajorActorToList(extra_classic_data[1] + " " +extra_classic_data[2]);
 }
 
 

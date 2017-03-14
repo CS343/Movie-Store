@@ -62,8 +62,8 @@ std::string Transaction::getLastName() const{
 
 //setters
 
-void Transaction::setActorName(std::string actorName){
-    this->actorName = actorName;
+void Transaction::setActorName(std::string firstName, std::string lastName ){
+    this->actorName = firstName + " " + lastName;
 }
 void Transaction::setFirstName(std::string first){
     this->firstName = first;
@@ -113,7 +113,7 @@ void Transaction::makeTransaction(std::string result, char transactionType){
     //SUBCLASSES
      //NOT SURE WHY XCODE C++ DOES NOT ALLOW ME TO DO THIS
     
-    std::cout << "studpid called" << std::endl;
+    std::cout << "stupid called" << std::endl;
 }
 
 /*

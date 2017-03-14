@@ -8,6 +8,17 @@
 
 #include <stdio.h>
 #include "movie.h"
+
+
+
+bool Movie::compare(const Movie &rhs){
+    if(getYear ()== rhs.getYear() && getTitle() == rhs.getTitle()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  #   Function_Description:
@@ -27,7 +38,7 @@ Movie::Movie(){
     //std::cout << "Movie Consturctor called"<< std::endl;
     title = "";
     director = "";
-    year = 0000;
+    year = 0;
     max_stock = 10;
     current_stock = 10;
 }
@@ -49,7 +60,7 @@ Movie::Movie(){
 Movie::~Movie(){}
 
 bool Movie::removeStock(int amount){
-    if((current_stock - amount) < 0){
+    if((current_stock - amount) >= 0){
         current_stock-=amount;
         return true;
     }else{
@@ -58,12 +69,17 @@ bool Movie::removeStock(int amount){
 };
 
 bool Movie::addStock(int amount){
-    if( (current_stock + amount) > max_stock){
+    if( (current_stock + amount) <= max_stock){
         current_stock+=amount;
         return true;
     }else{
         return false;
     }
+};
+
+bool Movie::setNewStock(int amount){
+    max_stock += amount;
+    return true;
 };
 
 int Movie::getYear() const{
@@ -101,7 +117,9 @@ int Movie::getReleaseMonth() const{
     return 0;
 };
 
-
+void Movie::addMajorActorToList(std::string) {
+    // rely on classic.cpp overloaded function
+}
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){
    // rhs.print();

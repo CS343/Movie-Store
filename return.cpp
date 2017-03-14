@@ -13,12 +13,13 @@
 bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
-    std::cout << "We are in here" << std::endl;
+    //std::cout << "We are in here" << std::endl;
     
     //Make this into a class that is inherited, into anothe rlayer //repeated code
     
     
     Customer *returnCustomer = nullptr;
+     std::cout << "return" << std::endl;
     
     returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
     if(returnCustomer == nullptr){
@@ -28,15 +29,19 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
         return false;
     }else{
         switch (this->getMovieGenre()) {
-                
-                Movie *moviePtr;
+            Movie *moviePtr;
             case 'D':
             {
                 Drama temp_movie;
+                
                 temp_movie.setDirector(this->getMovieDirector());
-                temp_movie.setTitle(this->getMovieDirector());
+                temp_movie.setTitle(this->getMovieTitle());
+                
+                
+                //temp_movie.setTitle(this->getMovieTitle());
+              
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout << "Item is not in the drama database " << std::endl;
+                    std::cout <<this->getMovieTitle() << " " << this->getMovieDirector() <<" Item is not in the drama database " << std::endl;
                     
                 }else{
                     moviePtr->addStock();
@@ -48,11 +53,11 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
             {
                 Classic temp_movie;
                 temp_movie.setReleaseMonth(this->getMovieReleasedMonth());
-                temp_movie.setYear(this->getMovieYear());
                 temp_movie.setMajorActor(this->getFirstName(), this->getLastName());
-                
+
+                temp_movie.setYear(this->getMovieYear());
                 if(!(classicDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout << "Item is not in the Classic database " << std::endl;
+                    std::cout <<this->getMovieTitle()<<" " <<this->getMovieReleasedMonth() << " " <<this->getActorName()<< this->getMovieYear() << "Item is not in the Classic database " << std::endl;
                     
                 }else{
                     moviePtr->addStock();
@@ -62,11 +67,17 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
             }
             case 'F':
             {
-                Drama temp_movie;
+                Comedy temp_movie;
+                
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setYear(this->getMovieYear());
+                /*
+                temp_movie.setTitle(this->getMovieTitle());
+                temp_movie.setYear(this->getMovieYear());
+                 */
+                
                 if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout << "Item is not in the Comedy  database " << std::endl;
+                    std::cout << this->getMovieTitle()  << " " << this->getMovieYear()<<"Item is not in the Comedy  database " << std::endl;
                     
                 }else{
                     moviePtr->addStock();
@@ -118,6 +129,9 @@ void Return::makeTransaction(std::string result, char transactionType){
     //Funny are split(dimilted by coma), title,  year
     
     //Drams are delimited by comas Director, title
+    
+    // remove the carriage return /r
+    result.erase( std::remove(result.begin(), result.end(), '\r'));
     
     //this will get the Customer Customer ID, MediaType, Genre
     std::string first_half_string = result.substr(1,9);

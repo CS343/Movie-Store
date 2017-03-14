@@ -136,6 +136,8 @@ public:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     //setter for the stock of the movie
 	void setStock(int stock);
+    
+    bool setNewStock(int amount);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
@@ -176,6 +178,10 @@ public:
     bool removeStock(int=1);
     
     bool addStock(int=1);
+    
+    bool compare(const Movie &);
+    
+    virtual void addMajorActorToList(std::string);
     
 private:
     //year that the movie released

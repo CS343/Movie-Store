@@ -98,9 +98,16 @@ public:
  
     void setMajorActor(std::string firstName, std::string lastName);
     
+    void addMajorActor(std::string actor);
+    
+    void addMajorActorToList(std::string majorActorName);
+
     
     void makeMovie(std::vector<std::string>);
 private:
+    
+    std::vector<std::string> list_major_actors;
+    
     std::string major_actor_firstName;
     std::string major_actor_lastName;
     

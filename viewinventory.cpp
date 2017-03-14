@@ -11,11 +11,12 @@
 
 
 bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
-    
-    std::cout<<"CALLING" << classicDB << std::endl;
-    
+    std::cout << "Classic" << std::endl;
+    std::cout << classicDB << std::endl;
+    std::cout << "Comedy" << std::endl;
     std::cout << comedyDB << std::endl;
-    std::cout << dramaDB <<"EDN CALLING"<< std::endl;
+    std::cout << "Drama" << std::endl;
+    std::cout << dramaDB <<"\n CALLING"<< std::endl;
     return true;
 }
 

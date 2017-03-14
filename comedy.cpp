@@ -62,8 +62,8 @@ void Comedy::makeMovie(std::vector<std::string> array){
     int year = atoi(array[4].c_str());
     int stock = atoi(array[1].c_str());
     this->setYear(year);
-    this->setDirector(array[2]);
-    this->setTitle(array[3]);
+    this->setDirector(array[2].substr(1, array[3].size()));
+    this->setTitle(array[3].substr(1,array[3].size()));
     this->setStock(stock);
     
 };

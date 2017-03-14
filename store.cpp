@@ -111,6 +111,7 @@ bool Store::readMovies(ifstream& infile){
             continue;
         }
         vector<string> split_movie_array = string_split(result, ',');
+        
         Movie *moviePtr;
         char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
@@ -186,19 +187,20 @@ bool Store::readCustomers(ifstream& infile){
 }
 
 /*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ +==============================================================================-
+ ||
+ ||   Function_Description:
+ ||       -
+ ||   Preconditions:
+ ||       -
+ ||       -
+ ||   Postconditions:
+ ||      -
+ ||       -
+ ||
+ ||   Assumptions:
+ ||       -
+ +==============================================================================-
  */
 bool Store::readTransactions(ifstream& infile){
     string result;
@@ -245,6 +247,22 @@ bool Store::readTransactions(ifstream& infile){
     return true;
 };
 
+/*
+ +==============================================================================-
+ ||
+ ||   Function_Description:
+ ||       -
+ ||   Preconditions:
+ ||       -
+ ||       -
+ ||   Postconditions:
+ ||      -
+ ||       -
+ ||
+ ||   Assumptions:
+ ||       -
+ +==============================================================================-
+ */
 
 bool Store::doTransactions(){
     //HYE BARDIA
@@ -252,11 +270,14 @@ bool Store::doTransactions(){
         Transaction *ptr;
         ptr = this->transactionQueue.front();
         //BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB
-        bool successful = ptr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
+        ptr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
         
         //std::cout << (successful ? "poped a transaction" : "failed to pop")<< std::endl;
         //ptr->print();
+        //std::cout << "poping an item" << std::endl;
+        //std::cout << "performing command: " << ptr->getTransactionType() << std::endl;
         this->transactionQueue.pop();
+        //std::cout << "finished outputting the data" << std::endl;
     }
     return true;
     

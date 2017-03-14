@@ -61,7 +61,7 @@ public:
     void setFirstName(std::string);
     void setLastName(std::string);
     
-    void setActorName(std::string);
+    void setActorName(std::string, std::string);
     //getters
     
     std::string getActorName() const;
