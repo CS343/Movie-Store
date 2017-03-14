@@ -104,8 +104,9 @@ public:
 
     
     void makeMovie(std::vector<std::string>);
+    bool hasMajorActor(std::string) const;
 private:
-    
+ 
     std::vector<std::string> list_major_actors;
     
     std::string major_actor_firstName;

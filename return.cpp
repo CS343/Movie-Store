@@ -8,7 +8,9 @@
 
 
 #include "return.h"
-
+void Return::print() const{
+    std::cout << "returned Item: " << std::endl;
+}
 
 bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
@@ -184,6 +186,11 @@ void Return::makeTransaction(std::string result, char transactionType){
     
 };
 
+std::ostream& operator<<(std::ostream &output, const Return &rhs){
+    output << "hellow from return";
+    
+    return output;
+};
 /*
 bool Return::doTransaction() {
     

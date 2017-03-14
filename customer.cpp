@@ -26,7 +26,7 @@
 void Customer::displayHistory() const {
     std::string format =
     "|--------------------------------------------------|\n";
-    format+="|INVENTORY                                         |\n";
+    format+="|HISTORY                                            |\n";
     format+="|--------------------------------------------------|\n";
     
     std::cout << format << std::endl;

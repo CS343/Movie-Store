@@ -31,6 +31,8 @@ The Borrow, Return, and ViewInventory class all extend this class
 
 #include "openhashtable.hpp"
 class Transaction {
+    
+    
 
 public:
 

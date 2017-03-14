@@ -26,6 +26,9 @@ void ViewInventory::makeTransaction(std::string result, char transactionType){
     this->setTransactionType(transactionType);
   };
 
+void ViewInventory::print() const{
+    std::cout << "Called InventoryView" << std::endl;
+}
 /*
 bool ViewInventory::doTransaction() {
     //

@@ -98,9 +98,9 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
     
 }
-/*
 
-bool Borrow::doTransaction() {
+
+void Borrow::print() const {
     std::ostringstream ss;
     
     ss << "\nTransaction Type: " << this->getTransactionType();
@@ -110,9 +110,9 @@ bool Borrow::doTransaction() {
     ss << "\nMovie Genre: " << this->getMovieGenre();
     ss << "\nTransaction Amount: " << this->getTransactionAmount();
     std::cout << ss.str() << std::endl;
-    return true;
+  
 }
-*/
+
 
 
 
@@ -204,4 +204,11 @@ void Borrow::makeTransaction(std::string result, char transactionType){
             break;
     }
 
+};
+
+
+std::ostream& operator<<(std::ostream &output, const Borrow &rhs){
+    output << "hellow from BORROW";
+    
+    return output;
 };
