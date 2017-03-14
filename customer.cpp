@@ -22,16 +22,25 @@
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
+//class Transaction;
 
 void Customer::displayHistory() const {
     std::string format =
-    "|--------------------------------------------------|\n";
-    format+="|HISTORY                                            |\n";
+    "\n|--------------------------------------------------|\n";
+    format+="|HISTORY                   Customer ID: " + getCustomerID() + "       |\n";
     format+="|--------------------------------------------------|\n";
+    format+="|Status | Title                                    |\n";
+    format+="|--------------------------------------------------|";
     
     std::cout << format << std::endl;
-    for(int i = 0; i < history.size(); i++){
-        std::cout << history[i] << std::endl;
+    for(int i = history.size() - 1; i >= 0; i--){
+        if(history[i]->getTransactionType() == 'B'){
+            std::cout << " Borrowed " << history[i]->getMovieTitle() << std::endl;
+        }else if(history[i]->getTransactionType() == 'R'){
+            std::cout << " Returned " << history[i]->getMovieTitle() << std::endl;
+        }
+        //history[i]->print();
+        //std::cout << history[i]->print() << std::endl;
     }
 };
 /*

@@ -317,7 +317,7 @@ typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
     }else if(dataPtr->compare(*subtree->data) ){
     //else if(*dataPtr == *subtree->data){
     //else{
-        std::cout << "equal" << std::endl;
+        //std::cout << "equal" << std::endl;
         //extra addition if we found duplicates, we are to increment the quantity
         
         subtree->data->addMajorActorToList(dataPtr->getMajorActor());

@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 #include "customer.h"
-
+class Customer;
 class HashTable {
 
 public:

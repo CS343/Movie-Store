@@ -73,7 +73,7 @@ int main() {
     transactionFile.close();
     
     
-    
+    /*
     Drama drama1, drama2;
     
     drama1.setDirector("Kevin");
@@ -96,7 +96,7 @@ int main() {
     std::cout << (classic1 == classic2 ? "same" : "not the same") << std::endl;
     
     std::cout << (drama1 == drama2 ? "same" : "not the same") << std::endl;
-    
+    */
     
 
     // end of the main function

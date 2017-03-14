@@ -23,10 +23,10 @@ bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dram
     if(returnCustomer == nullptr){
         //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
-        std::cout << "customer does not exist@:NEW " << getCustomerID()<< std::endl;
+        std::cout << "ERROR customer does not exist: " << getCustomerID()<< std::endl;
         return false;
     }else{
-        std::cout << "Printing History for customer ID: " << this->getCustomerID() << std::endl;
+        //std::cout << "Printing History for customer ID: " << this->getCustomerID() << std::endl;
         returnCustomer->displayHistory();
    
         return true;

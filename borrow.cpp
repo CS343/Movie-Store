@@ -16,18 +16,19 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
     
     Customer *returnCustomer = nullptr;
-    std::cout << "borrow " << std::endl;
+    //std::cout << "borrow " << std::endl;
     
     returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
     if(returnCustomer == nullptr){
   //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
-        std::cout << "customer does not exist" << std::endl;
+        std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
         return false;
     }else{
+        Movie *moviePtr = nullptr;
         switch (this->getMovieGenre()) {
             
-            Movie *moviePtr;
+            //Movie *moviePtr;
             case 'D':
             {
                 Drama temp_movie;
@@ -41,7 +42,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setDirector(this->getMovieDirector());
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<this->getMovieTitle() << " " << this->getMovieDirector() <<" Item is not in the drama database " << std::endl;
+                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Drama Database " <<this->getMovieTitle()<< std::endl;
                     
                 }else{
                     moviePtr->removeStock();
@@ -62,9 +63,13 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setYear(this->getMovieYear());
                 */
                  if( !(classicDB.retrieveMovie(temp_movie, moviePtr) ) ){
+                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle()<< std::endl;
+                     /*
                      std::cout <<this->getMovieTitle()<<" " <<this->getMovieReleasedMonth() << " " <<this->getFirstName() << " " << this->getLastName() << this->getMovieYear() << "Item is not in the Classic database " << std::endl;
+                      */
                      
                 }else{
+                    this->setMovieTitle(moviePtr->getTitle());
                     moviePtr->removeStock();
                 }
                 break;
@@ -76,7 +81,10 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setYear(this->getMovieYear());
                 if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
+                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Comedy Database " << this->getMovieTitle()<< std::endl;
+                    /*
                     std::cout << this->getMovieTitle()  << " " << this->getMovieYear()<<"Item is not in the Comedy  database " << std::endl;
+                     */
                     
                 }else{
                     moviePtr->removeStock();
@@ -85,14 +93,14 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 
             }
             default:
-                
-                std::cout << "Incorrect Genre Type: " << this->getMovieGenre() << std::endl;
+                std::cout <<"ERROR Invalid Data ERROR(Genere Code): " << this-getMovieGenre()<< std::endl;
+                //std::cout << "Incorrect Genre Type: " << this->getMovieGenre() << this->getMovieTitle() << std::endl;
                 //std::cout<< this->getMovieTitle() << "WE always HERE: " << this->getTransactionType() <<"hello" << std::endl;
                 break;
         }
-        
-        returnCustomer->addTransaction(this);
-        
+        if(moviePtr != nullptr){
+            returnCustomer->addTransaction(this);
+        }
         return true;
     }
     

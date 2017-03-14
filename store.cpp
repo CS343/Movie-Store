@@ -107,7 +107,7 @@ bool Store::readMovies(ifstream& infile){
     while(getline(infile,result)){
         if(result.at(0) != 'C' && result.at(0) != 'D' && result.at(0) != 'F'){ //|| result.at(0) != 'F' || result.at(0) != 'D'){
             //another approach is to get the first char, then pass the ret of the ifstream to a Movie object to populate itself
-            cout << "ERROR: (REcieved an invalid command) " << result << endl;
+            cout << "ERROR: (Recieved an invalid command) " << result << endl;
             continue;
         }
         vector<string> split_movie_array = string_split(result, ',');
@@ -226,19 +226,23 @@ bool Store::readTransactions(ifstream& infile){
         
         Transaction *transactionPtr;
         transactionPtr  = TransactionFactory::makeTransaction(infile, command);
+        
+        /*
         Customer *temp = nullptr;
         
         temp = this->customerStorage.get(std::atoi(transactionPtr->getCustomerID().c_str()));
         if(temp == nullptr){
+            //what if the transaction is an I no customer ID
             std::cout << "Customer ID does not exist@NEW :" << transactionPtr->getCustomerID()<< std::endl;
         }
+         */
         /*
         if(!(this->customerHashTable.retrieveCustomer(transactionPtr->getCustomerID(), temp))){
             
             std::cout << "Customer ID does not exist: " << transactionPtr->getCustomerID() << std::endl;
         }
         */
-        std::cout << std::endl;
+        //std::cout << std::endl;
         //transactionPtr->doTransaction();
     
         transactionQueue.push(transactionPtr);
