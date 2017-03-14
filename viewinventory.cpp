@@ -11,11 +11,16 @@
 
 
 bool ViewInventory::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
-    
-    std::cout<<"CALLING" << classicDB << std::endl;
-    
+    std::string format ="|=========================================|\n";
+    format+="|View Inventory                    |\n";
+    std::cout << format << std::endl;
+    std::cout << "Comedy" << std::endl;
     std::cout << comedyDB << std::endl;
-    std::cout << dramaDB <<"EDN CALLING"<< std::endl;
+    std::cout << "Drama" << std::endl;
+    std::cout << dramaDB << std::endl;
+    std::cout << "Classic" << std::endl;
+    std::cout << classicDB << std::endl;
+
     return true;
 }
 
@@ -25,6 +30,9 @@ void ViewInventory::makeTransaction(std::string result, char transactionType){
     this->setTransactionType(transactionType);
   };
 
+void ViewInventory::print() const{
+    std::cout << "Called InventoryView" << std::endl;
+}
 /*
 bool ViewInventory::doTransaction() {
     //

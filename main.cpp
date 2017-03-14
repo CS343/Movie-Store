@@ -73,17 +73,30 @@ int main() {
     transactionFile.close();
     
     
-    
+    /*
     Drama drama1, drama2;
     
-    drama1.setDirector("Danny");
+    drama1.setDirector("Kevin");
     drama1.setTitle("gay men");
     
     drama2.setDirector("Kevin");
-    drama2.setTitle("gay men");
+    drama2.setTitle("gay men1");
+    
+    Classic classic1, classic2;
+    
+    classic1.setReleaseMonth(5);
+    classic1.setYear(1991);
+    classic1.setMajorActor("Danny", "LY");
+    
+    classic2.setReleaseMonth(5);
+    classic2.setYear(1991);
+    classic2.setMajorActor("Danny", "Ly");
+    
+    
+    std::cout << (classic1 == classic2 ? "same" : "not the same") << std::endl;
     
     std::cout << (drama1 == drama2 ? "same" : "not the same") << std::endl;
-    
+    */
     
 
     // end of the main function

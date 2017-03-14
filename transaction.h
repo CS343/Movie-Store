@@ -30,7 +30,10 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include "classic.h"
 
 #include "openhashtable.hpp"
+class OpenHashTable;
 class Transaction {
+    
+    
 
 public:
 
@@ -61,7 +64,7 @@ public:
     void setFirstName(std::string);
     void setLastName(std::string);
     
-    void setActorName(std::string);
+    void setActorName(std::string, std::string);
     //getters
     
     std::string getActorName() const;

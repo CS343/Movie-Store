@@ -314,10 +314,15 @@ typename BinTree::Node* BinTree::insert(Node *subtree, Movie *dataPtr, bool
 		//go to the right, of the current subtree->right
             // std::cout << "more  than" << std::endl;
 		subtree->right = insert(subtree->right, dataPtr, isInserted);
-    }else if(*dataPtr == *subtree->data){
+    }else if(dataPtr->compare(*subtree->data) ){
+    //else if(*dataPtr == *subtree->data){
     //else{
-        std::cout << "equal" << std::endl;
+        //std::cout << "equal" << std::endl;
         //extra addition if we found duplicates, we are to increment the quantity
+        
+        subtree->data->addMajorActorToList(dataPtr->getMajorActor());
+        
+        subtree->data->setNewStock(dataPtr->getStock());
         subtree->data->addStock(dataPtr->getStock());
     }
     //last case is IF THE NEWDATA EQUALS the current node, we just ommit the
@@ -470,7 +475,8 @@ bool BinTree::retrieveMovie(const Movie &target, Movie *&pointerToResult,
         //if the item is found within the structure, point pointerToResult to
 		// the
         //Movie object, and return true, signifying item found.
-    }else if(*current->data == target){
+    }//else if(current->data->compare(target)){
+    else if(*(current->data) == target){
         pointerToResult = current->data;
         return true;
         //make a recursive call to the left of the current node, if the target
