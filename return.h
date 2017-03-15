@@ -10,12 +10,9 @@ transaction to return a movie to the store
 #include "transaction.h"
 class Return : public Transaction {
 
-    friend std::ostream& operator<<(std::ostream &, const Return &);
 public:
     //perform the transaction
-	//bool doTransaction();
 
-    void print() const;
     void makeTransaction(std::string, char);
     bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
 };

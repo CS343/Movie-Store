@@ -1,0 +1,166 @@
+ERROR: (Recieved an invalid command) Z, 10, Hal Ashby, Harold and Maude, Bud Cort 3 1971
+ERROR: (Recieved an invalid command) Z, 10, Frank Capra, It's a Wonderful Life, James Steward 11 1946
+ERROR: (Recieved bad data) X
+ERROR: (Recieved bad data) Z  1000 D C 10 1941 Humphrey Bogart
+|=========================================|
+|View Inventory                    |
+
+Comedy
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1977 Annie Hall Woody Allen 10
+1996 Fargo Joel C 10
+1978 National Lampoon's Animal House John Landis 10
+2003 Pirates of the Caribbean Gore Verbinski 10
+1993 Sleepless in Seattle Nora Ephron 10
+1989 When Harry Met Sally Rob Reiner 10
+1998 You've Got Mail Nora Ephron 10
+
+Drama
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1991 Dogfight Nancy Savoca 10
+1992 Unforgiven Clint Eastwood 10
+1991 Silence of the Lambs Jonathan Demme 10
+1993 Schindler's List Steven Spielberg 10
+1967 King of Hearts Phillippe De Broca 10
+2000 Good Will Hunting Gus Van Sant 10
+1988 Good Morning Vietnam Barry Levinson 10
+
+Classic
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1938 Holiday George Cukor 20
+1939 Gone With the Wind Victor Fleming 20
+1939 The Wizard of Oz Victor Fleming 10
+1940 The Philadelphia Story George Cukor 20
+1941 The Maltese Falcon John Huston 10
+1942 Casablanca Michael Curtiz 20
+1946 It's a Wonderful Life Frank Capra 20
+1971 A Clockwork Orange Stanley Kubrick 10
+1971 Harold and Maude Hal Ashby 10
+
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ERROR Invalid Data ERROR(Genere Code): 0x1003fdbf0
+ERROR customer does not exist: 1234
+ERROR Incorrect Data, This Item does not exist in Comedy Database Bogus Title
+ERROR Incorrect Data, This Item does not exist in Drama Database Bogus Title
+|=========================================|
+|View Inventory                    |
+
+Comedy
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1977 Annie Hall Woody Allen 9
+1996 Fargo Joel C 8
+1978 National Lampoon's Animal House John Landis 9
+2003 Pirates of the Caribbean Gore Verbinski 10
+1993 Sleepless in Seattle Nora Ephron 9
+1989 When Harry Met Sally Rob Reiner 9
+1998 You've Got Mail Nora Ephron 9
+
+Drama
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1991 Dogfight Nancy Savoca 8
+1992 Unforgiven Clint Eastwood 9
+1991 Silence of the Lambs Jonathan Demme 9
+1993 Schindler's List Steven Spielberg 9
+1967 King of Hearts Phillippe De Broca 9
+2000 Good Will Hunting Gus Van Sant 9
+1988 Good Morning Vietnam Barry Levinson 9
+
+Classic
+|--------------------------------------------------|
+|INVENTORY                                         |
+|--------------------------------------------------|
+1938 Holiday George Cukor 19
+1939 Gone With the Wind Victor Fleming 20
+1939 The Wizard of Oz Victor Fleming 10
+1940 The Philadelphia Story George Cukor 18
+1941 The Maltese Falcon John Huston 9
+1942 Casablanca Michael Curtiz 20
+1946 It's a Wonderful Life Frank Capra 20
+1971 A Clockwork Orange Stanley Kubrick 9
+1971 Harold and Maude Hal Ashby 0
+
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+Borrowed Fargo
+Borrowed Harold and Maude
+Borrowed The Philadelphia Story
+Borrowed Good Will Hunting
+Borrowed The Philadelphia Story
+Borrowed Good Morning Vietnam
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 1111       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+Borrowed Holiday
+Borrowed The Maltese Falcon
+Borrowed Harold and Maude
+Borrowed A Clockwork Orange
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+Borrowed Harold and Maude
+Returned Harold and Maude
+Borrowed Harold and Maude
+Returned Harold and Maude
+Borrowed Harold and Maude
+Returned Harold and Maude
+Borrowed Harold and Maude
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+Borrowed National Lampoon's Animal House
+Borrowed Harold and Maude
+Borrowed Harold and Maude
+Returned You've Got Mail
+Borrowed You've Got Mail
+
+|--------------------------------------------------|
+|HISTORY                   Customer ID: 8888       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+Borrowed Harold and Maude
+Borrowed Dogfight
+Borrowed Silence of the Lambs
+Borrowed When Harry Met Sally
+Borrowed Annie Hall
+Program ended with exit code: 0

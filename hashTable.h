@@ -80,7 +80,7 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void showAllItems()const;
+    
 private:
     //private hashFunction
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%

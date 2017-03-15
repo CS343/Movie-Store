@@ -142,13 +142,7 @@ bool HashTable::retrieveCustomer(std::string customerID, Customer *&returnPtr){
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
-void HashTable::showAllItems() const{
-    for(int i =0; i < 128; i++){
-        if(table[i] != NULL){
-            std::cout <<"["<<i<<"]" <<*table[i]->value << std::endl;
-        }
-    }
-};
+
 
 /*
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%

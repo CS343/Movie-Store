@@ -18,7 +18,6 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
     std::getline(input, result);
     //std::string ayyo = result.substr(1, 5);// gets the ID[a,b)
     std::string ayyo1 = result.substr(1,10);//get the first half, if the last
-    std::string ayoo2 = result;
     //index contains a number good we have quantity, if not, bad we have default to
     //borrowing 1 quntity.
     

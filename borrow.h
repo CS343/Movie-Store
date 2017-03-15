@@ -11,14 +11,13 @@ borrow a movie from the store.
 
 
 class Borrow : public Transaction {
-    friend std::ostream& operator<<(std::ostream&, const Borrow &);
+
 public:
     Borrow(){};
 
-    bool doTransaction();
     void makeTransaction(std::string, char transactionType);
     bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &);
-    void print() const;
+   
 
 };
 

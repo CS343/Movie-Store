@@ -70,6 +70,7 @@ void OpenHashTable::remove(int key){
     }
 };
 OpenHashTable::~OpenHashTable(){
+    std::cout << "calling destructor for Open Hash Table" << std::endl;
     for (int i = 0; i < TABLE_SIZE; i++)
         if (table[i] != NULL) {
             LinkedHashEntry *prevEntry = NULL;

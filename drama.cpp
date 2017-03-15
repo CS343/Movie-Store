@@ -13,31 +13,50 @@ Drama::Drama(){};
 bool Drama::operator<(const Movie &rhs) const{
    // std::cout << "< called from Drama" << std::endl;
     //-	dramas (‘D’) are sorted by Director, then Title
+    
+    if(getDirector() != rhs.getDirector()){
+        return getDirector() < rhs.getDirector();
+    }else{
+        return getTitle() < rhs.getTitle();
+    }
+    /*
     if(this->getDirector() < rhs.getDirector()){
         return true;
     }else if(this->getDirector() == rhs.getDirector()){
         if(this->getTitle() < rhs.getTitle()){
             return true;
+        }else{
+            return false;
         }
     }
     //return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
     return true;
+     */
 };
 
 bool Drama::operator>(const Movie &rhs) const{
     // std::cout << "< called from Drama" << std::endl;
     //-	dramas (‘D’) are sorted by Director, then Title
+    if(getDirector() != rhs.getDirector()){
+        return getDirector() > rhs.getDirector();
+    }else{
+        return getTitle() > rhs.getTitle();
+    }
+    /*
     if(this->getDirector() > rhs.getDirector()){
         return true;
     }else if(this->getDirector() == rhs.getDirector()){
         if(this->getTitle() > rhs.getTitle()){
             return true;
+        }else{
+            return false;
         }
     }
     //return (this->getDirector() < rhs.getDirector()) && (this->getTitle() < rhs.getTitle());
     return true;
     
     //return (this->getDirector() > rhs.getDirector()) && (this->getTitle() > rhs.getTitle());
+     */
 };
 
 bool Drama::operator==(const Movie &rhs) const{
@@ -66,7 +85,6 @@ void Drama::makeMovie(std::vector<std::string> array){
 
 //output operator work around, flow transition.
 void Drama::print(std::ostream& output) const{
+    //not sure why i dont just leave this method inside the abstract parent class
         output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
-    //output <<"Year: " << "   "<< getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
-    
 };

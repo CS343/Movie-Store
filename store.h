@@ -39,6 +39,8 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
+    ~Store();
 	Store();
     
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
@@ -90,6 +92,7 @@ private:
     //hashtable of all customer accounts
     HashTable customerHashTable;
     
+    std::vector<Transaction *> transactionStorage;
     OpenHashTable customerStorage;
     
     BinTree _classicStorage;

@@ -9,9 +9,6 @@
 #include "history.h"
 
 
-void History::print() const{
-    std::cout << "print history" << std::endl;
-}
 bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
@@ -78,21 +75,4 @@ void History::makeTransaction(std::string result, char transactionType){
     
     
 };
-std::ostream& operator<<(std::ostream &output, const History &rhs){
-    output << "hellow from HISTORY";
-    
-    return output;
-};
-/*
-bool History::doTransaction() {
-    //popout this transactions read its customerID string held,
-    //query the user DB for the customer,
-    //go through the user queue of transactions and print them one by one.
-    std::ostringstream ss;
-    
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    ss << "\nCustomer ID: " << this->getCustomerID();
-    std::cout << ss.str() << std::endl;
-    return true;
-}
- */
+

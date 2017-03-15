@@ -94,8 +94,7 @@ public:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     std::string getMajorActor() const;
-    
- 
+     
     void setMajorActor(std::string firstName, std::string lastName);
     
     void addMajorActor(std::string actor);
@@ -106,13 +105,13 @@ public:
     void makeMovie(std::vector<std::string>);
     bool hasMajorActor(std::string) const;
 private:
- 
+    int release_month;
     std::vector<std::string> list_major_actors;
     
     std::string major_actor_firstName;
     std::string major_actor_lastName;
     
-    int release_month;
+    //int release_month;
     
 };
 #endif /* CLASSIC_H */

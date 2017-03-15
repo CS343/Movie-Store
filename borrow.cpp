@@ -24,6 +24,10 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
         //we are to check the ttrancsation type and make stock changes
         std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
         return false;
+    }else if(getMediaType() == 'Z'){
+        std::cout << "ERROR invalid Media Type: " << getMediaType() << std::endl;
+        return false;
+    
     }else{
         Movie *moviePtr = nullptr;
         switch (this->getMovieGenre()) {
@@ -33,11 +37,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
             {
                 Drama temp_movie;
                 
-                /*
-                temp_movie.setDirector(this->getMovieDirector());
-                temp_movie.setTitle(this->getMovieDirector());
-                temp_movie.setYear(this->getMovieYear());
-                */
+           
                  
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setDirector(this->getMovieDirector());
@@ -63,7 +63,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setYear(this->getMovieYear());
                 */
                  if( !(classicDB.retrieveMovie(temp_movie, moviePtr) ) ){
-                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle()<< std::endl;
+                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle() << getCustomerID()<< std::endl;
                      /*
                      std::cout <<this->getMovieTitle()<<" " <<this->getMovieReleasedMonth() << " " <<this->getFirstName() << " " << this->getLastName() << this->getMovieYear() << "Item is not in the Classic database " << std::endl;
                       */
@@ -107,19 +107,6 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
 }
 
-
-void Borrow::print() const {
-    std::ostringstream ss;
-    
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    ss << "\nMovie Title: " << this->getMovieTitle();
-    ss << "\nCustomer ID: " << this->getCustomerID();
-    ss << "\nMedia Type: "  << this->getMediaType();
-    ss << "\nMovie Genre: " << this->getMovieGenre();
-    ss << "\nTransaction Amount: " << this->getTransactionAmount();
-    std::cout << ss.str() << std::endl;
-  
-}
 
 
 
@@ -167,8 +154,6 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     
 
     this->setCustomerID(first_half_vector[0]);
-    
-    //std::cout<<"CUT AND SEW" << first_half_vector[0] << "CUT AND SEW"<< std::endl;
     this->setMovieGenre(first_half_vector[2][0]);
     this->setMediaType(first_half_vector[1][0]);
     this->setTransactionType(transactionType);
@@ -178,7 +163,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
         {
             //title then year
             
-            std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,',');
+            std::vector<std::string> second_half_vector = Helper_Functions::string_split(second_half_string,',');
             this->setMovieTitle(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
             //std::cout << "funny Movie" << std::endl;
@@ -202,7 +187,6 @@ void Borrow::makeTransaction(std::string result, char transactionType){
              //classics re split by white space with month, year, firstname, lastname
             this->setMovieReleasedMonth(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
-            
             this->setFirstName(second_half_vector[2]);
             this->setLastName(second_half_vector[3]);
             
@@ -214,9 +198,3 @@ void Borrow::makeTransaction(std::string result, char transactionType){
 
 };
 
-
-std::ostream& operator<<(std::ostream &output, const Borrow &rhs){
-    output << "hellow from BORROW";
-    
-    return output;
-};
