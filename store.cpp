@@ -107,20 +107,21 @@ void Store::showInventory() const {
 
 
 /*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
++==============================================================================-
+||
+||   Function_Description:
+||       -
+||   Preconditions:
+||       -
+||       -
+||   Postconditions:
+||      -
+||       -
+||
+||   Assumptions:
+||       -
++==============================================================================-
+*/
 bool Store::readMovies(ifstream& infile){
 /*
  This ReadMovies method works as follows , as you make a Movie parent class, given a command or action pass that to the Movie constructor
@@ -176,19 +177,20 @@ bool Store::readMovies(ifstream& infile){
 }
 
 /*
-$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-#   Function_Description:
-#       -
-#   Preconditions:
-#       -
-#       -
-#   Postconditions:
-#       -
-#       -
-#
-#   Assumptions:
-#       -
-$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
++==============================================================================-
+||
+||   Function_Description:
+||       -
+||   Preconditions:
+||       -
+||       -
+||   Postconditions:
+||      -
+||       -
+||
+||   Assumptions:
+||       -
++==============================================================================-
 */
 
 
@@ -303,25 +305,7 @@ bool Store::doTransactions(){
     return true;
     
 }
-/*
-bool Store::searchInventory(char movieGenre){
-    switch (movieGenre) {
-        case 'C':
-            
-            break;
-        case 'F':
-            break;
-        case 'D':
-            
-            break;
-        default:
-            break;
-    }
-    return true;
-}
- 
-*/
-
+/
 /*
  +==============================================================================-
  ||
