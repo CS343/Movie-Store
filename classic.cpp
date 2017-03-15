@@ -137,7 +137,11 @@ bool Classic::operator>(const Movie &rhs) const{
 bool Classic::operator==(const Movie &rhs) const{
     //released date then major actor
    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && ( this->getMajorActor() == rhs.getMajorActor() ) && this->hasMajorActor(rhs.getMajorActor());
+    //since this is calssic i need some way to ask Movie RHS if one of these major actors are what you seek.
+    
+    
+    
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() )  && (this->hasMajorActor(rhs.getMajorActor()));
     
 };
 /*
@@ -219,8 +223,10 @@ int Classic::getReleaseMonth() const{
 }
 
 std::string Classic::getMajorActor() const{
+    
     return getMajorActorFirst() + " " + getMajorActorLast();
 }
+
 
 void Classic::addMajorActorToList(std::string majorActorName){
     if(!(std::find(list_major_actors.begin(), list_major_actors.end(), majorActorName) != list_major_actors.end())) {

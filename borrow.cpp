@@ -63,7 +63,7 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setYear(this->getMovieYear());
                 */
                  if( !(classicDB.retrieveMovie(temp_movie, moviePtr) ) ){
-                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle()<< std::endl;
+                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle() << getCustomerID()<< std::endl;
                      /*
                      std::cout <<this->getMovieTitle()<<" " <<this->getMovieReleasedMonth() << " " <<this->getFirstName() << " " << this->getLastName() << this->getMovieYear() << "Item is not in the Classic database " << std::endl;
                       */
