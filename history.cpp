@@ -9,9 +9,6 @@
 #include "history.h"
 
 
-void History::print() const{
-    std::cout << "print history" << std::endl;
-}
 bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     

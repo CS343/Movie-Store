@@ -1,7 +1,8 @@
 //
 //  classic.cpp
 //  movie Store
-//
+//NOTE SOMETHING WRONG WITH Comparsion for Classics, we do not compare by actor just date
+//and confused about actor how do we get an actor
 //  Created by Danny Ly on 3/5/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
@@ -22,6 +23,7 @@
  #       -
  $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
  */
+
 
 Classic::Classic(){
     
@@ -135,7 +137,7 @@ bool Classic::operator>(const Movie &rhs) const{
 bool Classic::operator==(const Movie &rhs) const{
     //released date then major actor
    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && this->hasMajorActor(rhs.getMajorActor());
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() ) && ( this->getMajorActor() == rhs.getMajorActor() ) && this->hasMajorActor(rhs.getMajorActor());
     
 };
 /*
@@ -221,8 +223,12 @@ std::string Classic::getMajorActor() const{
 }
 
 void Classic::addMajorActorToList(std::string majorActorName){
-    list_major_actors.push_back(majorActorName);
-} 
+    if(!(std::find(list_major_actors.begin(), list_major_actors.end(), majorActorName) != list_major_actors.end())) {
+        /* actor not contain inside x */
+        list_major_actors.push_back(majorActorName);
+    }
+}
+  
 
 /*
  Given an vector/array of data, populate the current movie object with its respective elements

@@ -62,6 +62,7 @@ public:
     void setMovieReleasedMonth(std::string);
     
     void setFirstName(std::string);
+    
     void setLastName(std::string);
     
     void setActorName(std::string, std::string);
@@ -90,35 +91,19 @@ public:
     //methods
  
     virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
-    virtual void makeTransaction(std::string, char);
-    virtual void print() const;
+    virtual void makeTransaction(std::string, char)=0;
+    
     
 private:
     
-    std::string movieDirector;
+    std::string customerID, movieTitle, movieDirector;
     
-    std::string movieTitle;
+    char mediaType, transactionType, movieGenre;//typically D
     
-    std::string customerID;
-    
-    int transactionAmount;
-    
-    char mediaType;//typically D
-    
-    // Indicates the type of transaction - Borrow, Return, or Inventory
-    char transactionType;
-    
-    //movie Type AKA movie Genre
-    char movieGenre;
-    
-    int movieReleasedMonth;
+    int movieReleasedMonth, movieYear;
 
-    int movieYear;
+    std::string firstName, lastName, actorName;
 
-    std::string firstName;
-    
-    std::string lastName;
-    
-    std::string actorName;
+   
 };
 #endif /* TRANSACTION_H */

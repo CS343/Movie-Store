@@ -887,8 +887,8 @@ std::ostream& operator<<(std::ostream& output, const BinTree &rhs){
 
 	//output << std::endl;
     std::string format =
-    "|--------------------------------------------------|\n";
-    format+="|INVENTORY                                         |\n";
+            "|--------------------------------------------------|\n";
+    format+="| Movie Title                           Stock      |\n";
     format+="|--------------------------------------------------|\n";
     
     output << format;

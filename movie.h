@@ -175,6 +175,7 @@ public:
     virtual std::string getMajorActor() const;
     
     
+    int getReleasedDate() const;
     bool removeStock(int=1);
     
     bool addStock(int=1);

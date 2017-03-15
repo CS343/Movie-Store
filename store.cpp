@@ -44,6 +44,11 @@ Store::~Store(){
     //transactions inside the customer, then delete the custoemr that are within each
     //index of the linked list, checking if the locaton is NULL ofc.
     
+    /*
+      TO DO
+     
+     */
+    
 }
 /*
  +==============================================================================-
@@ -66,6 +71,7 @@ Store::Store(){
     
 }
 
+/*
 std::vector<std::string> Store::string_split(std::string s, const char delimiter)
 {
     size_t start=0;
@@ -87,7 +93,8 @@ std::vector<std::string> Store::string_split(std::string s, const char delimiter
     return output;
 }
 
-
+*/
+/*
 void Store::showInventory() const {
     std::cout << std::endl;
     std::cout << "Classic Inventory" << std::endl;
@@ -104,7 +111,7 @@ void Store::showInventory() const {
 
     
 }
-
+*/
 
 /*
 +==============================================================================-
@@ -136,11 +143,15 @@ bool Store::readMovies(ifstream& infile){
             cout << "ERROR: (Recieved an invalid command) " << result << endl;
             continue;
         }
-        vector<string> split_movie_array = string_split(result, ',');
+        //used to split all items in the string by delimiter ',' coma
+        vector<string> split_movie_array = Helper_Functions::string_split(result, ',');
         
         Movie *moviePtr;
+                    //access the action which is the first in the array, accessing the zero element of this item gets us the char from the char array
         char action = split_movie_array[0].c_str()[0];
         //c_str() makes strings into a char array(split), indexing the zero element give me the first split char
+        //call the movie factory to make a movie object either comedy, classic, or drama
+        //given an action and return it
         moviePtr = Movie_Factory::make_movie(action);
         //give the array with data to the respective object makeMovie method
         moviePtr->makeMovie(split_movie_array);
@@ -149,6 +160,10 @@ bool Store::readMovies(ifstream& infile){
         //check for success if it was successful it was inserted if it was not
         //it either was duplicate, so we need to increment the quntity and delete the made object
         
+        //a boolean that check weather an item was successfullly inserted into the
+        //respective databasess,
+        //if a duplicate was found or an error occurred then the new'd movie will be
+        //deleted to prevent memory leak
         bool success = false;
         switch (action) {
             case 'F':
@@ -164,7 +179,6 @@ bool Store::readMovies(ifstream& infile){
                 break;
         }
         if (!success){
-            
             //cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
         }
@@ -284,28 +298,16 @@ bool Store::doTransactions(){
     //HYE BARDIA
     Transaction *transPtr;
     for(int trans = 0; trans < transactionStorage.size(); trans++){
+        //get the current transaction given q FIFO requirment
         transPtr = this->transactionStorage[trans];
+        //called doTransaction from the current transaction Object(polymorphism)
         transPtr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
     }
-    /*
-    while(!(this->transactionQueue.empty())){
-        Transaction *ptr;
-        ptr = this->transactionQueue.front();
-        //BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB
-        ptr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
-        
-        //std::cout << (successful ? "poped a transaction" : "failed to pop")<< std::endl;
-        //ptr->print();
-        //std::cout << "poping an item" << std::endl;
-        //std::cout << "performing command: " << ptr->getTransactionType() << std::endl;
-        this->transactionQueue.pop();
-        //std::cout << "finished outputting the data" << std::endl;
-    }
-     */
+   
     return true;
     
 }
-/
+
 /*
  +==============================================================================-
  ||
@@ -322,111 +324,3 @@ bool Store::doTransactions(){
  ||       -
  +==============================================================================-
  */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
-
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-

@@ -8,9 +8,6 @@
 
 
 #include "return.h"
-void Return::print() const{
-    std::cout << "returned Item: " << std::endl;
-}
 
 bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
@@ -29,6 +26,9 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
         //we are to check the ttrancsation type and make stock changes
         std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
         return false;
+    }else if(getMediaType() == 'Z'){
+        std::cout << "ERROR invalid Media Type: " << getMediaType() << std::endl;
+        return false;
     }else{
         Movie *moviePtr = nullptr;
         switch (this->getMovieGenre()) {
@@ -40,13 +40,9 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setDirector(this->getMovieDirector());
                 temp_movie.setTitle(this->getMovieTitle());
                 
-                
-                //temp_movie.setTitle(this->getMovieTitle());
-              
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
                     std::cout <<"ERROR Incorrect Data, This Item does not exist in Drama Database " <<this->getMovieTitle()<< std::endl;
-                    
-                    //std::cout <<this->getMovieTitle() << " " << this->getMovieDirector() <<" Item is not in the drama database " << std::endl;
+             
                     
                 }else{
                     moviePtr->addStock();
@@ -172,7 +168,7 @@ void Return::makeTransaction(std::string result, char transactionType){
             //director, title
             std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,',');
             
-            this->setMovieTitle(second_half_vector[1]);
+            this->setMovieTitle(second_half_vector[1].substr(1,second_half_string[1]));
             this->setMovieDirector(second_half_vector[0]);
             
             break;
@@ -200,20 +196,4 @@ std::ostream& operator<<(std::ostream &output, const Return &rhs){
     
     return output;
 };
-/*
-bool Return::doTransaction() {
-    
-    //query the movie database by looking at this movie title,
-    //then increment the quntity of the stores amount by 1
-    std::ostringstream ss;
- 
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    ss << "\nMovie Title: " << this->getMovieTitle();
-    ss << "\nCustomer ID: " << this->getCustomerID();
-    ss << "\nMedia Type: "  << this->getMediaType();
-    ss << "\nMovie Genre: " << this->getMovieGenre();
-    ss << "\nTransaction Amount: " << this->getTransactionAmount();
-    std::cout << ss.str() << std::endl;
-    return true;
-};
-*/
+

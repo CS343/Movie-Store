@@ -37,6 +37,8 @@ public:
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
+    
+    
 
     void print(std::ostream &) const;
     

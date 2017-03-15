@@ -10,7 +10,7 @@
 #include "transaction.h"
 
 Transaction::Transaction(){
-    this->setTransactionAmount(0);
+
 }
 
 
@@ -29,9 +29,6 @@ char Transaction::getTransactionType() const{
     return this->transactionType;
 }
 
-int Transaction::getTransactionAmount() const{
-    return this->transactionAmount;
-}
 
 char Transaction::getMediaType() const{
     return this->mediaType;
@@ -82,9 +79,7 @@ void Transaction::setMediaType(char mediaType){
     this->mediaType = mediaType;
 }
 
-void Transaction::setTransactionAmount(int amount){
-    this->transactionAmount = amount;
-}
+
 void Transaction::setTransactionType(char type){
     this->transactionType = type;
 }
@@ -105,7 +100,7 @@ void Transaction::setMovieYear(std::string year){
 }
 
 
-
+/*
 
 void Transaction::makeTransaction(std::string result, char transactionType){
     //IM TRYING TO MAKE THIS METHOD A PURE VIRTUAL METHOD SUCH THAT
@@ -115,24 +110,7 @@ void Transaction::makeTransaction(std::string result, char transactionType){
     
     std::cout << "stupid called" << std::endl;
 }
-
-/*
-bool Transaction::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB){
-    
-}
-*/
+ */
 
 
-//print
-void Transaction::print() const{
-    std::ostringstream ss;
-
-    ss << "Transaction";
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    ss << "\nMovie Title: " << this->getMovieTitle();
-    ss << "\nCustomer ID: " << this->getCustomerID();
-    ss << "\nMedia Type: "  << this->getMediaType();
-    ss << "\nMovie Genre: " << this->getMovieGenre();
-    ss << "\nTransaction Amount: " << this->getTransactionAmount();
-    std::cout << ss.str() << std::endl;
-}
+ 

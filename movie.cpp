@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include "movie.h"
-
+#include<iomanip>
 
 
 bool Movie::compare(const Movie &rhs){
@@ -64,6 +64,7 @@ bool Movie::removeStock(int amount){
         current_stock-=amount;
         return true;
     }else{
+        std::cout << "ERROR Out of Stock: " << getTitle() << std::endl;
         return false;
     }
 };
@@ -73,6 +74,7 @@ bool Movie::addStock(int amount){
         current_stock+=amount;
         return true;
     }else{
+        std::cout << "ERROR Reached Max_capacity of Stock: " << getTitle() << std::endl;
         return false;
     }
 };
@@ -123,7 +125,8 @@ void Movie::addMajorActorToList(std::string) {
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){
    // rhs.print();
-    rhs.print(output);
+    output << "  " <<std::left <<std::setw(38)<< rhs.getTitle() <<std::right << std::setw(3) << rhs.getStock();
+    //rhs.print(output);
     return output;
 };
 
