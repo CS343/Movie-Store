@@ -35,14 +35,3 @@ void ViewInventory::makeTransaction(std::string result, char transactionType){
   };
 
 
-/*
-bool ViewInventory::doTransaction() {
-    //
-    std::ostringstream ss;
-    
-    ss << "\nTransaction Type: " << this->getTransactionType();
-    std::cout << ss.str() << std::endl;
-    return true;
-}
- 
- */

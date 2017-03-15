@@ -191,9 +191,3 @@ void Return::makeTransaction(std::string result, char transactionType){
     
 };
 
-std::ostream& operator<<(std::ostream &output, const Return &rhs){
-    output << "hellow from return";
-    
-    return output;
-};
-
