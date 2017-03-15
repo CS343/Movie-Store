@@ -21,20 +21,30 @@ in are performed via doTransactions.
 #include "store.h"
 
 using namespace std;
+
+Store::~Store(){
+    //first since the transaction queue will have poped all the transacitons out, the only place that ALL transactions have been inserted into are the customers
+    //there are no two customers with the same transactions therefore, we will be
+    //able to to call the hashTables Delete method, the Delete method will deliete all
+    //transactions inside the customer, then delete the custoemr that are within each
+    //index of the linked list, checking if the locaton is NULL ofc.
+    
+}
 /*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ +==============================================================================-
+ ||
+ ||   Function_Description:
+ ||       -
+ ||   Preconditions:
+ ||       -
+ ||       -
+ ||   Postconditions:
+ ||      -
+ ||       -
+ ||
+ ||   Assumptions:
+ ||       -
+ +==============================================================================-
  */
 Store::Store(){
 
@@ -76,7 +86,7 @@ void Store::showInventory() const {
     
     std::cout << std::endl;
     std::cout << "SHOW CUSTOMERS" << std::endl;
-    customerHashTable.showAllItems();
+
     
 }
 
@@ -227,26 +237,11 @@ bool Store::readTransactions(ifstream& infile){
         Transaction *transactionPtr;
         transactionPtr  = TransactionFactory::makeTransaction(infile, command);
         
-        /*
-        Customer *temp = nullptr;
         
-        temp = this->customerStorage.get(std::atoi(transactionPtr->getCustomerID().c_str()));
-        if(temp == nullptr){
-            //what if the transaction is an I no customer ID
-            std::cout << "Customer ID does not exist@NEW :" << transactionPtr->getCustomerID()<< std::endl;
-        }
-         */
-        /*
-        if(!(this->customerHashTable.retrieveCustomer(transactionPtr->getCustomerID(), temp))){
-            
-            std::cout << "Customer ID does not exist: " << transactionPtr->getCustomerID() << std::endl;
-        }
-        */
-        //std::cout << std::endl;
-        //transactionPtr->doTransaction();
-    
         transactionQueue.push(transactionPtr);
   
+        //push the transaction to the transcation queue
+        transactionStorage.push_back(transactionPtr);
     }
     return true;
 };
@@ -270,6 +265,12 @@ bool Store::readTransactions(ifstream& infile){
 
 bool Store::doTransactions(){
     //HYE BARDIA
+    Transaction *transPtr;
+    for(int trans = 0; trans < transactionStorage.size(); trans++){
+        transPtr = this->transactionStorage[trans];
+        transPtr->doTransaction(this->_classicStorage, this->_comedyStorage, this->_dramaStorage, this->customerStorage);
+    }
+    /*
     while(!(this->transactionQueue.empty())){
         Transaction *ptr;
         ptr = this->transactionQueue.front();
@@ -283,6 +284,7 @@ bool Store::doTransactions(){
         this->transactionQueue.pop();
         //std::cout << "finished outputting the data" << std::endl;
     }
+     */
     return true;
     
 }

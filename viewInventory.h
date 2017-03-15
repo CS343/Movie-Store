@@ -18,6 +18,7 @@ public:
 	//bool doTransaction();
     
     void makeTransaction(std::string result, char command);
+    void print() const;
 };
 
 #endif /* VIEWHISTORY_H */

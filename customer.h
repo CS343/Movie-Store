@@ -22,8 +22,6 @@ class Transaction;
 
 class Customer {
 
-    friend std::ostream& operator<<(std::ostream& output, const Customer customerObj);
-
 public:
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
@@ -84,7 +82,6 @@ private:
     std::string customerID;
     std::string firstName;
     std::string lastName;
-    
     std::vector<Transaction *> history;
 
 	
