@@ -1,4 +1,20 @@
-/*---------- Class Description -----------
+/*
+ +==============================================================================-
+ ||
+ ||   Function_Description:
+ ||       -
+ ||   Preconditions:
+ ||       -
+ ||       -
+ ||   Postconditions:
+ ||      -
+ ||       -
+ ||
+ ||   Assumptions:
+ ||       -
+ +==============================================================================-
+ */
+/*
 This class represents the store itself. It has a Queue of the transactions,
 just like a movie store would have receipts for everything that was
 borrowed and
@@ -10,7 +26,6 @@ The store class has four methods. The main function creates
 Finally, all transactions that were just read
 in are performed via doTransactions.
 */
-
 
 /*
  
