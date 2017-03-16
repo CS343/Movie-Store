@@ -1,21 +1,3 @@
-// USE THIS COMMENT TEMPLATE
-/*==============================< FUNCTION NAME >==============================
-||	Function Desction:
-||		-
-||
-||	Precondition:
-||		-
-||		-
-||
-||	Postcondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
-
-
-
 /*
 This class represents the store itself. It has a Queue of the transactions,
 just like a movie store would have receipts for everything that was
@@ -51,10 +33,6 @@ Store::~Store(){
 	//are within each
     //index of the linked list, checking if the locaton is NULL ofc.
     
-    /*
-      TO DO
-     
-     */
   	for(int i =0; i< transactionStorage.size(); i++){
 		delete transactionStorage[i];
 	}
