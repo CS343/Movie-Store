@@ -27,13 +27,7 @@ public:
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
-
-
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //use to make the movie/comedy populate the movie
     void makeMovie(std::vector<std::string>);
 };
 #endif /* COMEDY_H */
