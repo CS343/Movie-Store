@@ -355,12 +355,12 @@ void Classic::setMajorActor(std::string firstName, std::string lastName){
  ||
  ||   Function_Description:
  ||      -Make movie is a polymophism method, that populates the current classic
- ||     Movie, because classic movie genere have different ways to distingish 
+ ||     Movie, because classic movie genere have different ways to distingish
  ||     the movie, it is split differently and the data is distributed to its
  |\     Respective attributes
  ||
  ||   Preconditions:
- ||      - a string that contains the various attributes with white space 
+ ||      - a string that contains the various attributes with white space
  ||     delimited
  ||      -
  ||   Postconditions:
