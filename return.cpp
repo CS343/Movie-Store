@@ -8,22 +8,44 @@
 
 
 #include "return.h"
-bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
+
+
+/*==========================< FUNCTION NAME >=============================
+||
+||   Function_Description:
+||      - constructs Store object
+||   Preconditions:
+||      - Take in 4 parameters - three are the 3 bintree of movies
+||      - the other one is the customer hashtable
+||   Postconditions:
+||      - The actions stated by the Return object are done
+||      - 
+||
+||   Assumptions:
+||      - None
+++============================================================================*/
+bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB,
+			   BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
     //std::cout << "We are in here" << std::endl;
     
-    //Make this into a class that is inherited, into anothe rlayer //repeated code
+    //Make this into a class that is inherited, into anothe rlayer 
+	//repeated code
     
     
     Customer *returnCustomer = nullptr;
      //std::cout << "return" << std::endl;
     
+    // points at the customer in the customer hashtable that this reutnr is dealing with
     returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
+	
+    // if the customer was not found thenn show error
     if(returnCustomer == nullptr){
         //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
-        std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
+        std::cout << "ERROR customer does not exist: " <<
+		this->getCustomerID() << std::endl;
 		
         return false;
     }else if(getMediaType() == 'Z'){
