@@ -7,60 +7,49 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include <algorithm>
 #include "classic.h"
-
-/*==============================< Function NAME >==========================
-||	Function Desction:
-||		-  Default constructor
-||
-||	Precondition:
-||		- None
-||		-
-||
-||	PostCondition:
-||		- Classic Movie is instantiated
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 
 
 Classic::Classic(){
     
-   // std::cout << "Classic constr called" << std::endl;
+    // std::cout << "Classic constr called" << std::endl;
 }
 
 
-/*==============================< Function NAME >==========================
-||	Function Desction:
-||		-  Opoerator < overloader using the required sorting attributes 
-||
-||	Precondition:
-||		- The movie class has to have exposure to the specific operator over
-||   loaded method.
-||	PostCondition:
-||		- returns true regarding wether this is less than RHS
-||		-
-||	Assumptions:
-||		- NONE
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
 bool Classic::operator<(const Movie &rhs) const{
-  //  std::cout << "< called from Classic" << std::endl;
+    //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
-    
-    
-    
-    
-    if( (this->getYear() + this->getReleaseMonth() ) != (rhs.getYear() + rhs.getReleaseMonth()) ){
-        return (this->getYear() + this->getReleaseMonth() ) < ( rhs.getYear() + rhs.getReleaseMonth());
-    }else{
-        return this->getMajorActor()  < rhs.getMajorActor();
-        //make sure the actor array is sorted.
-        //compare the first actor with the actor given
-    }
-    
-    /*
     
     if(this->getYear() < rhs.getYear()){
         return true;
@@ -69,138 +58,85 @@ bool Classic::operator<(const Movie &rhs) const{
             return true;
         }
     }else{
-        /*
-        std::string thisSmallestActor = this->list_major_actors.front;
-        std::string rhsSmallestActor = rhs.list_major_actors.front;
-        std::vector<std::string> sameSmallestActors;
-        bool alreadyCompared = false;
-        for(;;){
-            for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
-                 for (std::vector<std::string>::iterator it3 = sameSmallestActors.begin() ; it3 != sameSmallestActors.end(); ++it3){
-                    if( *(it3) == *(it) ){
-                        alreadyCompared = true;
-                    }
-                 }
-                
-                // if "it" is smaller
-                if( (thisSmallestActor.compare(*it) < 0) && (sameSmallestActors)){
-                    thisSmallestActor = *it;
-                }
-            }
-
-            for (std::vector<std::string>::iterator it2 = rhs.list_major_actors.begin() ; it2 != rhs.list_major_actors.end(); ++it2){
-                if( ( rhsSmallestActor.compare(*it) < 0) ){
-                    rhsSmallestActor = *it;
-                }
-            }
-            
-            // if rhsSmallestActor is smaller
-            if( thisSmallestActor.compare(rhsSmallestActor) < 0 ){
-                return false;
-                break;
-            } else if(rhsSmallestActor.compare(thisSmallestActor) < 0){ // if thisSmallestActor is smaller
-                return true;
-                break;
-            } 
-            
-            // or thisSmallestActor
-            //sameSmallestActors.push_back(rhsSmallestActor);
-            
-        }
-            return true;
-        
-        */
-        //return false;
-            
         return false;
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
-     
-     */
-    
-    return true;
 };
-/*==============================< Function NAME >==========================
-||	Function Desction:
-||		-  Operator > check if this is greater than rhs
-||
-||	Precondition:
-||		- None
-||
-||	PostCondition:
-||		- Returns true of this is greater than rhs
-||		-
-||	Assumptions:
-||		- None
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
+
 bool Classic::operator>(const Movie &rhs) const{
-    
-    
-   // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
+    // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
     if(this->getYear() > rhs.getYear()){
         return true;
     }else if(this->getYear() == rhs.getYear()){
-     //checks of the relkeased months are the same 
         if(this->getReleaseMonth() > rhs.getReleaseMonth()){
             return true;
         }
+    }else{
+        return false;
     }
-    /*}else{
-        
-        
-        std::string thisSmallestActor = this->list_major_actors.front;
-        std::string rhsSmallestActor = rhs.list_major_actors.front;
-        for(;;){
-            for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
-                // if "it" is smaller
-                if(thisSmallestActor.compare(*it) < 0){
-                    thisSmallestActor = *it;
-                }
-            }
-
-            for (std::vector<std::string>::iterator it2 = rhs.list_major_actors.begin() ; it != rhs.list_major_actors.end(); ++it){
-                if(rhsSmallestActor.compare(*it) < 0){
-                    rhsSmallestActor = *it;
-                }
-            }
-            
-            // if rhsSmallestActor is smaller
-            if( thisSmallestActor.compare(rhsSmallestActor) < 0 ){
-                return true;
-                break;
-            } else if(rhsSmallestActor.compare(thisSmallestActor) < 0){ // if thisSmallestActor is smaller
-                return false;
-                break;
-            } 
-        }
-            return true;
-    }*/
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
     
-   // return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
+    // return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
     
 };
-/*==============================< Function NAME >==========================
-||	Function Desction:
-||		-  Operator == to tell wether two objecsta are the same
-||
-||	Precondition:
-||		-
-||		-
-||
-||	PostCondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
+
+
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
+
 bool Classic::operator==(const Movie &rhs) const{
     //released date then major actor
-   // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
+    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
     //since this is calssic i need some way to ask Movie RHS if one of these major actors are what you seek.
     
     
@@ -208,20 +144,22 @@ bool Classic::operator==(const Movie &rhs) const{
     return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() )  && (this->hasMajorActor(rhs.getMajorActor()));
     
 };
-/*==============================< makeTransaction >==========================
-||	Function Desction:
-||		- This function intakes a string and a character type
-||
-||	Precondition:
-||		-
-||		-
-||
-||	PostCondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+
 
 bool Classic::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
@@ -239,20 +177,38 @@ std::string Classic::getMajorActorFirst() const{
 void Classic::setMajorActorLast(std::string lastName){
     this->major_actor_lastName = lastName;
 };
-/*==============================< makeTransaction >==========================
-||	Function Desction:
-||		- This function intakes a string and a character type
-||
-||	Precondition:
-||		-
-||		-
-||
-||	PostCondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+/*
+ +===============================================================================
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ ||
+ +===============================================================================
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 
 std::string Classic::getMajorActorLast() const{
     return this->major_actor_lastName;
@@ -267,9 +223,8 @@ int Classic::getReleaseMonth() const{
 }
 
 std::string Classic::getMajorActor() const{
-    //std::cout << list_major_actors[0] << std::endl;
-    return this->major_actor;
-    //return getMajorActorFirst() + " " + getMajorActorLast();
+    
+    return getMajorActorFirst() + " " + getMajorActorLast();
 }
 
 
@@ -277,34 +232,30 @@ void Classic::addMajorActorToList(std::string majorActorName){
     if(!(std::find(list_major_actors.begin(), list_major_actors.end(), majorActorName) != list_major_actors.end())) {
         /* actor not contain inside x */
         list_major_actors.push_back(majorActorName);
-        
-        std::sort(list_major_actors.begin(), list_major_actors.end());
-        this->major_actor = list_major_actors[0];
     }
 }
 
-
-  
 
 /*
  Given an vector/array of data, populate the current movie object with its respective elements
  
  */
 
-/*==============================< makeTransaction >==========================
-||	Function Desction:
-||		- This function intakes a string and a character type
-||
-||	Precondition:
-||		-
-||		-
-||
-||	PostCondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
 void Classic::setMajorActor(std::string firstName, std::string lastName){
     this->major_actor_firstName = firstName;
     this->major_actor_lastName = lastName;
@@ -314,7 +265,7 @@ void Classic::makeMovie(std::vector<std::string> array){
     
     std::vector<std::string> extra_classic_data = Helper_Functions::string_split(array[4], ' ');
     
-   // std::cout << "Make Movie for Comed called" << std::endl;
+    // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
     int year = atoi(extra_classic_data[4].c_str());
     int stock = atoi(array[1].c_str());
@@ -326,7 +277,6 @@ void Classic::makeMovie(std::vector<std::string> array){
     this->setMajorActorFirst(extra_classic_data[1]);
     this->setMajorActorLast(extra_classic_data[2]);
     this->setReleaseMonth(releaseMonth);
-    
     addMajorActorToList(extra_classic_data[1] + " " +extra_classic_data[2]);
 }
 
@@ -341,19 +291,27 @@ bool Classic::hasMajorActor(std::string actor) const{
 }
 
 
-/*==============================< makeTransaction >==========================
-||	Function Desction:
-||		- This function intakes a string and a character type
-||
-||	Precondition:
-||		-
-||		-
-||
-||	PostCondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
-
-
+/*
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ #   Function_Description:
+ #       -
+ #   Preconditions:
+ #       -
+ #       -
+ #   Postconditions:
+ #       -
+ #       -
+ #
+ #   Assumptions:
+ #       -
+ $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
+ */
+/*
+//output operator work around, flow transition.
+void Classic::print(std::ostream& output) const{
+    output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
+    //output <<"Year: " << " " << getYear() << "  Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock() <<  "   Major Actor: " << getMajorActor() << "   Get month: " << getReleaseMonth();
+    
+}
+ 
+ */

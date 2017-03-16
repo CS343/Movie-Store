@@ -58,9 +58,9 @@ public:
 	bool doTransactions();
     
 
-    //void showInventory() const;
+    void showInventory() const;
     
-    //bool searchInventory(char);
+    bool searchInventory(char);
 	
 private:
     
