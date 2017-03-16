@@ -10,9 +10,31 @@
  COMEDYS IS KEY STROKE F
  */
 #include "comedy.h"
-
+/*==============================< FUNCTION NAME >==============================
+||	Function description: This default constructor
+||
+||	Precondition:
+||		- None
+||
+||	Postcondition:
+||		-  Comedy object is constructed
+||		-
+||	Assumptions:
+|| - None
+++===========================================================================*/
 Comedy::Comedy(){};
-
+/*==============================< FUNCTION NAME >==============================
+||	Function description: Operator overload of <, given the sorting attributes
+||
+||	Precondition:
+||		- None
+||
+||	Postcondition:
+||		- Returns true of this is less than RHS 
+||		-
+||	Assumptions:
+|| - None
+++===========================================================================*/
 bool Comedy::operator<(const Movie &rhs) const{
     //std::cout << "< called from COmedy" << std::endl;
     if(this->getTitle() < rhs.getTitle()){
@@ -27,7 +49,18 @@ bool Comedy::operator<(const Movie &rhs) const{
     //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
     return true;
 };
-
+/*==============================< FUNCTION NAME >==============================
+||	Function description: Operator > overload with the specifics
+|| Given a title and year detingisuh which is greater
+||	Precondition:
+||		- None
+||
+||	Postcondition:
+||		- return true of this is greater than rhs false otherwise
+||		-
+||	Assumptions:
+|| - None
+++===========================================================================*/
 bool Comedy::operator>(const Movie &rhs) const{
     if(this->getTitle() > rhs.getTitle()){
         return true;
