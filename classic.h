@@ -16,19 +16,11 @@
 
 class Classic: public Movie {
 public:
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
     Classic();
     ~Classic(){};
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    
+    //Comparison operator over loades
+    //these operators are coded to specificas that are required
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
@@ -36,77 +28,45 @@ public:
     bool operator<=(const Movie &) const;
     bool operator>=(const Movie &) const;
     
-    /*
-    bool operator==(const Classic &) const;
-    bool operator!=(const Classic &) const;
-    bool operator<(const Classic &) const;
-    bool operator>(const Classic &) const;
-    bool operator<=(const Classic &) const;
-    bool operator>=(const Classic &) const;
-     
-    
-    */
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void print(std::ostream &) const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
+   //set the major actor
     void setMajorActorFirst(std::string);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //get the major actors first name
+    
     std::string getMajorActorFirst() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //set the major actors lastName
     void setMajorActorLast(std::string);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //get the major actions lastname
     std::string getMajorActorLast() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //set the released month of the current calssic movie
     void setReleaseMonth(int month);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //get the released month for classic movie
     int getReleaseMonth() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //returns a combination of the actors first name
+    //and the actors lastname with a space between them.
     std::string getMajorActor() const;
-     
+     //set the major actor given first and lastname
     void setMajorActor(std::string firstName, std::string lastName);
     
     void addMajorActor(std::string actor);
-    
+    //add major actor to the major actors list, mane classica have more than 1
+    //major actor
     void addMajorActorToList(std::string majorActorName);
 
-    
+    //make movie
     void makeMovie(std::vector<std::string>);
     bool hasMajorActor(std::string) const;
+    
+    
+    void setMajorActor(std::string actor);
 private:
     int release_month;
     std::vector<std::string> list_major_actors;
+    
+    std::string major_actor;
+    
+    
+    
     
     std::string major_actor_firstName;
     std::string major_actor_lastName;

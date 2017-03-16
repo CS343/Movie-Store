@@ -37,53 +37,31 @@ in are performed via doTransactions.
 class Store {
 
 public:
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
     
+    // deletes the list of transactions that are made
     ~Store();
-	Store();
+    Store();
     
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+  
     //read in the movies from the data file
     bool readMovies(std::ifstream& infile);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
     //read in the customers from the data file
     bool readCustomers(std::ifstream& infile);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
     //read in the transactions from the data file
     bool readTransactions(std::ifstream& infile);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+   
     //carry out all the transactions in the transactions queue
     
     //bool doTransactions(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB);
 	bool doTransactions();
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    
+
     void showInventory() const;
     
     bool searchInventory(char);
+	
 private:
     
     //std::queue<Transaction *> transactionQueue;
@@ -95,11 +73,19 @@ private:
     //hashtable of all customer accounts
     //HashTable customerHashTable;
     
+	// contains all the transactions that occur
     std::vector<Transaction *> transactionStorage;
+	
+    // Customer objects are stored in a hashtable
     OpenHashTable customerStorage;
     
+    // stores all the classic movies in a BST
     BinTree _classicStorage;
+	
+	 // stores all the comedy movies in a BST
     BinTree _comedyStorage;
+	
+	 // stores all the drama movies in a BST
     BinTree _dramaStorage;
     
 };

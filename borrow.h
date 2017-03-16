@@ -13,9 +13,14 @@ borrow a movie from the store.
 class Borrow : public Transaction {
 
 public:
-    Borrow(){};
-
+    // Borrow(){};
+    //makes the current transaction given a char tarnsaction type
+    //and a string which is the resulting string of text
     void makeTransaction(std::string, char transactionType);
+    
+    
+    //does a borrrow transaction
+    //given the database reference to customers and movie databases
     bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &);
    
 
