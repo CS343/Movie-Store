@@ -52,7 +52,8 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input,
     //to borrowing 1 quntity.
     std::string ayyo1 = result.substr(1,10);
     
-    // splits the line by white spaces so that every token can be put into variable
+    // splits the line by white spaces so that every token can be put
+    //into variable
 std::vector<std::string> first_half=Helper_Functions::string_split(ayyo1, ' ');
     
     switch (command) {
