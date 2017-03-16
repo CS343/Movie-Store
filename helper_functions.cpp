@@ -25,7 +25,9 @@
  ||      - None
  ++===========================================================================*/
 
-std::vector<std::string> Helper_Functions::string_split(std::string s, const char delimiter)
+std::vector<std::string> Helper_Functions::string_split(
+                                                        std::string s,
+                                                        const char delimiter)
 {
     size_t start=0;
     //find the delimiter in the string, the first delimiter
