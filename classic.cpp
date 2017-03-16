@@ -63,21 +63,21 @@ bool Classic::operator<(const Movie &rhs) const{
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
 };
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      -
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
 
 
 bool Classic::operator>(const Movie &rhs) const{
