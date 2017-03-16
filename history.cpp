@@ -7,6 +7,22 @@
 //
 
 #include "history.h"
+/*==========================< FUNCTION NAME >=================================
+ ||
+ ||   Function_Description:
+ ||      - Do transaction will call the view history method of the current 
+ ||     storedd customer , , by query the customer database,
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - the customers history is viewed,
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++===========================================================================*/
 
 
 bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
@@ -24,6 +40,7 @@ bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dram
         return false;
     }else{
         //std::cout << "Printing History for customer ID: " << this->getCustomerID() << std::endl;
+        //call the current customers displayHistory.
         returnCustomer->displayHistory();
    
         return true;
@@ -31,6 +48,22 @@ bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dram
     
     
 };
+/*==========================< FUNCTION NAME >=================================
+ ||
+ ||   Function_Description:
+ ||      - make this transaction, given the data string and a trancastion 
+ ||     populates an transctions
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++===========================================================================*/
 
 
 void History::makeTransaction(std::string result, char transactionType){

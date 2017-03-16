@@ -10,18 +10,14 @@ transaction to display the history of transactions of the store.
 class History : public Transaction {
 
 public:
+    //default constructor
     History(){};
 
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    
     //perform the transaction
 	//bool doTransaction();
+    //a do transcation to perform what this class is suppused to do
     bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
-
+    //initalize the history transction
     void makeTransaction(std::string, char);
 };
 
