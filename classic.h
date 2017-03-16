@@ -73,7 +73,7 @@ private:
     std::string major_actor;
     
     
-    
+    //actors respective name split
     
     std::string major_actor_firstName;
     std::string major_actor_lastName;
