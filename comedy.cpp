@@ -71,9 +71,8 @@ bool Comedy::operator>(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+
     return true;
-    //return (this->getTitle() > rhs.getTitle()) && (this->getYear() > rhs.getYear());
 };
 
 /*==========================< FUNCTION NAME >==================================
@@ -93,7 +92,8 @@ bool Comedy::operator>(const Movie &rhs) const{
 
 
 bool Comedy::operator==(const Movie &rhs) const{
-    return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() == rhs.getYear()) );
+    return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() ==
+                                                       rhs.getYear()) );
 };
 /*==========================< FUNCTION NAME >==================================
  ||

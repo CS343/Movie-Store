@@ -3,7 +3,7 @@
 //  movie Store
 //
 //  Created by Danny Ly on 3/3/17.
-//  Copyright © 2017 Danny Ly. All rights reserved.
+//  Copyright © 2017 Danny Ly. Bardia Borhani All rights reserved.
 //
 
 #include "customer.h"
@@ -170,14 +170,18 @@ std::string Customer::getCustomerFirstName() const{
     return this->firstName;
 };
 /*
- +=========================get customer lastname================================-
+ +=========================MAKE CUSTOMER       ================================-
  ||
  ||   Function_Description:
- ||       - gets the current customer objecst lastname
+ ||       - Given an input stream, make the current customer object
+ ||     This works by taking the input stream and getting the line, it check
+ ||     if there are three elements ID, First name, LastName
+||      and checks if the ID is a digit, and once it is we popualte the Customer 
+ ||     object
  ||   Preconditions:
- ||       - None
+ ||       - the customer object calling function is new'd and not populated
  ||   Postconditions:
- ||      - a string of the customers lastname is returned 
+ ||      - customer object is popualted
  ||   Assumptions:
  ||       - None
  +==============================================================================-
@@ -185,9 +189,9 @@ std::string Customer::getCustomerFirstName() const{
 
 bool Customer::makeCustomer(std::ifstream &infile){
 	std::string result;
-	
+	//get a line from the infile stream
 	std::getline(infile,result);
-	
+	//the array split by white space
 	std::vector<std::string> customer_array = Helper_Functions::string_split(result,' ');
 
 
@@ -210,6 +214,23 @@ bool Customer::makeCustomer(std::ifstream &infile){
 	}
 
 }
+
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - Get the customer LastName
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - return customer last name string
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
+
 std::string Customer::getCustomerLastName() const{
     return this->lastName;
 };
