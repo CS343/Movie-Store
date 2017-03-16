@@ -13,9 +13,39 @@ borrow a movie from the store.
 class Borrow : public Transaction {
 
 public:
-    Borrow(){};
+    // Borrow(){};
 
+/*==============================< makeTransaction >==========================
+||	Function Desction:
+||		- This function intakes a string and a character type
+||
+||	Precondition:
+||		-
+||		-
+||
+||	Precondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
     void makeTransaction(std::string, char transactionType);
+    
+    
+    /*==============================< doTransaction >==========================
+||	Function Desction:
+||		-
+||
+||	Precondition:
+||		-
+||		-
+||
+||	Precondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
     bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &);
    
 
