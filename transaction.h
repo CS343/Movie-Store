@@ -38,22 +38,28 @@ class Transaction {
 
 public:
 
+    // default constructor
     Transaction();
 
+    // destructor
     virtual ~Transaction(){};
     //setters
-    
+
+    // sets the customer ID field to the value passed in the parameter
     void setCustomerID(std::string);
   
+    // sets the movie title field to the value passed in the parameter
     void setMovieTitle(std::string movieTitle);
+   
+    //void setTransactionAmount(int);
     
-    
-    void setTransactionAmount(int);
-    
+    // set the transactionType field to the value passed in the parameter
     void setTransactionType(char transactionType);
 
+    // set the media type field to the value passed in the parameter
     void setMediaType(char);
     
+    //set the media type field to the value passed in the parameter
     void setMovieGenre(char);
     
     void setMovieDirector(std::string);
