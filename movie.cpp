@@ -138,7 +138,8 @@ bool Movie::addStock(int amount){
         current_stock+=amount;
         return true;
     }else{
-        std::cout << "ERROR Reached Max_capacity of Stock: " << getTitle() << std::endl;
+        std::cout << "ERROR Reached Max_capacity of Stock: "
+        << getTitle() << std::endl;
         return false;
     }
 };
@@ -392,7 +393,8 @@ void Movie::addMajorActorToList(std::string) {
 
 std::ostream& operator<<(std::ostream &output, const Movie &rhs){
    // rhs.print();
-    output << "  " <<std::left <<std::setw(38)<< rhs.getTitle() <<std::right << std::setw(3) << rhs.getStock();
+    output << "  " <<std::left <<std::setw(38)<< rhs.getTitle()
+    <<std::right << std::setw(3) << rhs.getStock();
     //rhs.print(output);
     return output;
 };
