@@ -17,18 +17,21 @@ in are performed via doTransactions.
 
 #include <queue>
 #include "hashtable.h"
-#include "bst.h"
 #include <vector>
 #include "bintree.h"
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
+
 #include "helper_functions.h"
+
 #include "moviefactory.h"
+
 #include "transactionfactory.h"
+
 #include "transaction.h"
 
-#include "openhashtable.hpp"
+#include "openhashtable.h"
 
 
 class Store {
@@ -83,14 +86,14 @@ public:
     bool searchInventory(char);
 private:
     
-    std::queue<Transaction *> transactionQueue;
+    //std::queue<Transaction *> transactionQueue;
     
     std::vector<std::string> string_split(std::string, const char);
     //queue of all transactions to perform
     //Queue transactions;
     
     //hashtable of all customer accounts
-    HashTable customerHashTable;
+    //HashTable customerHashTable;
     
     std::vector<Transaction *> transactionStorage;
     OpenHashTable customerStorage;

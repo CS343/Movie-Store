@@ -38,97 +38,61 @@ in are performed via doTransactions.
 using namespace std;
 
 Store::~Store(){
-    //first since the transaction queue will have poped all the transacitons out, the only place that ALL transactions have been inserted into are the customers
-    //there are no two customers with the same transactions therefore, we will be
-    //able to to call the hashTables Delete method, the Delete method will deliete all
-    //transactions inside the customer, then delete the custoemr that are within each
+    //first since the transaction queue will have poped all the transacitons 
+	//out, the only place that ALL transactions have been inserted into are 
+	//the customers
+    //there are no two customers with the same transactions therefore, we 
+	//will be
+    //able to to call the hashTables Delete method, the Delete method will 
+	//deliete all
+    //transactions inside the customer, then delete the custoemr that 
+	//are within each
     //index of the linked list, checking if the locaton is NULL ofc.
     
     /*
       TO DO
      
      */
-    
+  	for(int i =0; i< transactionStorage.size(); i++){
+		delete transactionStorage[i];
+	}
+	
 }
-/*
- +==============================================================================-
- ||
- ||   Function_Description:
- ||       -
- ||   Preconditions:
- ||       -
- ||       -
- ||   Postconditions:
- ||      -
- ||       -
- ||
- ||   Assumptions:
- ||       -
- +==============================================================================-
- */
+
+/*==========================< DEFAULT CONSTRUCTOR >=============================
+||
+||   Function_Description:
+||      - constructs Store object
+||   Preconditions:
+||      - None
+||      -
+||   Postconditions:
+||      - intalize store object
+||      -
+||
+||   Assumptions:
+||      - None
+++============================================================================*/
 Store::Store(){
 
     
 }
 
-/*
-std::vector<std::string> Store::string_split(std::string s, const char delimiter)
-{
-    size_t start=0;
-    size_t end=s.find_first_of(delimiter);
-    
-    std::vector<std::string> output;
-    
-    while (end <= std::string::npos)
-    {
-        output.emplace_back(s.substr(start, end-start));
-        
-        if (end == std::string::npos)
-            break;
-        
-        start=end+1;
-        end = s.find_first_of(delimiter, start);
-    }
-    
-    return output;
-}
-
-*/
-/*
-void Store::showInventory() const {
-    std::cout << std::endl;
-    std::cout << "Classic Inventory" << std::endl;
-    std::cout << this->_classicStorage << std::endl;
-    std::cout << std::endl;
-    std::cout << "Comedy Inventory" << std::endl;
-    std::cout << this->_comedyStorage << std::endl;
-    std::cout << std::endl;
-    std::cout << "Drama Inventory" << std::endl;
-    std::cout << this->_dramaStorage << std::endl;
-    
-    std::cout << std::endl;
-    std::cout << "SHOW CUSTOMERS" << std::endl;
-
-    
-}
-*/
-
-/*
-+==============================================================================-
+/*==============================================================================
 ||
 ||   Function_Description:
-||       -
+||      -
 ||   Preconditions:
-||       -
-||       -
+||      -
+||      -
 ||   Postconditions:
 ||      -
-||       -
+||      -
 ||
 ||   Assumptions:
-||       -
-+==============================================================================-
-*/
+||      -
+++============================================================================*/
+
 bool Store::readMovies(ifstream& infile){
 /*
  This ReadMovies method works as follows , as you make a Movie parent class, given a command or action pass that to the Movie constructor
@@ -179,16 +143,12 @@ bool Store::readMovies(ifstream& infile){
                 break;
         }
         if (!success){
-            //cout << "deleteing: " << *moviePtr << endl;
             delete moviePtr;
         }
-        /*else{
-            std::cout << "successfully inserted: " << *moviePtr << std::endl;
-        }
-         */
     }
     return true;
 }
+
 
 /*
 +==============================================================================-
@@ -207,23 +167,47 @@ bool Store::readMovies(ifstream& infile){
 +==============================================================================-
 */
 
-
 bool Store::readCustomers(ifstream& infile){
     string id,firstName, lastName;
     for(;;){
-        if (infile.eof()){
-            break;    
-        }
+		if(infile.eof()){
+			break;
+		}
+
+		Customer *ptr = new Customer();
+
+		bool successful = ptr->makeCustomer(infile);
+
+		if(!successful){
+			delete ptr;
+		}else{
+        	customerStorage.put(std::atoi(ptr->getCustomerID().c_str()),
+			ptr);
+		}
+		
+
+
+
+/*
         //grab the customer data from file
         infile >> id >> firstName >> lastName;
-        //create the customer object given the data;
+        std::cout <<"DLETING: " << id << std::endl;
+		
+		//create the customer object given the data;
         Customer *customerObj = new Customer(id, firstName, lastName);
         
         //insert the customer into the store object, and customer hashmap
         
         //customerHashTable.insert(customerObj->getCustomerID(), customerObj);
         customerStorage.put(std::atoi(customerObj->getCustomerID().c_str()), customerObj);
-    }
+  */  
+/*
+        if (infile.eof()){
+			//delete customerObj;
+            break;    
+        }
+*/
+	}
     return true;
 }
 
@@ -264,12 +248,13 @@ bool Store::readTransactions(ifstream& infile){
         }
         
         //error data checked, now populate the objects
-        
+       
+
         Transaction *transactionPtr;
         transactionPtr  = TransactionFactory::makeTransaction(infile, command);
         
         
-        transactionQueue.push(transactionPtr);
+        //transactionQueue.push(transactionPtr);
   
         //push the transaction to the transcation queue
         transactionStorage.push_back(transactionPtr);

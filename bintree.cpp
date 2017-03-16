@@ -1,14 +1,14 @@
 #include "bintree.h"
 // :g/.\{81,\}/p
 
-//DANNY WAS HERE
+
 
 /*
  //|===========================================================================|
  //|                                                                           |
  //|  Assignment2 Binary Search Tree                                           |
  //|                                                                           |
- //|  Created by Danny Ly on 1/15/17.                                          |
+ //|  Created by Danny Ly and Bardia Borhani on 1/15/17.                                          |
  //|  Copyright © 2017 Red Klouds. All rights reserved.                        |
  //|===========================================================================|
  
@@ -106,6 +106,7 @@ BinTree::~BinTree(){
     clear(root);
     //set root to nullptr
     root = nullptr;
+
 }
 
 

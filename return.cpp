@@ -8,7 +8,6 @@
 
 
 #include "return.h"
-
 bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
@@ -25,6 +24,7 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
         //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
         std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
+		
         return false;
     }else if(getMediaType() == 'Z'){
         std::cout << "ERROR invalid Media Type: " << getMediaType() << std::endl;
@@ -138,7 +138,7 @@ void Return::makeTransaction(std::string result, char transactionType){
     //Drams are delimited by comas Director, title
     
     // remove the carriage return /r
-    result.erase( std::remove(result.begin(), result.end(), '\r'));
+    result.erase( std::remove(result.begin(), result.end(), '\r'), result.end() );
     
     //this will get the Customer Customer ID, MediaType, Genre
     std::string first_half_string = result.substr(1,9);

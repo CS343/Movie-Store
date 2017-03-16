@@ -5,9 +5,7 @@
 //  Created by Danny Ly on 3/9/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
-#include <typeinfo>
 #include "borrow.h"
-
 
 bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
@@ -143,8 +141,12 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     //Drams are delimited by comas Director, title
     
     // removes the carriage return /r form the string
-    result.erase( std::remove(result.begin(), result.end(), '\r'));
+    
+	
+	
+	result.erase( std::remove(result.begin(), result.end(), '\r'), result.end() );
 
+	
     
     //this will get the Customer Customer ID, MediaType, Genre
     std::string first_half_string = result.substr(1,9);

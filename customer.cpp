@@ -23,7 +23,7 @@
  */
 void Customer::displayHistory() const {
     std::string format =
-    "\n|--------------------------------------------------|\n";
+		    "\n|==================================================|\n";
     format+="|HISTORY                   Customer ID: " + getCustomerID() + "       |\n";
     format+="|--------------------------------------------------|\n";
     format+="|Status | Title                                    |\n";
@@ -182,6 +182,34 @@ std::string Customer::getCustomerFirstName() const{
  ||       - None
  +==============================================================================-
  */
+
+bool Customer::makeCustomer(std::ifstream &infile){
+	std::string result;
+	
+	std::getline(infile,result);
+	
+	std::vector<std::string> customer_array = Helper_Functions::string_split(result,' ');
+
+
+
+	//int ret = atoi(customer_array[0].c_str());
+	if( (customer_array.size() == 3) && 
+	(isdigit(customer_array[0][0])) && (
+	atoi(customer_array[0].c_str()) >= 0) ) {	
+		setCustomerID(customer_array[0]);
+		setCustomerFirstName(customer_array[1]);
+		setCustomerLastName(customer_array[2]);
+
+		//std::cout << customer_array[0] << customer_array[1]<< std::endl;
+
+//std::cout << std::isalpha(customer_array[3]) << std::endl;
+		return true;
+	}else{
+	
+		return false;
+	}
+
+}
 std::string Customer::getCustomerLastName() const{
     return this->lastName;
 };

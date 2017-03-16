@@ -10,7 +10,7 @@
 #define OPEN_HASH_TABLE_H
 
 #include <stdio.h>
-#include "LinkedHashEntry.hpp"
+#include "LinkedHashEntry.h"
 #include "customer.h"
 const int TABLE_SIZE = 128;
 class LinkedHashEntry;

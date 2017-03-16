@@ -6,8 +6,8 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#ifndef LinkedHashEntry_hpp
-#define LinkedHashEntry_hpp
+#ifndef LinkedHashEntry_h
+#define LinkedHashEntry_h
 
 #include <stdio.h>
 #include "customer.h"
@@ -15,7 +15,7 @@ class Customer;
 class LinkedHashEntry{
 public:
     LinkedHashEntry(int , Customer *);
-    
+	~LinkedHashEntry();    
     int getKey() const;
     Customer* getValue() const;
     
@@ -30,4 +30,4 @@ private:
     Customer *value;
     LinkedHashEntry *next;
 };
-#endif /* LinkedHashEntry_hpp */
+#endif /* LinkedHashEntry_h */
