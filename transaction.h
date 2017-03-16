@@ -38,60 +38,93 @@ class Transaction {
 
 public:
 
+    // default constructor
     Transaction();
 
+    // destructor
     virtual ~Transaction(){};
     //setters
-    
+
+    // sets the customer ID field to the value passed in the parameter
     void setCustomerID(std::string);
   
+    // sets the movie title field to the value passed in the parameter
     void setMovieTitle(std::string movieTitle);
+   
+    //void setTransactionAmount(int);
     
-    
-    void setTransactionAmount(int);
-    
+    // set the transactionType field to the value passed in the parameter
     void setTransactionType(char transactionType);
 
+    // set the media type field to the value passed in the parameter
     void setMediaType(char);
     
+    //set the media type field to the value passed in the parameter
     void setMovieGenre(char);
     
+    // sets the movie director to the string passed in the parameter
     void setMovieDirector(std::string);
     
+     // sets the movie year to the string passed in the parameter
     void setMovieYear(std::string year);
     
+    // sets the movieReleasedMonth field to the string passed in the parameter	
     void setMovieReleasedMonth(std::string);
     
+    // set the first name field to the value in the parameter
     void setFirstName(std::string);
     
+    // set the last name field to the value in the parameter
     void setLastName(std::string);
     
+    // set the actor's name to the value of the two parameters
     void setActorName(std::string, std::string);
-    //getters
-    
+   
+	
+	
+     //getters
+	
+    // returns actor's name
     std::string getActorName() const;
+	
+    // returns movie genre
     char getMovieGenre() const;
     
+    // returns the title of the movie
     std::string getMovieTitle() const;
 
+   // returns the customer's id
     std::string getCustomerID() const;
     
-	char getTransactionType() const;
+    // return the transaction type
+    char getTransactionType() const;
 
-    int getTransactionAmount() const;
+    //int getTransactionAmount() const;
 	
+    // return the media type
     char getMediaType() const;
 
+    // return the movie's year
     int getMovieYear() const;
     
+    // return the name of the movie director
     std::string getMovieDirector() const;
     
+    // return the release month of the movie
     int getMovieReleasedMonth() const;
+	
+    // get actpr's first name
     std::string getFirstName() const;
+	
+    // get actor's last name
     std::string getLastName() const;
     //methods
  
+    // pure virtual functinos for the subclasses
+    // does the transaction
     virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
+	
+    // makes the transaction object- sets variables depending on string paramter
     virtual void makeTransaction(std::string, char)=0;
     
     

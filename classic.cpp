@@ -67,6 +67,7 @@ bool Classic::operator<(const Movie &rhs) const{
             return true;
         }
     }else{
+        /*
         std::string thisSmallestActor = this->list_major_actors.front;
         std::string rhsSmallestActor = rhs.list_major_actors.front;
         //std::vector<std::string> sameSmallestActors;
@@ -98,6 +99,10 @@ bool Classic::operator<(const Movie &rhs) const{
             
         }
             return true;
+        */
+        
+        return false;
+            
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;

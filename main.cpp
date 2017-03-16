@@ -1,3 +1,28 @@
+/* ---------- PROJECT DESCRIPTION --------
+
+Danny Ly and Bardia Borhani
+Pair Programmed
+First Created: 3/2/17
+Last Modified: 3/15/17
+
+Description:
+A local movie rental store wishes to automate their inventory tracking system.
+This program acts as the movie store's inventory tracker. The program contains
+a list of all the customer and list of all the movies the store contins.
+Transactions are recorded and inventory is kept tracked of.
+4 transaction types are  - Borrow, Return, Inventory, and History
+Error are outptted for incorrect values in the data files.
+
+Assumptions: 
+
+3 data files are provided and they are all formatted. Data files contain information
+about the list of customers, movies, and transactions made.
+3 types of movies in the store - classic, comedy, and drama
+
+
+
+*/
+
 /*---------- Class Description -----------
  This is the main function/driver of the program. It opens the three data
  text files associated with the program (data4customers, data4commands,
@@ -59,9 +84,9 @@ int main() {
     //structure
     store.readCustomers(customerFile);
     
+    // reads all the movies in the movie file
     store.readMovies(movieFile);
     
-    //store.showMovies();
     store.readTransactions(transactionFile);
     
     //perform all operations
