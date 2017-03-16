@@ -106,6 +106,7 @@ BinTree::~BinTree(){
     clear(root);
     //set root to nullptr
     root = nullptr;
+
 }
 
 

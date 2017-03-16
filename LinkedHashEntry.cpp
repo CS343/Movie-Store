@@ -6,7 +6,7 @@
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 
-#include "LinkedHashEntry.hpp"
+#include "LinkedHashEntry.h"
 LinkedHashEntry::LinkedHashEntry(int key, Customer *value) {
     this->key = key;
     this->value = value;
@@ -28,5 +28,9 @@ LinkedHashEntry* LinkedHashEntry::getNext() {
 
 void LinkedHashEntry::setNext(LinkedHashEntry *next){
     this->next = next;
+};
+
+LinkedHashEntry::~LinkedHashEntry(){
+	delete this->value;
 };
 

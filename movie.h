@@ -14,7 +14,7 @@ simply has the core attributes of any given movie.
 #include <fstream>
 #include <iomanip>
 #include <vector>
-
+#include <algorithm>
 
 class Movie {
    

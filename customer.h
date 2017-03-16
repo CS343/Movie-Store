@@ -76,7 +76,7 @@ public:
     
     void displayHistory() const;
     
- 
+	bool makeCustomer(std::ifstream &);
     
 private:
     std::string customerID;

@@ -29,7 +29,8 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include "comedy.h"
 #include "classic.h"
 
-#include "openhashtable.hpp"
+#include "openhashtable.h"
+#include <algorithm>
 class OpenHashTable;
 class Transaction {
     
