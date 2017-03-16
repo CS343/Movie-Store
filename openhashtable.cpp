@@ -11,8 +11,8 @@
 
 /*============================< DEFAULT CONSTRUCTOR >===========================
 ||	Description:
-||		- Sets up the Open Hash Object, initalizes a empty Array of 128 spaces
-||		full of NULL for each index
+||		- Sets up the Open Hash Object, initalizes a empty Array of 
+||		128 spaces full of NULL for each index
 ||
 ||	Precondition:
 ||		- None
@@ -35,8 +35,8 @@ OpenHashTable::OpenHashTable(){
 
 /*=========================< FUNCTION NAME >================================
 ||	Description:
-||		- This function retrieves a customer given a customer ID from the hash
-||		structure.
+||		- This function retrieves a customer given a customer ID from
+||		the hash structure.
 ||
 ||	Precondition:
 ||		- key is of type integer
@@ -96,7 +96,8 @@ void OpenHashTable::put(int key, Customer *customerPtr){
     // calculate the has value for the key
     int hash = (key % TABLE_SIZE);
 	
-    // if there isnt alredy a cusomter at the position of the hashtable then insert
+    // if there isnt alredy a LinkedHashEntry at the position of the hashtable 
+	//then insert
     // the customer object there
     if (table[hash] == NULL){
         table[hash] = new LinkedHashEntry(key, customerPtr);
@@ -135,7 +136,7 @@ void OpenHashTable::remove(int key){
     // calculate has value
     int hash = (key % TABLE_SIZE);
 	
-    // there must be a customer object at the place we want to delete	
+    // there must be a LinkedHashEntry object at the place we want to delete	
     if (table[hash] != NULL) {
         LinkedHashEntry *prevEntry = NULL;
         LinkedHashEntry *entry = table[hash];
@@ -145,9 +146,9 @@ void OpenHashTable::remove(int key){
             prevEntry = entry;
             entry = entry->getNext();
         }
-	// if the key values of a Cusomter object in the hashtable match
+	// if the key values of a LinkedHashEntry object in the hashtable match
 	// the key value in he parameter than that customer is found
-	// delete the Customer object
+	// delete the LinkedHashEntry object
         if (entry->getKey() == key) {
             if (prevEntry == NULL) {
                 LinkedHashEntry *nextEntry = entry->getNext();
@@ -170,26 +171,27 @@ void OpenHashTable::remove(int key){
 ||		- None
 ||		
 ||	Postcondition:
-||		- No memory leaks cleans up all data, by removing linked Node ann
+||		- No memory leaks cleans up all data, by removing linked Node an
 ||		deallocates the nodes to prevent memory leaks
 ||
 ||	Assumption(s):
-||		- linked hash Entry Destructor is implmented and deletes its contained
-||		data pointer that it holds else it will leak
+||		- linked hash Entry Destructor is implmented and deletes 
+||		its contained data pointer that it holds else it will leak
 ++============================================================================*/
 
 OpenHashTable::~OpenHashTable(){
-    // go through the hashtable and delete all of the Customer objects
+    // go through the hashtable and delete all of the LinkedHashEntry objects
     for (int i = 0; i < TABLE_SIZE; i++)
-        if (table[i] != NULL) {	// delete only places that have Customer objects
+        if (table[i] != NULL) {	
+		// delete only places that have LinkedHashEntry objects
             LinkedHashEntry *prevEntry = NULL;
             LinkedHashEntry *entry = table[i];
             while (entry != NULL) {
                 prevEntry = entry;
                 entry = entry->getNext();
-				//this just delete the Linked hashEntry, but the hashEntry
-				//also contains or holds  a customer Value/item 
-				//which needs to be deleted
+		//this just delete the Linked hashEntry, 
+		//also contains or holds  a customer Value/item 
+		//which needs to be deleted
                 delete prevEntry;
             }
         }
