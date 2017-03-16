@@ -19,12 +19,13 @@
  ||			Console.
  ||   Assumptions:
  ||       - The history vector has been intastalized.
- +==============================================================================-
++==============================================================================-
  */
 void Customer::displayHistory() const {
     std::string format =
 		    "\n|==================================================|\n";
-    format+="|HISTORY                   Customer ID: " + getCustomerID() + "       |\n";
+    format+="|HISTORY                   Customer ID: " +\
+    getCustomerID() + "       |\n";
     format+="|--------------------------------------------------|\n";
     format+="|Status | Title                                    |\n";
     format+="|--------------------------------------------------|";
@@ -32,16 +33,19 @@ void Customer::displayHistory() const {
     std::cout << format << std::endl;
     for(int i = history.size() - 1; i >= 0; i--){
         if(history[i]->getTransactionType() == 'B'){
-            std::cout << " Borrowed " << history[i]->getMovieTitle() << std::endl;
+            std::cout << " Borrowed " << history[i]->getMovieTitle()
+            << std::endl;
         }else if(history[i]->getTransactionType() == 'R'){
-            std::cout << " Returned " << history[i]->getMovieTitle() << std::endl;
+            std::cout << " Returned " << history[i]->getMovieTitle()
+            << std::endl;
         }
     }
 };
 /*
- +========================<ADD TRANSACTION ======================================-
++========================<ADD TRANSACTION ===============================-
  ||   Function_Description:
- ||       - Helper function that adds a transcation to the customers transaction
+ ||       - Helper function that adds a transcation to the customers
+ //transaction
  ||			vector
  ||   Preconditions:
  ||       - None
@@ -49,7 +53,7 @@ void Customer::displayHistory() const {
  ||      -Transaction pointer will be inserted into the history vector
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 void Customer::addTransaction(Transaction *transaction){
     history.push_back(transaction);
@@ -65,7 +69,7 @@ void Customer::addTransaction(Transaction *transaction){
  ||      - Customer object will be initalitated.
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 Customer::Customer(){};
 /*
@@ -79,7 +83,7 @@ Customer::Customer(){};
  ||      - Customer object has been initalized.
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 
 Customer::Customer(std::string id, std::string firstName, std::string lastName){
@@ -88,7 +92,7 @@ Customer::Customer(std::string id, std::string firstName, std::string lastName){
     setCustomerLastName(lastName);
 };
 /*
- +======================set CustomerID=========================================-
++======================set CustomerID=========================================-
  ||
  ||   Function_Description:
  ||       - helper function to set customer ID
@@ -99,13 +103,13 @@ Customer::Customer(std::string id, std::string firstName, std::string lastName){
  ||
  ||   Assumptions:
  ||       - Customer ID is a string type
- +==============================================================================-
++==============================================================================-
  */
 void Customer::setCustomerID(std::string customerID){
     this->customerID = customerID;
 };
 /*
- +====================set Customer FirstName===================================-
++====================set Customer FirstName===================================-
  ||
  ||   Function_Description:
  ||       - sets the customers first name
@@ -115,7 +119,7 @@ void Customer::setCustomerID(std::string customerID){
  ||      - the customers first name will be set to the parameter given
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 void Customer::setCustomerFirstName(std::string firstName){
     this->firstName = firstName;
@@ -131,7 +135,7 @@ void Customer::setCustomerFirstName(std::string firstName){
  ||      - lastname is set to the given parameter
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 void Customer::setCustomerLastName(std::string lastName){
     this->lastName = lastName;
@@ -148,13 +152,13 @@ void Customer::setCustomerLastName(std::string lastName){
  ||
  ||   Assumptions:
  ||       - the calling function expects a string as return type 
- +==============================================================================-
++==============================================================================-
  */
 std::string Customer::getCustomerID() const{
     return this->customerID;
 };
 /*
- +==============================GET customer First name ========================-
++==============================GET customer First name ========================-
  ||
  ||   Function_Description:
  ||       - returns the customers first name
@@ -164,19 +168,19 @@ std::string Customer::getCustomerID() const{
  ||      - returns the customers first name
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 std::string Customer::getCustomerFirstName() const{
     return this->firstName;
 };
 /*
- +=========================MAKE CUSTOMER       ================================-
++=========================MAKE CUSTOMER       ================================-
  ||
  ||   Function_Description:
  ||       - Given an input stream, make the current customer object
  ||     This works by taking the input stream and getting the line, it check
  ||     if there are three elements ID, First name, LastName
-||      and checks if the ID is a digit, and once it is we popualte the Customer 
+||     and checks if the ID is a digit, and once it is we popualte the Customer
  ||     object
  ||   Preconditions:
  ||       - the customer object calling function is new'd and not populated
@@ -184,7 +188,7 @@ std::string Customer::getCustomerFirstName() const{
  ||      - customer object is popualted
  ||   Assumptions:
  ||       - None
- +==============================================================================-
++==============================================================================-
  */
 
 bool Customer::makeCustomer(std::ifstream &infile){
@@ -192,7 +196,8 @@ bool Customer::makeCustomer(std::ifstream &infile){
 	//get a line from the infile stream
 	std::getline(infile,result);
 	//the array split by white space
-	std::vector<std::string> customer_array = Helper_Functions::string_split(result,' ');
+	std::vector<std::string> customer_array =
+    Helper_Functions::string_split(result,' ');
 
 
 
@@ -229,7 +234,7 @@ bool Customer::makeCustomer(std::ifstream &infile){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 std::string Customer::getCustomerLastName() const{
     return this->lastName;

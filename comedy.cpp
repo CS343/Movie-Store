@@ -46,7 +46,7 @@ bool Comedy::operator<(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+   
     return true;
 };
 /*==============================< FUNCTION NAME >==============================
@@ -88,7 +88,7 @@ bool Comedy::operator>(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 bool Comedy::operator==(const Movie &rhs) const{
@@ -109,13 +109,14 @@ bool Comedy::operator==(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 bool Comedy::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
 };
 /*
- Given an vector/array of data, populate the current movie object with its respective elements
+ Given an vector/array of data, populate the current movie object with 
+ its respective elements
  
  */
 /*==========================< FUNCTION NAME >==================================
@@ -134,7 +135,7 @@ bool Comedy::operator!=(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 void Comedy::makeMovie(std::vector<std::string> array){
    // std::cout << "Make Movie for Comed called" << std::endl;

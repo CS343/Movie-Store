@@ -1,7 +1,8 @@
 //
 //  classic.cpp
 //  movie Store
-//NOTE SOMETHING WRONG WITH Comparsion for Classics, we do not compare by actor just date
+//NOTE SOMETHING WRONG WITH Comparsion for Classics, we do not compare
+//by actor just date
 //and confused about actor how do we get an actor
 //  Created by Danny Ly Bardia BorHani on 3/5/17.
 //  Copyright © 2017 Danny and Bardia Borhani Ly. All rights reserved.
@@ -22,7 +23,7 @@
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -45,7 +46,7 @@ Classic::Classic(){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -62,7 +63,7 @@ bool Classic::operator<(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
+
     return false;
 };
 /*==========================< FUNCTION NAME >==================================
@@ -79,13 +80,11 @@ bool Classic::operator<(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 bool Classic::operator>(const Movie &rhs) const{
-    // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
-    //  std::cout << "< called from Classic" << std::endl;
-    //-	Classics (‘D’) are sorted by Director, then Title
+ 
     if(this->getYear() > rhs.getYear()){
         return true;
     }else if(this->getYear() == rhs.getYear()){
@@ -95,10 +94,10 @@ bool Classic::operator>(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
+
     return false;
     
-    // return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
+
     
 };
 /*==========================< FUNCTION NAME >==================================
@@ -116,18 +115,17 @@ bool Classic::operator>(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
 bool Classic::operator==(const Movie &rhs) const{
-    //released date then major actor
-    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
-    //since this is calssic i need some way to ask Movie RHS if one of these major actors are what you seek.
+
     
     
-    
-    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() )  && (this->hasMajorActor(rhs.getMajorActor()));
+    return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth()
+                                                  == rhs.getReleaseMonth() )
+    && (this->hasMajorActor(rhs.getMajorActor()));
     
 };
 /*==========================< FUNCTION NAME >==================================
@@ -144,7 +142,7 @@ bool Classic::operator==(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 bool Classic::operator!=(const Movie &rhs) const{
@@ -166,7 +164,7 @@ bool Classic::operator!=(const Movie &rhs) const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -187,7 +185,7 @@ void Classic::setMajorActorFirst(std::string firstName){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 std::string Classic::getMajorActorFirst() const{
@@ -207,7 +205,7 @@ std::string Classic::getMajorActorFirst() const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 void Classic::setMajorActorLast(std::string lastName){
@@ -227,7 +225,7 @@ void Classic::setMajorActorLast(std::string lastName){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -248,7 +246,7 @@ std::string Classic::getMajorActorLast() const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -269,7 +267,7 @@ void Classic::setReleaseMonth(int month){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -290,7 +288,7 @@ int Classic::getReleaseMonth() const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
@@ -313,12 +311,13 @@ std::string Classic::getMajorActor() const{
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 
 void Classic::addMajorActorToList(std::string majorActorName){
-    if(!(std::find(list_major_actors.begin(), list_major_actors.end(), majorActorName) != list_major_actors.end())) {
+    if(!(std::find(list_major_actors.begin(), list_major_actors.end(),
+                   majorActorName) != list_major_actors.end())) {
         /* actor not contain inside x */
         list_major_actors.push_back(majorActorName);
     }
@@ -326,7 +325,8 @@ void Classic::addMajorActorToList(std::string majorActorName){
 
 
 /*
- Given an vector/array of data, populate the current movie object with its respective elements
+ Given an vector/array of data, populate the current movie object with 
+ its respective elements
  
  */
 
@@ -344,7 +344,7 @@ void Classic::addMajorActorToList(std::string majorActorName){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 void Classic::setMajorActor(std::string firstName, std::string lastName){
@@ -354,7 +354,8 @@ void Classic::setMajorActor(std::string firstName, std::string lastName){
 /*==========================< FUNCTION NAME >==================================
  ||
  ||   Function_Description:
- ||      -Make movie is a polymophism method, that populates the current classic
+ ||      -Make movie is a polymophism method, that populates the current 
+ ||classic
  ||     Movie, because classic movie genere have different ways to distingish
  ||     the movie, it is split differently and the data is distributed to its
  |\     Respective attributes
@@ -369,12 +370,13 @@ void Classic::setMajorActor(std::string firstName, std::string lastName){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 void Classic::makeMovie(std::vector<std::string> array){
     
-    std::vector<std::string> extra_classic_data = Helper_Functions::string_split(array[4], ' ');
+    std::vector<std::string> extra_classic_data =
+    Helper_Functions::string_split(array[4], ' ');
     
     // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
@@ -415,7 +417,7 @@ void Classic::makeMovie(std::vector<std::string> array){
  ||
  ||   Assumptions:
  ||      - None
- ++============================================================================*/
+++============================================================================*/
 
 
 

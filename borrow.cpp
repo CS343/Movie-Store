@@ -25,10 +25,12 @@
 ||	Assumptions:
 ||		- Item are all initalized correctly.
 ++===========================================================================*/
-bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
+bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB,
+                           BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
-     //Make this into a class that is inherited, into anothe rlayer //repeated code
+     //Make this into a class that is inherited, into anothe rlayer
+    //repeated code
     
     
     Customer *returnCustomer = nullptr;
@@ -40,11 +42,13 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
 	if(returnCustomer == nullptr){
   //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
-        std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
+        std::cout << "ERROR customer does not exist: " <<
+        this->getCustomerID() << std::endl;
         return false;
 	//checker to check of 
     }else if(getMediaType() != 'D'){
-        std::cout << "ERROR invalid Media Type: " << getMediaType() << std::endl;
+        std::cout << "ERROR invalid Media Type: " << getMediaType() <<
+        std::endl;
         return false;
     
     }else{
@@ -65,7 +69,9 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setDirector(this->getMovieDirector());
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
 			//and return a leash to the movie
-                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Drama Database " <<this->getMovieTitle()<< std::endl;
+                    std::cout <<"ERROR Incorrect Data, \
+                    This Item does not exist in Drama Database " <<
+                    this->getMovieTitle()<< std::endl;
                     
                 }else{
 			//remove the stock of thje movie is found
@@ -81,17 +87,18 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setReleaseMonth(this->getMovieReleasedMonth());
                 temp_movie.setYear(this->getMovieYear());
                 //temp_movie.setTitle(this->getMovieTitle());
-                temp_movie.setMajorActor(this->getFirstName(), this->getLastName());
+                temp_movie.setMajorActor(this->getFirstName(),
+                                         this->getLastName());
                 /*
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setYear(this->getMovieYear());
                 */
                  if( !(classicDB.retrieveMovie(temp_movie, moviePtr) ) ){
-                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Classic Database "<< this->getMovieTitle() << std::endl;
-                     /*
-                     std::cout <<this->getMovieTitle()<<" " <<this->getMovieReleasedMonth() << " " <<this->getFirstName() << " " << this->getLastName() << this->getMovieYear() << "Item is not in the Classic database " << std::endl;
-                      */
+                    std::cout <<"ERROR Incorrect Data, This \
+                     Item does not exist in Classic Database "<<
+                     this->getMovieTitle() << std::endl;
                      
+              
                 }else{
                     this->setMovieTitle(moviePtr->getTitle());
                     moviePtr->removeStock();
@@ -105,10 +112,10 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setYear(this->getMovieYear());
                 if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<"ERROR Incorrect Data, This Item does not exist in Comedy Database " << getMovieTitle()<< std::endl;
-                    /*
-                    std::cout << this->getMovieTitle()  << " " << this->getMovieYear()<<"Item is not in the Comedy  database " << std::endl;
-                     */
+                    std::cout <<"ERROR Incorrect Data, \
+                    This Item does not exist in Comedy Database " <<
+                    getMovieTitle()<< std::endl;
+               
                     
                 }else{
                     moviePtr->removeStock();
@@ -117,9 +124,9 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 
             }
             default:
-                std::cout <<"ERROR Invalid Data ERROR(Genere Code): "<< getMovieGenre() << getMovieTitle()<< std::endl;
-                //std::cout << "Incorrect Genre Type: " << this->getMovieGenre() << this->getMovieTitle() << std::endl;
-                //std::cout<< this->getMovieTitle() << "WE always HERE: " << this->getTransactionType() <<"hello" << std::endl;
+                std::cout <<"ERROR Invalid Data ERROR(Genere Code): "<<
+                getMovieGenre() << getMovieTitle()<< std::endl;
+        
                 break;
         }
         if(moviePtr != nullptr){
@@ -154,7 +161,9 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     
     /*
      
-     IDEA since this method is copied for all three sub classes i can inherit one more layer and have this method be in the parent of these classes
+     IDEA since this method is copied for all three sub classes i can i
+     nherit one more layer and have this method be in the parent
+     of these classes
      
      
      if(isdigit(first_half[3][0])){
@@ -165,10 +174,12 @@ void Borrow::makeTransaction(std::string result, char transactionType){
      transactionPtr->setTransactionAmount(1);
      //std::cout << "we have a alpha: " << first_half[3][0] << std::endl;
      }
-     std::cout <<  "SECOND HALF : " << ayoo2.substr(10, ayoo2.length() - 10) << std::endl;
+     std::cout <<  "SECOND HALF : " << ayoo2.substr(10, ayoo2.length() - 10)
+     << std::endl;
      std::cout <<  "SECOND HALF : " << ayoo2 << std::endl;
      //make the rest of the transaction
-     std::vector<std::string> second_half = Helper_Functions::string_split(ayoo2, ',');
+     std::vector<std::string> second_half = H
+     elper_Functions::string_split(ayoo2, ',');
 
      
      */
@@ -184,17 +195,20 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     
 	
 	//remove the escape line character
-	result.erase( std::remove(result.begin(), result.end(), '\r'), result.end() );
+	result.erase( std::remove(result.begin(), result.end(), '\r')
+                 , result.end() );
 
 	
     
     //this will get the Customer Customer ID, MediaType, Genre
     std::string first_half_string = result.substr(1,9);
-    std::vector<std::string> first_half_vector = Helper_Functions::string_split(first_half_string, ' ');
+    std::vector<std::string> first_half_vector =
+    Helper_Functions::string_split(first_half_string, ' ');
     std::string second_half_string = result.substr(10, result.length());
     
     
-//set up the normal data fiels taht are of transactions from the split transaction string
+    //set up the normal data fiels taht are of transactions from the split
+    //transaction string
     this->setCustomerID(first_half_vector[0]);
     this->setMovieGenre(first_half_vector[2][0]);
     this->setMediaType(first_half_vector[1][0]);
@@ -205,7 +219,8 @@ void Borrow::makeTransaction(std::string result, char transactionType){
         {
             //title then year
             
-            std::vector<std::string> second_half_vector = Helper_Functions::string_split(second_half_string,',');
+            std::vector<std::string> second_half_vector =
+            Helper_Functions::string_split(second_half_string,',');
             this->setMovieTitle(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
             //std::cout << "funny Movie" << std::endl;
@@ -215,9 +230,11 @@ void Borrow::makeTransaction(std::string result, char transactionType){
         {
             //delimited by comas
             //director, title
-            std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,',');
+            std::vector<std::string> second_half_vector =
+            Helper_Functions:: string_split(second_half_string,',');
             //Dramas do not contain a movie year,
-            this->setMovieTitle(second_half_vector[1].substr(1,second_half_string[1]));
+            this->setMovieTitle(second_half_vector[1].
+                                substr(1,second_half_string[1]));
             this->setMovieDirector(second_half_vector[0]);
             
             break;
@@ -225,8 +242,10 @@ void Borrow::makeTransaction(std::string result, char transactionType){
             
         case 'C':
         {
-            std::vector<std::string> second_half_vector = Helper_Functions:: string_split(second_half_string,' ');
-             //classics re split by white space with month, year, firstname, lastname
+            std::vector<std::string> second_half_vector =
+            Helper_Functions:: string_split(second_half_string,' ');
+             //classics re split by white space with month,
+            //year, firstname, lastname
             this->setMovieReleasedMonth(second_half_vector[0]);
             this->setMovieYear(second_half_vector[1]);
             this->setFirstName(second_half_vector[2]);
