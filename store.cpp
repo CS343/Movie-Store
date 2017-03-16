@@ -1,19 +1,21 @@
-/*
- +==============================================================================-
- ||
- ||   Function_Description:
- ||       -
- ||   Preconditions:
- ||       -
- ||       -
- ||   Postconditions:
- ||      -
- ||       -
- ||
- ||   Assumptions:
- ||       -
- +==============================================================================-
- */
+// USE THIS COMMENT TEMPLATE
+/*==============================< FUNCTION NAME >==============================
+||	Function Desction:
+||		-
+||
+||	Precondition:
+||		-
+||		-
+||
+||	Precondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
+
+
+
 /*
 This class represents the store itself. It has a Queue of the transactions,
 just like a movie store would have receipts for everything that was
