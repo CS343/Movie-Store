@@ -96,8 +96,8 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB,
 		// check to see if the classic movie is in the classic BST
                 if(!(classicDB.retrieveMovie(temp_movie, moviePtr))){
                     std::cout <<"ERROR Incorrect Data, This Item does\
-                    not exist \
-                    in Classic Database " <<this->getMovieTitle()<< std::endl;
+                    not exist in Classic Database "
+                    <<this->getMovieTitle()<< std::endl;
                 
                 }else{
 		    // if it is then add to the movie's stock

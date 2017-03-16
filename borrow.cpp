@@ -69,8 +69,8 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB,
                 temp_movie.setDirector(this->getMovieDirector());
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
 			//and return a leash to the movie
-                    std::cout <<"ERROR Incorrect Data, \
-                    This Item does not exist in Drama Database " <<
+std::cout <<"ERROR Incorrect Data, This Item\n does not exist in Drama Database "
+                    <<
                     this->getMovieTitle()<< std::endl;
                     
                 }else{
@@ -94,8 +94,8 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB,
                 temp_movie.setYear(this->getMovieYear());
                 */
                  if( !(classicDB.retrieveMovie(temp_movie, moviePtr) ) ){
-                    std::cout <<"ERROR Incorrect Data, This \
-                     Item does not exist in Classic Database "<<
+std::cout <<
+        "ERROR Incorrect Data, This Item \n does not exist in Classic Database "<<
                      this->getMovieTitle() << std::endl;
                      
               
@@ -112,9 +112,8 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB,
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setYear(this->getMovieYear());
                 if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<"ERROR Incorrect Data, \
-                    This Item does not exist in Comedy Database " <<
-                    getMovieTitle()<< std::endl;
+std::cout <<"ERROR Incorrect Data, \nThis Item does not exist in Comedy Database "
+                    << getMovieTitle()<< std::endl;
                
                     
                 }else{
