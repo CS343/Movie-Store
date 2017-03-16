@@ -18,27 +18,8 @@
 
 class Movie_Factory{
 public:
-    /*
-     +==============================================================================-
-     ||
-     ||   Function_Description:
-     ||       -
-     ||   Preconditions:
-     ||       -
-     ||       -
-     ||   Postconditions:
-     ||      -
-     ||       -
-     ||
-     ||   Assumptions:
-     ||       -
-     +==============================================================================-
-     */
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //make a movied based off the char command and
+    //return that movie pointer to the caller
     static Movie* make_movie(char choice);
 };
 #endif /* MOVIE_FACTORY_H */
