@@ -122,7 +122,7 @@ public:
  
     // pure virtual functinos for the subclasses
     // does the transaction
-    virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
+virtual bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &)=0;
 	
     // makes the transaction object- sets variables depending on string paramter
     virtual void makeTransaction(std::string, char)=0;
