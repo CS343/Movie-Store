@@ -1,0 +1,368 @@
+Script started on Thu 16 Mar 2017 03:02:01 AM PDT
+]0;redklouds@RedKlouds-Desktop: ~/tester/Movie-Store[01;32mredklouds@RedKlouds-Desktop[00m:[01;34m~/tester/Movie-Store[00m$ g++ -std=c++11 =[K-g *.coo[Kp[K[Kpp -o main
+]0;redklouds@RedKlouds-Desktop: ~/tester/Movie-Store[01;32mredklouds@RedKlouds-Desktop[00m:[01;34m~/tester/Movie-Store[00m$ ./main 
+ERROR: (Recieved an invalid command) Z, 10, Hal Ashby, Harold and Maude, Bud Cort 3 1971
+ERROR: (Recieved an invalid command) Z, 10, Frank Capra, It's a Wonderful Life, James Steward 11 1946
+ERROR: (Recieved bad data) X 
+ERROR: (Recieved bad data) Z  1000 D C 10 1941 Humphrey Bogart
+|==================================================|
+|                   COMIDIES                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Annie Hall                             10  
+  Fargo                                  10  
+  National Lampoon's Animal House        10  
+  Pirates of the Caribbean               10  
+  Sleepless in Seattle                   10  
+  When Harry Met Sally                   10  
+  You've Got Mail                        10  
+
+|==================================================|
+|                     DRAMAS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Good Morning Vietnam                   10  
+  Unforgiven                             10  
+  Good Will Hunting                      10  
+  Silence of the Lambs                   10  
+  Dogfight                               10  
+  King of Hearts                         10  
+  Schindler's List                       10  
+
+|==================================================|
+|                   CLASSICS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Holiday                                20  
+  Gone With the Wind                     20  
+  The Wizard of Oz                       10  
+  The Philadelphia Story                 20  
+  The Maltese Falcon                     10  
+  Casablanca                             20  
+  It's a Wonderful Life                  20  
+  A Clockwork Orange                     10  
+  Harold and Maude                       10  
+
+
+|==================================================|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|==================================================|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|==================================================|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ERROR Invalid Data ERROR(Genere Code): Z
+ERROR customer does not exist: 1234
+ERROR Incorrect Data, 
+This Item does not exist in Comedy Database Bogus Title
+ERROR invalid Media Type: Z
+ERROR Out of Stock: Harold and Maude
+ERROR Out of Stock: Harold and Maude
+ERROR Out of Stock: Harold and Maude
+ERROR Incorrect Data, This Item
+ does not exist in Drama Database Bogus Title
+|==================================================|
+|                   COMIDIES                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Annie Hall                              9  
+  Fargo                                   9  
+  National Lampoon's Animal House         9  
+  Pirates of the Caribbean               10  
+  Sleepless in Seattle                    9  
+  When Harry Met Sally                    9  
+  You've Got Mail                         9  
+
+|==================================================|
+|                     DRAMAS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Good Morning Vietnam                    9  
+  Unforgiven                              9  
+  Good Will Hunting                       9  
+  Silence of the Lambs                    9  
+  Dogfight                                8  
+  King of Hearts                          9  
+  Schindler's List                        9  
+
+|==================================================|
+|                   CLASSICS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Holiday                                19  
+  Gone With the Wind                     20  
+  The Wizard of Oz                       10  
+  The Philadelphia Story                 18  
+  The Maltese Falcon                      9  
+  Casablanca                             20  
+  It's a Wonderful Life                  20  
+  A Clockwork Orange                      9  
+  Harold and Maude                        0  
+
+
+|==================================================|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Borrowed The Philadelphia Story
+ Borrowed Good Will Hunting
+ Borrowed The Philadelphia Story
+ Borrowed Good Morning Vietnam
+
+|==================================================|
+|HISTORY                   Customer ID: 1111       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Holiday
+ Borrowed The Maltese Falcon
+ Borrowed Harold and Maude
+ Borrowed A Clockwork Orange
+
+|==================================================|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+
+|==================================================|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed National Lampoon's Animal House
+ Borrowed Harold and Maude
+ Borrowed Harold and Maude
+ Returned You've Got Mail
+ Borrowed You've Got Mail
+
+|==================================================|
+|HISTORY                   Customer ID: 8888       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Borrowed Dogfight
+ Borrowed Silence of the Lambs
+ Borrowed When Harry Met Sally
+ Borrowed Annie Hall
+]0;redklouds@RedKlouds-Desktop: ~/tester/Movie-Store[01;32mredklouds@RedKlouds-Desktop[00m:[01;34m~/tester/Movie-Store[00m$ vbal[K[K[K[Kvalgrind -[K[K ./main --leak-check=full
+==8460== Memcheck, a memory error detector
+==8460== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8460== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8460== Command: ./main --leak-check=full
+==8460== 
+ERROR: (Recieved an invalid command) Z, 10, Hal Ashby, Harold and Maude, Bud Cort 3 1971
+ERROR: (Recieved an invalid command) Z, 10, Frank Capra, It's a Wonderful Life, James Steward 11 1946
+ERROR: (Recieved bad data) X 
+ERROR: (Recieved bad data) Z  1000 D C 10 1941 Humphrey Bogart
+|==================================================|
+|                   COMIDIES                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Annie Hall                             10  
+  Fargo                                  10  
+  National Lampoon's Animal House        10  
+  Pirates of the Caribbean               10  
+  Sleepless in Seattle                   10  
+  When Harry Met Sally                   10  
+  You've Got Mail                        10  
+
+|==================================================|
+|                     DRAMAS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Good Morning Vietnam                   10  
+  Unforgiven                             10  
+  Good Will Hunting                      10  
+  Silence of the Lambs                   10  
+  Dogfight                               10  
+  King of Hearts                         10  
+  Schindler's List                       10  
+
+|==================================================|
+|                   CLASSICS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Holiday                                20  
+  Gone With the Wind                     20  
+  The Wizard of Oz                       10  
+  The Philadelphia Story                 20  
+  The Maltese Falcon                     10  
+  Casablanca                             20  
+  It's a Wonderful Life                  20  
+  A Clockwork Orange                     10  
+  Harold and Maude                       10  
+
+
+|==================================================|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|==================================================|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+
+|==================================================|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ERROR Invalid Data ERROR(Genere Code): Z
+ERROR customer does not exist: 1234
+ERROR Incorrect Data, 
+This Item does not exist in Comedy Database Bogus Title
+ERROR invalid Media Type: Z
+ERROR Out of Stock: Harold and Maude
+ERROR Out of Stock: Harold and Maude
+ERROR Out of Stock: Harold and Maude
+ERROR Incorrect Data, This Item
+ does not exist in Drama Database Bogus Title
+|==================================================|
+|                   COMIDIES                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Annie Hall                              9  
+  Fargo                                   9  
+  National Lampoon's Animal House         9  
+  Pirates of the Caribbean               10  
+  Sleepless in Seattle                    9  
+  When Harry Met Sally                    9  
+  You've Got Mail                         9  
+
+|==================================================|
+|                     DRAMAS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Good Morning Vietnam                    9  
+  Unforgiven                              9  
+  Good Will Hunting                       9  
+  Silence of the Lambs                    9  
+  Dogfight                                8  
+  King of Hearts                          9  
+  Schindler's List                        9  
+
+|==================================================|
+|                   CLASSICS                       |
+|--------------------------------------------------|
+| Movie Title                           Stock      |
+|--------------------------------------------------|
+  Holiday                                19  
+  Gone With the Wind                     20  
+  The Wizard of Oz                       10  
+  The Philadelphia Story                 18  
+  The Maltese Falcon                      9  
+  Casablanca                             20  
+  It's a Wonderful Life                  20  
+  A Clockwork Orange                      9  
+  Harold and Maude                        0  
+
+
+|==================================================|
+|HISTORY                   Customer ID: 1000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Borrowed The Philadelphia Story
+ Borrowed Good Will Hunting
+ Borrowed The Philadelphia Story
+ Borrowed Good Morning Vietnam
+
+|==================================================|
+|HISTORY                   Customer ID: 1111       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Holiday
+ Borrowed The Maltese Falcon
+ Borrowed Harold and Maude
+ Borrowed A Clockwork Orange
+
+|==================================================|
+|HISTORY                   Customer ID: 5000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+ Returned Harold and Maude
+ Borrowed Harold and Maude
+
+|==================================================|
+|HISTORY                   Customer ID: 8000       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed National Lampoon's Animal House
+ Borrowed Harold and Maude
+ Borrowed Harold and Maude
+ Returned You've Got Mail
+ Borrowed You've Got Mail
+
+|==================================================|
+|HISTORY                   Customer ID: 8888       |
+|--------------------------------------------------|
+|Status | Title                                    |
+|--------------------------------------------------|
+ Borrowed Harold and Maude
+ Borrowed Dogfight
+ Borrowed Silence of the Lambs
+ Borrowed When Harry Met Sally
+ Borrowed Annie Hall
+==8460== 
+==8460== HEAP SUMMARY:
+==8460==     in use at exit: 72,704 bytes in 1 blocks
+==8460==   total heap usage: 1,647 allocs, 1,646 frees, 209,736 bytes allocated
+==8460== 
+==8460== LEAK SUMMARY:
+==8460==    definitely lost: 0 bytes in 0 blocks
+==8460==    indirectly lost: 0 bytes in 0 blocks
+==8460==      possibly lost: 0 bytes in 0 blocks
+==8460==    still reachable: 72,704 bytes in 1 blocks
+==8460==         suppressed: 0 bytes in 0 blocks
+==8460== Rerun with --leak-check=full to see details of leaked memory
+==8460== 
+==8460== For counts of detected and suppressed errors, rerun with: -v
+==8460== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+]0;redklouds@RedKlouds-Desktop: ~/tester/Movie-Store[01;32mredklouds@RedKlouds-Desktop[00m:[01;34m~/tester/Movie-Store[00m$ .[Kexit
+exit
+
+Script done on Thu 16 Mar 2017 03:02:59 AM PDT
