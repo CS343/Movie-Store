@@ -46,6 +46,20 @@ Classic::Classic(){
 bool Classic::operator<(const Movie &rhs) const{
   //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
+    
+    
+    
+    
+    if( (this->getYear() + this->getReleaseMonth() ) != (rhs.getYear() + rhs.getReleaseMonth()) ){
+        return (this->getYear() + this->getReleaseMonth() ) < ( rhs.getYear() + rhs.getReleaseMonth());
+    }else{
+        return this->getMajorActor()  < rhs.getMajorActor();
+        //make sure the actor array is sorted.
+        //compare the first actor with the actor given
+    }
+    
+    /*
+    
     if(this->getYear() < rhs.getYear()){
         return true;
     }else if(this->getYear() == rhs.getYear()){
@@ -59,7 +73,7 @@ bool Classic::operator<(const Movie &rhs) const{
         for(;;){
             for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
                 // if "it" is smaller
-                if( (thisSmallestActor.compare(*it) < 0) /*&& (sameSmallestActors)*/ ){
+                if( (thisSmallestActor.compare(*it) < 0) && (sameSmallestActors)){
                     thisSmallestActor = *it;
                 }
             }
@@ -87,6 +101,10 @@ bool Classic::operator<(const Movie &rhs) const{
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
+     
+     */
+    
+    return true;
 };
 /*==============================< Function NAME >==========================
 ||	Function Desction:
@@ -102,6 +120,8 @@ bool Classic::operator<(const Movie &rhs) const{
 ||		- None
 ++===========================================================================*/
 bool Classic::operator>(const Movie &rhs) const{
+    
+    
    // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
@@ -112,7 +132,10 @@ bool Classic::operator>(const Movie &rhs) const{
         if(this->getReleaseMonth() > rhs.getReleaseMonth()){
             return true;
         }
-    }else{
+    }
+    /*}else{
+        
+        
         std::string thisSmallestActor = this->list_major_actors.front;
         std::string rhsSmallestActor = rhs.list_major_actors.front;
         for(;;){
@@ -139,7 +162,7 @@ bool Classic::operator>(const Movie &rhs) const{
             } 
         }
             return true;
-    }
+    }*/
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
     
@@ -229,8 +252,9 @@ int Classic::getReleaseMonth() const{
 }
 
 std::string Classic::getMajorActor() const{
-    
-    return getMajorActorFirst() + " " + getMajorActorLast();
+    //std::cout << list_major_actors[0] << std::endl;
+    return this->major_actor;
+    //return getMajorActorFirst() + " " + getMajorActorLast();
 }
 
 
@@ -238,8 +262,13 @@ void Classic::addMajorActorToList(std::string majorActorName){
     if(!(std::find(list_major_actors.begin(), list_major_actors.end(), majorActorName) != list_major_actors.end())) {
         /* actor not contain inside x */
         list_major_actors.push_back(majorActorName);
+        
+        std::sort(list_major_actors.begin(), list_major_actors.end());
+        this->major_actor = list_major_actors[0];
     }
 }
+
+
   
 
 /*
@@ -282,6 +311,7 @@ void Classic::makeMovie(std::vector<std::string> array){
     this->setMajorActorFirst(extra_classic_data[1]);
     this->setMajorActorLast(extra_classic_data[2]);
     this->setReleaseMonth(releaseMonth);
+    
     addMajorActorToList(extra_classic_data[1] + " " +extra_classic_data[2]);
 }
 

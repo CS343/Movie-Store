@@ -56,9 +56,17 @@ public:
     //make movie
     void makeMovie(std::vector<std::string>);
     bool hasMajorActor(std::string) const;
+    
+    
+    void setMajorActor(std::string actor);
 private:
     int release_month;
     std::vector<std::string> list_major_actors;
+    
+    std::string major_actor;
+    
+    
+    
     
     std::string major_actor_firstName;
     std::string major_actor_lastName;
