@@ -78,7 +78,7 @@ public:
      #Assumption:
      #Parameters:
      $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    virtual void print(std::ostream &)const = 0;
+    //virtual void print(std::ostream &)const = 0;
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:

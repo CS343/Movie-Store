@@ -16,19 +16,11 @@
 
 class Classic: public Movie {
 public:
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
     Classic();
     ~Classic(){};
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    
+    //Comparison operator over loades
+    //these operators are coded to specificas that are required
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
@@ -36,39 +28,13 @@ public:
     bool operator<=(const Movie &) const;
     bool operator>=(const Movie &) const;
     
-    /*
-    bool operator==(const Classic &) const;
-    bool operator!=(const Classic &) const;
-    bool operator<(const Classic &) const;
-    bool operator>(const Classic &) const;
-    bool operator<=(const Classic &) const;
-    bool operator>=(const Classic &) const;
-     
-    
-    */
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void print(std::ostream &) const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
+   //set the major actor
     void setMajorActorFirst(std::string);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //get the major actors first name
+    
     std::string getMajorActorFirst() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //set the major actors lastName
     void setMajorActorLast(std::string);
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
