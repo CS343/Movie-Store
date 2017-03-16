@@ -13,7 +13,10 @@ class Return : public Transaction {
 public:
     //perform the transaction
 
+    // make the transaction accoridn the the string and char passed in the parameter
     void makeTransaction(std::string, char);
+    
+    // do the transactino after it has been created
     bool doTransaction(BinTree &, BinTree &, BinTree &, OpenHashTable &);
 };
 
