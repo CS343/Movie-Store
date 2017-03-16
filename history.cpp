@@ -2,8 +2,8 @@
 //  history.cpp
 //  movie Store
 //
-//  Created by Danny Ly on 3/9/17.
-//  Copyright © 2017 Danny Ly. All rights reserved.
+//  Created by Danny Ly and Bardia Borhani on 3/9/17.
+//  Copyright © 2017 Danny Ly and Bardia Borhani. All rights reserved.
 //
 
 #include "history.h"
@@ -25,7 +25,8 @@
  ++===========================================================================*/
 
 
-bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
+bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB,
+                            BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
     //Make this into a class that is inherited, into anothe rlayer //repeated code
@@ -55,11 +56,12 @@ bool History::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dram
  ||     populates an transctions
  ||
  ||   Preconditions:
- ||      - None
- ||      -
+ ||      - two parameters need to be passed in - one string and one char
+ ||      - the char represents the transaction tpye and the other one is
+ ||      - the command that has been taken from the command txt file
  ||   Postconditions:
- ||      - None
- ||      -
+ ||      - a history object will be able to be completed when calling this
+ ||      - function - the fields of the class are filled
  ||
  ||   Assumptions:
  ||      - None
@@ -71,7 +73,8 @@ void History::makeTransaction(std::string result, char transactionType){
     
     /*
      
-     IDEA since this method is copied for all three sub classes i can inherit one more layer and have this method be in the parent of these classes
+     IDEA since this method is copied for all three sub classes
+     i can inherit one more layer and have this method be in the parent of these classes
      
      
      if(isdigit(first_half[3][0])){
@@ -101,7 +104,7 @@ void History::makeTransaction(std::string result, char transactionType){
     std::string first_half_string = result.substr(1,9);
     std::vector<std::string> first_half_vector = Helper_Functions::string_split(first_half_string, ' ');
     
-    
+    // set customer ID field to the part of the string that comes after the transaction type
     this->setCustomerID(first_half_vector[0]);
  
     this->setTransactionType(transactionType);
