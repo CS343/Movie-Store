@@ -8,21 +8,20 @@
 //
 
 #include "classic.h"
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
+/*==============================< Function NAME >==========================
+||	Function Desction:
+||		-  Default constructor
+||
+||	Precondition:
+||		- None
+||		-
+||
+||	PostCondition:
+||		- Classic Movie is instantiated
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 
 
 Classic::Classic(){
@@ -31,26 +30,22 @@ Classic::Classic(){
 }
 
 
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
+/*==============================< Function NAME >==========================
+||	Function Desction:
+||		-  Opoerator < overloader using the required sorting attributes 
+||
+||	Precondition:
+||		- The movie class has to have exposure to the specific operator over
+||   loaded method.
+||	PostCondition:
+||		- returns true regarding wether this is less than RHS
+||		-
+||	Assumptions:
+||		- NONE
+++===========================================================================*/
 bool Classic::operator<(const Movie &rhs) const{
   //  std::cout << "< called from Classic" << std::endl;
     //-	Classics (‘D’) are sorted by Director, then Title
-
     if(this->getYear() < rhs.getYear()){
         return true;
     }else if(this->getYear() == rhs.getYear()){
@@ -63,23 +58,19 @@ bool Classic::operator<(const Movie &rhs) const{
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
 };
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
-
+/*==============================< Function NAME >==========================
+||	Function Desction:
+||		-  Operator > check if this is greater than rhs
+||
+||	Precondition:
+||		- None
+||
+||	PostCondition:
+||		- Returns true of this is greater than rhs
+||		-
+||	Assumptions:
+||		- None
+++===========================================================================*/
 bool Classic::operator>(const Movie &rhs) const{
    // std::cout << "get release month is : " << getReleaseMonth() << " VS " << rhs.getReleaseMonth() << std::endl;
     //  std::cout << "< called from Classic" << std::endl;
@@ -87,6 +78,7 @@ bool Classic::operator>(const Movie &rhs) const{
     if(this->getYear() > rhs.getYear()){
         return true;
     }else if(this->getYear() == rhs.getYear()){
+     //checks of the relkeased months are the same 
         if(this->getReleaseMonth() > rhs.getReleaseMonth()){
             return true;
         }
@@ -99,41 +91,20 @@ bool Classic::operator>(const Movie &rhs) const{
    // return (this->getYear() > rhs.getYear()) && ( this->getReleaseMonth() > rhs.getReleaseMonth() ) && (this->getMajorActor() > rhs.getMajorActor());
     
 };
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
-
-
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
-
+/*==============================< Function NAME >==========================
+||	Function Desction:
+||		-  Operator == to tell wether two objecsta are the same
+||
+||	Precondition:
+||		-
+||		-
+||
+||	PostCondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 bool Classic::operator==(const Movie &rhs) const{
     //released date then major actor
    // std::cout << "comparing : " << getMajorActor() << "with other major actor: " << rhs.getMajorActor() << std::endl;
@@ -144,22 +115,20 @@ bool Classic::operator==(const Movie &rhs) const{
     return (this->getYear() == rhs.getYear()) && ( this->getReleaseMonth() == rhs.getReleaseMonth() )  && (this->hasMajorActor(rhs.getMajorActor()));
     
 };
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
-
+/*==============================< makeTransaction >==========================
+||	Function Desction:
+||		- This function intakes a string and a character type
+||
+||	Precondition:
+||		-
+||		-
+||
+||	PostCondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 
 bool Classic::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
@@ -177,38 +146,20 @@ std::string Classic::getMajorActorFirst() const{
 void Classic::setMajorActorLast(std::string lastName){
     this->major_actor_lastName = lastName;
 };
-/*
- +===============================================================================
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- ||
- +===============================================================================
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
+/*==============================< makeTransaction >==========================
+||	Function Desction:
+||		- This function intakes a string and a character type
+||
+||	Precondition:
+||		-
+||		-
+||
+||	PostCondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 
 std::string Classic::getMajorActorLast() const{
     return this->major_actor_lastName;
@@ -241,21 +192,20 @@ void Classic::addMajorActorToList(std::string majorActorName){
  
  */
 
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
+/*==============================< makeTransaction >==========================
+||	Function Desction:
+||		- This function intakes a string and a character type
+||
+||	Precondition:
+||		-
+||		-
+||
+||	PostCondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 void Classic::setMajorActor(std::string firstName, std::string lastName){
     this->major_actor_firstName = firstName;
     this->major_actor_lastName = lastName;
@@ -291,21 +241,20 @@ bool Classic::hasMajorActor(std::string actor) const{
 }
 
 
-/*
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- #   Function_Description:
- #       -
- #   Preconditions:
- #       -
- #       -
- #   Postconditions:
- #       -
- #       -
- #
- #   Assumptions:
- #       -
- $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
- */
+/*==============================< makeTransaction >==========================
+||	Function Desction:
+||		- This function intakes a string and a character type
+||
+||	Precondition:
+||		-
+||		-
+||
+||	PostCondition:
+||		-
+||		-
+||	Assumptions:
+||		-
+++===========================================================================*/
 
 //output operator work around, flow transition.
 void Classic::print(std::ostream& output) const{
