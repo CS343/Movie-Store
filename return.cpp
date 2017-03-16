@@ -72,8 +72,8 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB,
                 
 		// check to see if the drama movie is in the drama BST
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<"ERROR Incorrect Data, This Item does \
-                    not exist in Drama Database " <<
+    std::cout <<
+    "ERROR Incorrect Data, This Item\n does not exist in Drama Database " <<
                     this->getMovieTitle()<<
                     std::endl;
              
@@ -95,8 +95,7 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB,
 		    
 		// check to see if the classic movie is in the classic BST
                 if(!(classicDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<"ERROR Incorrect Data, This Item does\
-                    not exist in Classic Database "
+std::cout <<"ERROR Incorrect Data, This\n Item does not exist in Classic Database "
                     <<this->getMovieTitle()<< std::endl;
                 
                 }else{
@@ -120,8 +119,8 @@ bool Return::doTransaction(BinTree &classicDB, BinTree &comedyDB,
                 
 		// check to see if the comedy movie is in the comedy BST
                 if(!(comedyDB.retrieveMovie(temp_movie, moviePtr))){
-                    std::cout <<"ERROR Incorrect Data, This Item does not\
-                    exist in Comedy Database " <<this->getMovieTitle()<<
+std::cout <<"ERROR Incorrect Data, This Item\n does not exist in Comedy Database "
+                    <<this->getMovieTitle()<<
                     std::endl;
                     
              
