@@ -256,9 +256,4 @@ bool Classic::hasMajorActor(std::string actor) const{
 ||		-
 ++===========================================================================*/
 
-//output operator work around, flow transition.
-void Classic::print(std::ostream& output) const{
-        output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
-    //output <<"Year: " << " " << getYear() << "  Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock() <<  "   Major Actor: " << getMajorActor() << "   Get month: " << getReleaseMonth();
-    
-}
+
