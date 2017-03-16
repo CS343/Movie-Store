@@ -53,7 +53,37 @@ bool Classic::operator<(const Movie &rhs) const{
             return true;
         }
     }else{
-        return false;
+        std::string thisSmallestActor = this->list_major_actors.front;
+        std::string rhsSmallestActor = rhs.list_major_actors.front;
+        //std::vector<std::string> sameSmallestActors;
+        for(;;){
+            for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
+                // if "it" is smaller
+                if( (thisSmallestActor.compare(*it) < 0) /*&& (sameSmallestActors)*/ ){
+                    thisSmallestActor = *it;
+                }
+            }
+
+            for (std::vector<std::string>::iterator it2 = rhs.list_major_actors.begin() ; it != rhs.list_major_actors.end(); ++it){
+                if( ( rhsSmallestActor.compare(*it) < 0) ){
+                    rhsSmallestActor = *it;
+                }
+            }
+            
+            // if rhsSmallestActor is smaller
+            if( thisSmallestActor.compare(rhsSmallestActor) < 0 ){
+                return false;
+                break;
+            } else if(rhsSmallestActor.compare(thisSmallestActor) < 0){ // if thisSmallestActor is smaller
+                return true;
+                break;
+            } 
+            
+            // or thisSmallestActor
+            //sameSmallestActors.push_back(rhsSmallestActor);
+            
+        }
+            return true;
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
@@ -83,7 +113,32 @@ bool Classic::operator>(const Movie &rhs) const{
             return true;
         }
     }else{
-        return false;
+        std::string thisSmallestActor = this->list_major_actors.front;
+        std::string rhsSmallestActor = rhs.list_major_actors.front;
+        for(;;){
+            for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
+                // if "it" is smaller
+                if(thisSmallestActor.compare(*it) < 0){
+                    thisSmallestActor = *it;
+                }
+            }
+
+            for (std::vector<std::string>::iterator it2 = rhs.list_major_actors.begin() ; it != rhs.list_major_actors.end(); ++it){
+                if(rhsSmallestActor.compare(*it) < 0){
+                    rhsSmallestActor = *it;
+                }
+            }
+            
+            // if rhsSmallestActor is smaller
+            if( thisSmallestActor.compare(rhsSmallestActor) < 0 ){
+                return true;
+                break;
+            } else if(rhsSmallestActor.compare(thisSmallestActor) < 0){ // if thisSmallestActor is smaller
+                return false;
+                break;
+            } 
+        }
+            return true;
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
