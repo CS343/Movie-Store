@@ -2,11 +2,29 @@
 //  borrow.cpp
 //  movie Store
 //
-//  Created by Danny Ly on 3/9/17.
+//  Created by Danny Ly  and Bardia Borhani on 3/9/17.
 //  Copyright © 2017 Danny Ly. All rights reserved.
 //
 #include "borrow.h"
-
+/*==============================< FUNCTION NAME >==============================
+||	Function Desction:
+||		- Do transaction, of the current Borrow object, this class
+||		Is in charnge of removing a stock from the given databaese
+||		of either one of the movie storages
+||		- this class also check wether a customer doesnt exist in the
+|\		system
+||	Precondition:
+||		- All bintree and Hash tables need to be intalizated prior to
+||		call.
+||		-
+||
+||	Postcondition:
+||		- Customer object will get an update of this transaction to 
+||		its history
+||		- stock is removed if found
+||	Assumptions:
+||		- Item are all initalized correctly.
+++===========================================================================*/
 bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, OpenHashTable &customerDB){
     //borrowing, 1 each time
     
@@ -15,19 +33,24 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
     
     Customer *returnCustomer = nullptr;
     //std::cout << "borrow " << std::endl;
-    
+    //get the customer from the customer Database ,
+	//given a customer INT so we MUST convert thstring to an INT
     returnCustomer = customerDB.get(std::atoi(this->getCustomerID().c_str()));
-    if(returnCustomer == nullptr){
+    	//if the customer doesn't exist then rprint out an error
+	if(returnCustomer == nullptr){
   //first retrieve the customer
         //we are to check the ttrancsation type and make stock changes
         std::cout << "ERROR customer does not exist: " << this->getCustomerID() << std::endl;
         return false;
-    }else if(getMediaType() == 'Z'){
+	//checker to check of 
+    }else if(getMediaType() != 'D'){
         std::cout << "ERROR invalid Media Type: " << getMediaType() << std::endl;
         return false;
     
     }else{
+		//all checks are find then procedded to process teh transaction
         Movie *moviePtr = nullptr;
+		//switch case for the movie genre
         switch (this->getMovieGenre()) {
             
             //Movie *moviePtr;
@@ -36,13 +59,16 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
                 Drama temp_movie;
                 
            
+		    //make a temp movie to query for the movie
                  
                 temp_movie.setTitle(this->getMovieTitle());
                 temp_movie.setDirector(this->getMovieDirector());
                 if(!(dramaDB.retrieveMovie(temp_movie, moviePtr))){
+			//and return a leash to the movie
                     std::cout <<"ERROR Incorrect Data, This Item does not exist in Drama Database " <<this->getMovieTitle()<< std::endl;
                     
                 }else{
+			//remove the stock of thje movie is found
                     moviePtr->removeStock();
                 }
                 break;
@@ -107,7 +133,21 @@ bool Borrow::doTransaction(BinTree &classicDB, BinTree &comedyDB, BinTree &drama
 
 
 
-
+/*==============================< FUNCTION NAME >==============================
+||	Function Desction:
+||		- Make transction is called to make itself, and initalize all
+||		The correct attributes because all transactions are different
+||		We needed a way for transactions to parse differently
+||	Precondition:
+||		- the Result and char are valid types
+||		-
+||
+||	Postcondition:
+||		- this borrow transaction is properly set up
+||		-
+||	Assumptions:
+||		- None
+++===========================================================================*/
 
 void Borrow::makeTransaction(std::string result, char transactionType){
     //std::cout << "making command" << std::endl;
@@ -143,7 +183,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     // removes the carriage return /r form the string
     
 	
-	
+	//remove the escape line character
 	result.erase( std::remove(result.begin(), result.end(), '\r'), result.end() );
 
 	
@@ -154,7 +194,7 @@ void Borrow::makeTransaction(std::string result, char transactionType){
     std::string second_half_string = result.substr(10, result.length());
     
     
-
+//set up the normal data fiels taht are of transactions from the split transaction string
     this->setCustomerID(first_half_vector[0]);
     this->setMovieGenre(first_half_vector[2][0]);
     this->setMediaType(first_half_vector[1][0]);
