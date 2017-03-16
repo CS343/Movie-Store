@@ -2,8 +2,8 @@
 //  comedy.cpp
 //  movie Store
 //
-//  Created by Danny Ly on 3/5/17.
-//  Copyright © 2017 Danny Ly. All rights reserved.
+//  Created by Danny  and bardia borhaniLy on 3/5/17.
+//  Copyright © 2017 Danny Ly. and Bardia Borhani All rights reserved.
 //
 /*
  
@@ -79,13 +79,13 @@ bool Comedy::operator>(const Movie &rhs) const{
 /*==========================< FUNCTION NAME >==================================
  ||
  ||   Function_Description:
- ||      - sets the major actor give first and last name
+ ||      - check weither this and rhs are equal
  ||
  ||   Preconditions:
  ||      - None
  ||      -
  ||   Postconditions:
- ||      - None
+ ||      - returns true if both objects are equal false otherwise
  ||      -
  ||
  ||   Assumptions:
@@ -99,7 +99,7 @@ bool Comedy::operator==(const Movie &rhs) const{
 /*==========================< FUNCTION NAME >==================================
  ||
  ||   Function_Description:
- ||      - sets the major actor give first and last name
+ ||      - if objects are not the same, given title and released year
  ||
  ||   Preconditions:
  ||      - None
@@ -122,13 +122,15 @@ bool Comedy::operator!=(const Movie &rhs) const{
 /*==========================< FUNCTION NAME >==================================
  ||
  ||   Function_Description:
- ||      - sets the major actor give first and last name
+ ||      - This is a polymorphic method that is called to makes the object
+ ||     given the string array of data, the data which contains data
  ||
  ||   Preconditions:
- ||      - None
+ ||      - the array given has already been split with title director
+ ||     year and stock
  ||      -
  ||   Postconditions:
- ||      - None
+ ||      - this object is popualted correctly
  ||      -
  ||
  ||   Assumptions:
@@ -138,8 +140,11 @@ bool Comedy::operator!=(const Movie &rhs) const{
 void Comedy::makeMovie(std::vector<std::string> array){
    // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
+    //conver the string to int
     int year = atoi(array[4].c_str());
+    //convert this string stock to int
     int stock = atoi(array[1].c_str());
+    //set the data attributes of the comedy class
     this->setYear(year);
     this->setDirector(array[2].substr(1, array[3].size()));
     this->setTitle(array[3].substr(1,array[3].size()));
@@ -147,20 +152,6 @@ void Comedy::makeMovie(std::vector<std::string> array){
     
 };
 
-/*==========================< FUNCTION NAME >==================================
- ||
- ||   Function_Description:
- ||      - sets the major actor give first and last name
- ||
- ||   Preconditions:
- ||      - None
- ||      -
- ||   Postconditions:
- ||      - None
- ||      -
- ||
- ||   Assumptions:
- ||      - None
- ++============================================================================*/
+
 
 

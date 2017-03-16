@@ -17,28 +17,18 @@
 class Comedy : public Movie{
 public:
     
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //default constructor
     Comedy();
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //destructor
     ~Comedy(){};
+    //operator overload to compare objects for the
+    //bin tree
     bool operator==(const Movie &) const;
     bool operator!=(const Movie &) const;
     bool operator<(const Movie &) const;
     bool operator>(const Movie &) const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    void print(std::ostream &) const;
+
+
     /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
      #description:
      #Assumption:
