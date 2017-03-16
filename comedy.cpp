@@ -86,7 +86,6 @@ bool Comedy::operator>(const Movie &rhs) const{
  ||      -
  ||   Postconditions:
  ||      - returns true if both objects are equal false otherwise
- ||      -
  ||
  ||   Assumptions:
  ||      - None
