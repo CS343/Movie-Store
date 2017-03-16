@@ -54,8 +54,9 @@ public:
    
     //carry out all the transactions in the transactions queue
     
-    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB);
-	bool doTransactions();
+    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB,
+    //BinTree &dramaDB, HashTable &customerDB);
+    bool doTransactions();
     
 
     void showInventory() const;
