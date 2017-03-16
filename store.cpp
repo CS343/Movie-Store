@@ -7,7 +7,7 @@
 ||		-
 ||		-
 ||
-||	Precondition:
+||	Postcondition:
 ||		-
 ||		-
 ||	Assumptions:
@@ -80,21 +80,22 @@ Store::Store(){
     
 }
 
-/*==============================================================================
-||
-||   Function_Description:
-||      -
-||   Preconditions:
-||      -
-||      -
-||   Postconditions:
-||      -
-||      -
-||
-||   Assumptions:
-||      -
-++============================================================================*/
 
+/*==============================< FUNCTION NAME >==============================
+||	Function Desction:
+||		- creates a movie object for all movies stated in the movie file
+||		- every movie is stored in a BST basde on its genre
+||
+||	Precondition:
+||		- intakes a parameter of type ifstream that reads the movie file
+||		-
+||
+||	Postcondition:
+||		- Three BST are filled with movies
+||		- Movie object is made for every movie in the movie txt file
+||	Assumptions:
+||		-
+++===========================================================================*/
 bool Store::readMovies(ifstream& infile){
 /*
  This ReadMovies method works as follows , as you make a Movie parent class, 
@@ -146,13 +147,15 @@ bool Store::readMovies(ifstream& infile){
         bool success = false;
         switch (action) {
             case 'F':
-                //insert into comedy bintree
+                // if the movie object is of type comedy hen store it in the comedy BST
                 success = _comedyStorage.insert(moviePtr);
                 break;
             case 'D':
+		// if the movie object is of type drama hen store it in the drama BST
                 success = _dramaStorage.insert(moviePtr);
                 break;
             case 'C':
+		// if the movie object is of type classic hen store it in the classic BST
                 success = _classicStorage.insert(moviePtr);
             default:
                 break;
@@ -168,17 +171,20 @@ bool Store::readMovies(ifstream& infile){
 
 /*==============================< FUNCTION NAME >==============================
 ||	Function Desction:
-||		-
+||		- Intake a ifstream variable that reads the customer txt file
+||		- read every line and create a customer object for every line
+||		- store every customer object in a hashtable of customer objects
+||		- the hastable is called "customerStorage"
 ||
 ||	Precondition:
-||		-
-||		-
+||		- The parameter must be a ifstream variable
+||		- it must read the customer txt file
 ||
-||	Precondition:
-||		-
-||		-
+||	Postcondition:
+||		- hashtable of customers is filled
+||		- a customer object is made for every customer in the txt file
 ||	Assumptions:
-||		-
+||		- NONE
 ++===========================================================================*/
 
 bool Store::readCustomers(ifstream& infile){
@@ -204,17 +210,20 @@ bool Store::readCustomers(ifstream& infile){
 
 /*==============================< FUNCTION NAME >==============================
 ||	Function Desction:
-||		-
+||		- Intake a ifstream variable that reads the command txt file
+||		- read every line and create a transaction object for every line
+||		- A object is created based on the type of transaction
+||		- the objects are created in the call to the transactionFactory
 ||
 ||	Precondition:
-||		-
-||		-
+||		-The parameter must be a ifstream variable
+||		- it must read the file of commands
 ||
-||	Precondition:
-||		-
+||	Postcondition:
+||		- Every transaction object is stored in transactionStorage vector
 ||		-
 ||	Assumptions:
-||		-
+||		- NONE
 ++===========================================================================*/
 
 bool Store::readTransactions(ifstream& infile){
@@ -254,21 +263,24 @@ bool Store::readTransactions(ifstream& infile){
 
 /*==============================< FUNCTION NAME >==============================
 ||	Function Desction:
-||		-
+||		- after the other functinos have built the store, this function
+||		- takes each Transaction object out of the vector and does what
+||		- the object says it should do. the doTransactino function of the 
+||		- transaction object is called to compelte the transaction
+||		- 
 ||
 ||	Precondition:
-||		-
-||		-
+||		- the other functions in this class need to be called
+||		- before this function is called
 ||
-||	Precondition:
-||		-
+||	Postcondition:
+||		- All the transactions are completed
 ||		-
 ||	Assumptions:
-||		-
+||		- NONDE
 ++===========================================================================*/
 
 bool Store::doTransactions(){
-    //HYE BARDIA
     Transaction *transPtr;
     for(int trans = 0; trans < transactionStorage.size(); trans++){
         //get the current transaction given q FIFO requirment
