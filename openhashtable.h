@@ -13,22 +13,31 @@
 #include "LinkedHashEntry.h"
 #include "customer.h"
 const int TABLE_SIZE = 128;
+
+// Forward Decleration
 class LinkedHashEntry;
+class Customer;
 class OpenHashTable {
 public:
+    // news the hashtable
     OpenHashTable();
     //given the customer ID as a int convert this this string
     //atoi(customID_Sring.c_str())
     Customer* get(int key);
     
     //given a int repersentation of a customer ID from a string
-    //atoi(string_ID.c_str())
+    // create a new LinkedHashEntry and insert into hashtbale
     void put(int, Customer *);
+    
+    // removes a LinkedHashEntry from the table
     void remove(int);
     
+    // deletes the hashtable
     ~OpenHashTable();
     
 private:
+    
+    // the pointer tothe Hashtable
     LinkedHashEntry **table;
 
 

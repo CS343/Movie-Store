@@ -16,7 +16,7 @@ in are performed via doTransactions.
 
 
 #include <queue>
-#include "hashtable.h"
+
 #include <vector>
 #include "bintree.h"
 #include <fstream>
@@ -54,8 +54,9 @@ public:
    
     //carry out all the transactions in the transactions queue
     
-    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB, BinTree &dramaDB, HashTable &customerDB);
-	bool doTransactions();
+    //bool doTransactions(BinTree &classicDB, BinTree &comedyDB,
+    //BinTree &dramaDB, HashTable &customerDB);
+    bool doTransactions();
     
 
     void showInventory() const;

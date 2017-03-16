@@ -1,26 +1,10 @@
-// USE THIS COMMENT TEMPLATE
-/*==============================< FUNCTION NAME >==============================
-||	Function Desction:
-||		-
-||
-||	Precondition:
-||		-
-||		-
-||
-||	Postcondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
-
-
-
 /*
-This class represents the store itself. It has a Queue of the transactions,
+This class represents the store itself. It has a Queue of the 
+ transactions,
 just like a movie store would have receipts for everything that was
 borrowed and
-returned. The store also has a HashTable of all the customer accounts 
+returned. The store also has a HashTable of all the customer 
+ accounts
 associated with the store. Lastly, the store has a BST to contain 
 the inventory of the movies that the store has in stock.
 
@@ -31,7 +15,8 @@ in are performed via doTransactions.
 
 /*
  
- Notes to refactor, check for similar types in transaction and movie gettes
+ Notes to refactor, check for similar types in transaction a
+ nd movie gettes
  and method names
  
  */
@@ -51,10 +36,6 @@ Store::~Store(){
 	//are within each
     //index of the linked list, checking if the locaton is NULL ofc.
     
-    /*
-      TO DO
-     
-     */
   	for(int i =0; i< transactionStorage.size(); i++){
 		delete transactionStorage[i];
 	}
@@ -147,15 +128,18 @@ bool Store::readMovies(ifstream& infile){
         bool success = false;
         switch (action) {
             case 'F':
-                // if the movie object is of type comedy hen store it in the comedy BST
+                // if the movie object is of type comedy hen store
+                //it in the comedy BST
                 success = _comedyStorage.insert(moviePtr);
                 break;
             case 'D':
-		// if the movie object is of type drama hen store it in the drama BST
+		// if the movie object is of type drama hen store it in the
+                //drama BST
                 success = _dramaStorage.insert(moviePtr);
                 break;
             case 'C':
-		// if the movie object is of type classic hen store it in the classic BST
+		// if the movie object is of type classic hen store it in
+                //the classic BST
                 success = _classicStorage.insert(moviePtr);
             default:
                 break;
@@ -233,7 +217,8 @@ bool Store::readTransactions(ifstream& infile){
     //the factory reads teh given char
     //makes a query to getLine, to get tht one specific line
     //the factory also takes an output stream,
-    //deending on the command, makes the approperiate Transactions Subclass object
+    //depending on the command, makes the approperiate
+    //Transactions Subclass object
     //returns the subclass HERE, and we enqueue that result.
     char command;
     for(;;){
@@ -242,7 +227,8 @@ bool Store::readTransactions(ifstream& infile){
                             //check wether the valid commands are polled
         if(command != 'B' && command != 'R' && command!= 'I' && command !='H'){
             getline(infile, result); // throw away line
-            cout << "ERROR: (Recieved bad data) " << command << " "<<result << endl;
+            cout << "ERROR: (Recieved bad data) " << command << " "
+            <<result << endl;
             continue;
         }
         

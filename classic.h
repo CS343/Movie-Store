@@ -54,19 +54,26 @@ public:
     void addMajorActorToList(std::string majorActorName);
 
     //make movie
+    //make movie called to populate this object given a string
+    //of respective data
     void makeMovie(std::vector<std::string>);
+    //helper functin to check if a major actor is present
+    //within this classic movie
     bool hasMajorActor(std::string) const;
     
-    
+    //set the major actor
     void setMajorActor(std::string actor);
 private:
+    //released month
     int release_month;
+    //classics have many major actors this array holds them
     std::vector<std::string> list_major_actors;
+    
     
     std::string major_actor;
     
     
-    
+    //actors respective name split
     
     std::string major_actor_firstName;
     std::string major_actor_lastName;

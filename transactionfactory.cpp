@@ -32,7 +32,8 @@
 ||	Assumptions:
 ||		- NONE
 ++===========================================================================*/
-Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char command){
+Transaction* TransactionFactory::makeTransaction(std::ifstream &input, 
+                                                 char command){
     
     // create a pointer to a transaction object to be later point to a type
     // of transaction object
@@ -42,24 +43,25 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
     std::string result;
     
     
-    // gets one line from the command file read by the ifstream and inputs it into
-    // the variable "result"
+    // gets one line from the command file read by the ifstream and inputs it 
+    // into the variable "result"
     std::getline(input, result);
     
     //get the first half, if the last
-    //index contains a number good we have quantity, if not, bad we have default to
-    //borrowing 1 quntity.
+    //index contains a number good we have quantity, if not, bad we have default
+    //to borrowing 1 quntity.
     std::string ayyo1 = result.substr(1,10);
     
-    // splits the line by white spaces so that every token can be put into a variable
-    std::vector<std::string> first_half = Helper_Functions::string_split(ayyo1, ' ');
+    // splits the line by white spaces so that every token can be put
+    //into variable
+std::vector<std::string> first_half=Helper_Functions::string_split(ayyo1, ' ');
     
     switch (command) {
             
         case 'B':
         {
-            // a new borrow object is created because the command is a "borrow" command
-            // transactino Ptr points to this new object
+            // a new borrow object is created because the command
+            //  is a "borrow" command transactino Ptr points to this new object
             transactionPtr = new Borrow();
             /* new */
             
@@ -72,21 +74,23 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
             
         case 'R':
         {
-            // a new Return object is created because the command is a "Return" command
-            // transactino Ptr points to this new object
+            // a new Return object is created because the command
+            //  is a "Return" command transactino Ptr points to this new object
             transactionPtr = new Return();
             break;
         }
         case 'H':
         {
-            // a new History object is created because the command is a "History" command
+            // a new History object is created because 
+            // the command is a "History" command
             // transactino Ptr points to this new object
             transactionPtr = new History();
             break;
         }
         case 'I':
         {
-            // a new inventory object is created because the command is a "inventory" command
+            // a new inventory object is created because the
+            // command is a "inventory" command
             // transactino Ptr points to this new object
             transactionPtr = new ViewInventory();
             break;
@@ -95,12 +99,16 @@ Transaction* TransactionFactory::makeTransaction(std::ifstream &input, char comm
             break;
     }
     
-    // once the new object is created and transactionPtr points to a new Transactino subclass,
-    // the subclass's makeTransaction function is called  intaking the result and the command
-    // The function sets the newly created object's variabls passed on the values in "result"
+    // once the new object is created and transactionPtr 
+    //points to a new Transactino subclass,
+    // the subclass's makeTransaction function is called  
+    //intaking the result and the command
+    // The function sets the newly created object's 
+    //variabls passed on the values in "result"
     transactionPtr->makeTransaction(result, command);
     
-    // return the transactionPtr to be used be in the Store class's readTransctino function
+    // return the transactionPtr to be used be in the Store
+    // class's readTransctino function
     return transactionPtr;
     
     //return NULL;

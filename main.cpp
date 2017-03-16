@@ -43,11 +43,7 @@ about the list of customers, movies, and transactions made.
 #include "movie.h"
 #include "drama.h"
 #include "classic.h"
-//testing Movie
-//#include "comedy.h"
-//#include "bintree.h"
-//#include "moviefactory.h"
-//end test movie
+
 
 /*  Testing    */
 //#include "hashTable.h"

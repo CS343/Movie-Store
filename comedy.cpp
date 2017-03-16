@@ -2,8 +2,8 @@
 //  comedy.cpp
 //  movie Store
 //
-//  Created by Danny Ly on 3/5/17.
-//  Copyright © 2017 Danny Ly. All rights reserved.
+//  Created by Danny  and bardia borhaniLy on 3/5/17.
+//  Copyright © 2017 Danny Ly. and Bardia Borhani All rights reserved.
 //
 /*
  
@@ -46,7 +46,7 @@ bool Comedy::operator<(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+   
     return true;
 };
 /*==============================< FUNCTION NAME >==============================
@@ -71,29 +71,80 @@ bool Comedy::operator>(const Movie &rhs) const{
     }else{
         return false;
     }
-    //return ( this->getTitle() < rhs.getTitle()) && (this->getYear() < rhs.getYear());
+
     return true;
-    //return (this->getTitle() > rhs.getTitle()) && (this->getYear() > rhs.getYear());
 };
 
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - check weither this and rhs are equal
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - returns true if both objects are equal false otherwise
+ ||
+ ||   Assumptions:
+ ||      - None
+++============================================================================*/
 
 
 bool Comedy::operator==(const Movie &rhs) const{
-    return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() == rhs.getYear()) );
+    return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() ==
+                                                       rhs.getYear()) );
 };
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - if objects are not the same, given title and released year
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+++============================================================================*/
 
 bool Comedy::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
 };
 /*
- Given an vector/array of data, populate the current movie object with its respective elements
+ Given an vector/array of data, populate the current movie object with 
+ its respective elements
  
  */
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - This is a polymorphic method that is called to makes the object
+ ||     given the string array of data, the data which contains data
+ ||
+ ||   Preconditions:
+ ||      - the array given has already been split with title director
+ ||     year and stock
+ ||      -
+ ||   Postconditions:
+ ||      - this object is popualted correctly
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+++============================================================================*/
+
 void Comedy::makeMovie(std::vector<std::string> array){
    // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
+    //conver the string to int
     int year = atoi(array[4].c_str());
+    //convert this string stock to int
     int stock = atoi(array[1].c_str());
+    //set the data attributes of the comedy class
     this->setYear(year);
     this->setDirector(array[2].substr(1, array[3].size()));
     this->setTitle(array[3].substr(1,array[3].size()));
@@ -101,10 +152,6 @@ void Comedy::makeMovie(std::vector<std::string> array){
     
 };
 
-//output operator work around, flow transition.
-void Comedy::print(std::ostream& output) const{
-    output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
-    //output <<"Year: " << "   " << getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
-    
-};
+
+
 

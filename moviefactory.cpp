@@ -7,55 +7,23 @@
 //
 
 #include "moviefactory.h"
-/*
- +==============================================================================-
- ||
- ||   Function_Description:
- ||       - A make Movie Function that helps make a movie object given the 
- ||         Command
- ||   Preconditions:
- ||       -
- ||       -
- ||   Postconditions:
- ||      -
- ||       -
- ||
- ||   Assumptions:
- ||       -
- +==============================================================================-
- */
 
 /*
- +==============================================================================-
++==============================================================================-
  ||
  ||   Function_Description:
- ||       -
+ ||       - Movie factory used to return a new movie based off the given 
+ ||     commmand char that is presented,
  ||   Preconditions:
- ||       -
+ ||       -valid command char , if not the new movie objet will be deallocated
  ||       -
  ||   Postconditions:
- ||      -
+ ||      -returns a subclass of movie
  ||       -
  ||
  ||   Assumptions:
- ||       -
- +==============================================================================-
- */
-/*
- +==============================================================================-
- ||
- ||   Function_Description:
- ||       -
- ||   Preconditions:
- ||       -
- ||       -
- ||   Postconditions:
- ||      -
- ||       -
- ||
- ||   Assumptions:
- ||       -
- +==============================================================================-
+ ||       - None
++==============================================================================-
  */
 Movie* Movie_Factory::make_movie(char choice){
     Movie *returnPtr;

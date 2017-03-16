@@ -23,65 +23,46 @@ class Transaction;
 class Customer {
 
 public:
-    /*_________________________________________
-     #description:
-     #Assumption:
-     #Parameters:
-     ----------------------------------------*/
+    //default constructor
     Customer();
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    //customer parametric constructor
     Customer(std::string, std::string, std::string);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
     // returns the customerID - used to find a customer in the hash table
     //this is a unique ID assumed
     std::string getCustomerID() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+
     // passes in a parameter and sets the customerID field according to the
     // value of the parameter
+    //set the customer ID
     void setCustomerID(std::string customerID);
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
-    
+
+    //add a transaction to the reansaction queue
     void addTransaction(Transaction *);
     
     // returns the name of the customer
+    //get the customeres first name
     std::string getCustomerFirstName() const;
-    /*$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%
-     #description:
-     #Assumption:
-     #Parameters:
-     $%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%$%*/
+    ///get the customers lastname
     std::string getCustomerLastName() const;
 
     // sets the name of the customer according to the value of the parameter.
     void setCustomerFirstName(std::string name);
+    //set the customers last name
     void setCustomerLastName(std::string name);
     
  
-    
+        //displays the history of the customer
     void displayHistory() const;
-    
+    //make the customer given a infile
 	bool makeCustomer(std::ifstream &);
     
 private:
+    //customer attributes
     std::string customerID;
     std::string firstName;
     std::string lastName;
+    //transaction histry 
     std::vector<Transaction *> history;
 
 	
