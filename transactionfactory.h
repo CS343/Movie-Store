@@ -12,6 +12,7 @@ are an action, this is a proper use of the factory design pattern.
 #include "borrow.h"
 #include "history.h"
 #include "return.h"
+#include "viewinventory.h"
 
 
 #include <stdio.h>
