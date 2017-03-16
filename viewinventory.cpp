@@ -2,8 +2,8 @@
 //  viewinventory.cpp
 //  movie Store
 //
-//  Created by Danny Ly on 3/9/17.
-//  Copyright © 2017 Danny Ly. All rights reserved.
+//  Created by Danny Ly and Bardia Borhani on 3/9/17.
+//  Copyright © 2017 Danny Ly and Bardia Borhani. All rights reserved.
 //
 
 
