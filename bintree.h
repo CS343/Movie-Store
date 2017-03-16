@@ -1,17 +1,16 @@
 #ifndef BINTREE_H
 #define BINTREE_H
-//DANNY WAS HERE
 
 #include <iostream>
 #include <stdio.h>
 #include "movie.h"
-#include <sstream>
+#include <sstream>	// to be able to use stringstream
 /*
  //|===========================================================================|
  //|                                                                           |
  //|  Assignment2 Binary Search Tree                                           |
  //|                                                                           |
- //|  Created by Danny Ly on 1/15/17.                                          |
+ //|  Created by Danny Ly and Bardia Borhani on 1/15/17.                       |
  //|  Copyright © 2017 Red Klouds. All rights reserved.                        |
  //|===========================================================================|
  
@@ -64,9 +63,10 @@
 
 
 class BinTree {
+	// The BST nodes all contain a pointer to a movie 
 	struct Node {
 		Movie *data;
-		Node *right = nullptr;
+		Node *right = nullptr; // points to node on right side of branch
 		Node *left = nullptr;
 	};
 
