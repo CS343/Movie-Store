@@ -76,11 +76,41 @@ bool Comedy::operator>(const Movie &rhs) const{
     //return (this->getTitle() > rhs.getTitle()) && (this->getYear() > rhs.getYear());
 };
 
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - sets the major actor give first and last name
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
 
 
 bool Comedy::operator==(const Movie &rhs) const{
     return ( (this->getTitle() == rhs.getTitle() ) && (this->getYear() == rhs.getYear()) );
 };
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - sets the major actor give first and last name
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
 
 bool Comedy::operator!=(const Movie &rhs) const{
     return !(*this == rhs);
@@ -89,6 +119,22 @@ bool Comedy::operator!=(const Movie &rhs) const{
  Given an vector/array of data, populate the current movie object with its respective elements
  
  */
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - sets the major actor give first and last name
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
+
 void Comedy::makeMovie(std::vector<std::string> array){
    // std::cout << "Make Movie for Comed called" << std::endl;
     //index 0: command | 1: qutity | 2:Director | 3: Title |4: actor and year
@@ -101,10 +147,20 @@ void Comedy::makeMovie(std::vector<std::string> array){
     
 };
 
-//output operator work around, flow transition.
-void Comedy::print(std::ostream& output) const{
-    output << getYear() << " " << getTitle() << " " << getDirector() << " " << getStock();
-    //output <<"Year: " << "   " << getYear() << "Title: " << getTitle() << "   " << "Director: " << getDirector() << "   " <<"STOCK: " << getStock();
-    
-};
+/*==========================< FUNCTION NAME >==================================
+ ||
+ ||   Function_Description:
+ ||      - sets the major actor give first and last name
+ ||
+ ||   Preconditions:
+ ||      - None
+ ||      -
+ ||   Postconditions:
+ ||      - None
+ ||      -
+ ||
+ ||   Assumptions:
+ ||      - None
+ ++============================================================================*/
+
 

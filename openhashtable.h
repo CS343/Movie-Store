@@ -14,6 +14,7 @@
 #include "customer.h"
 const int TABLE_SIZE = 128;
 class LinkedHashEntry;
+class Customer;
 class OpenHashTable {
 public:
     OpenHashTable();

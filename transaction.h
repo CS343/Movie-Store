@@ -20,7 +20,7 @@ The Borrow, Return, and ViewInventory class all extend this class
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "hashTable.h"
+
 #include "bintree.h"
 
 #include "helper_functions.h"

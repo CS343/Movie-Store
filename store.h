@@ -16,7 +16,7 @@ in are performed via doTransactions.
 
 
 #include <queue>
-#include "hashtable.h"
+
 #include <vector>
 #include "bintree.h"
 #include <fstream>
