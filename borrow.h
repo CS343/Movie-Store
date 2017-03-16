@@ -14,38 +14,13 @@ class Borrow : public Transaction {
 
 public:
     // Borrow(){};
-
-/*==============================< makeTransaction >==========================
-||	Function Desction:
-||		- This function intakes a string and a character type
-||
-||	Precondition:
-||		-
-||		-
-||
-||	Precondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+    //makes the current transaction given a char tarnsaction type
+    //and a string which is the resulting string of text
     void makeTransaction(std::string, char transactionType);
     
     
-    /*==============================< doTransaction >==========================
-||	Function Desction:
-||		-
-||
-||	Precondition:
-||		-
-||		-
-||
-||	Precondition:
-||		-
-||		-
-||	Assumptions:
-||		-
-++===========================================================================*/
+    //does a borrrow transaction
+    //given the database reference to customers and movie databases
     bool doTransaction(BinTree &, BinTree&, BinTree &, OpenHashTable &);
    
 
