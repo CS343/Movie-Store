@@ -53,13 +53,14 @@ bool Classic::operator<(const Movie &rhs) const{
             return true;
         }
     }else{
+        /*
         std::string thisSmallestActor = this->list_major_actors.front;
         std::string rhsSmallestActor = rhs.list_major_actors.front;
         //std::vector<std::string> sameSmallestActors;
         for(;;){
             for (std::vector<std::string>::iterator it = list_major_actors.begin() ; it != list_major_actors.end(); ++it){
                 // if "it" is smaller
-                if( (thisSmallestActor.compare(*it) < 0) /*&& (sameSmallestActors)*/ ){
+                if( (thisSmallestActor.compare(*it) < 0) ){
                     thisSmallestActor = *it;
                 }
             }
@@ -84,6 +85,10 @@ bool Classic::operator<(const Movie &rhs) const{
             
         }
             return true;
+        */
+        
+        return false;
+            
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
@@ -113,6 +118,7 @@ bool Classic::operator>(const Movie &rhs) const{
             return true;
         }
     }else{
+        /*
         std::string thisSmallestActor = this->list_major_actors.front;
         std::string rhsSmallestActor = rhs.list_major_actors.front;
         for(;;){
@@ -139,6 +145,8 @@ bool Classic::operator>(const Movie &rhs) const{
             } 
         }
             return true;
+       */
+        return false;
     }
     //return (this->getYear() < rhs.getYear()) && ( this->getReleaseMonth() < rhs.getReleaseMonth() ) && (this->getMajorActor() < rhs.getMajorActor());
     return false;
